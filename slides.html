@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📖 คลังอธิบายสไลด์ทุกหน้าฉบับสมบูรณ์ (L4 • L5 • L6 ครบ 302 หน้า) | Semiconductor Specialty Chemicals</title>
+  
+  <!-- Google Fonts: Prompt & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Prompt', 'sans-serif'],
+            thai: ['Prompt', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- KaTeX for Math & Chemical Formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Slide Database (302 Slides) -->
+  <script src="slides_data.js"></script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(100, 116, 139, 0.1);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(100, 116, 139, 0.5);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+    }
+
+    .slide-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+    .slide-shadow:hover {
+      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans antialiased transition-colors duration-200">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 md:px-8 py-3 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md">
+            µ
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
+                SLIDE EXPLAINER • 302 SLIDES
+              </span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Dr. Nithi Atthi (TMEC Fab Manager)</span>
+            </div>
+            <h1 class="text-sm md:text-base font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span>คลังคำอธิบายสไลด์ทุกหน้า L4 • L5 • L6 (ฉบับสมบูรณ์ 302 หน้า)</span>
+            </h1>
+          </div>
+        </div>
+
+        <!-- Mobile Back Button -->
+        <a href="index.html" class="md:hidden px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition flex items-center gap-1">
+          <span>🏠 Portal</span>
+        </a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+        <!-- Bookmark Count Indicator -->
+        <button onclick="toggleBookmarkFilter()" id="btn-bookmark-badge" class="px-3 py-1.5 rounded-lg border border-amber-300 dark:border-amber-700/60 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-bold hover:bg-amber-100 transition flex items-center gap-1.5">
+          <span>⭐ บันทึกไว้</span>
+          <span id="bookmark-count" class="px-1.5 py-0.2 bg-amber-500 text-white text-[10px] rounded-full">0</span>
+        </button>
+
+        <!-- Back to Portal Button -->
+        <a href="index.html" class="hidden md:flex px-3.5 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/80 text-xs font-bold transition items-center gap-1.5 shadow-sm">
+          <span>🏠 กลับสู่หน้าหลัก Exam Portal</span>
+        </a>
+
+        <!-- Dark Mode Toggle -->
+        <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="สลับโหมดมืด/สว่าง">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SUB-HEADER / FILTER TOOLBAR ================= -->
+  <section class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 md:px-8 py-3 sticky top-[57px] z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-3">
+      
+      <!-- Lecture Switcher Tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto w-full lg:w-auto pb-1 lg:pb-0 scrollbar-none">
+        <button onclick="selectLecture('ALL')" id="tab-all" class="lec-tab px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-blue-600 text-white shadow-sm">
+          <span>🌟 ทั้งหมด</span>
+          <span class="px-1.5 py-0.2 bg-white/20 text-white rounded text-[10px]" id="count-all">302</span>
+        </button>
+        <button onclick="selectLecture('L4')" id="tab-l4" class="lec-tab px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>🧼 L4: Chemicals & Gases</span>
+          <span class="px-1.5 py-0.2 bg-slate-200 dark:bg-slate-700 rounded text-[10px]" id="count-l4">133</span>
+        </button>
+        <button onclick="selectLecture('L5')" id="tab-l5" class="lec-tab px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>🔬 L5: Lithography</span>
+          <span class="px-1.5 py-0.2 bg-slate-200 dark:bg-slate-700 rounded text-[10px]" id="count-l5">105</span>
+        </button>
+        <button onclick="selectLecture('L6')" id="tab-l6" class="lec-tab px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>⚙️ L6: CMP & Metallization</span>
+          <span class="px-1.5 py-0.2 bg-slate-200 dark:bg-slate-700 rounded text-[10px]" id="count-l6">64</span>
+        </button>
+      </div>
+
+      <!-- Search & Jump Controls -->
+      <div class="flex items-center gap-2 w-full lg:w-auto">
+        <!-- Live Search Box -->
+        <div class="relative flex-1 lg:w-72">
+          <input type="text" id="search-input" oninput="handleSearch()" placeholder="🔍 ค้นหาคำศัพท์, สูตร, สารเคมี, สไลด์..." 
+            class="w-full pl-9 pr-8 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-slate-100 transition">
+          <span class="absolute left-2.5 top-2 text-slate-400 text-xs">🔍</span>
+          <button onclick="clearSearch()" id="clear-search-btn" class="hidden absolute right-2.5 top-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs">✕</button>
+        </div>
+
+        <!-- Category Dropdown Filter -->
+        <select id="category-filter" onchange="handleCategoryFilter()" 
+          class="px-2.5 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-[150px] md:max-w-[200px] truncate">
+          <option value="ALL">📂 ทุกหมวดหมู่</option>
+        </select>
+
+        <!-- View Mode Switcher -->
+        <div class="flex items-center rounded-lg border border-slate-300 dark:border-slate-700 p-0.5 bg-slate-100 dark:bg-slate-800">
+          <button onclick="switchViewMode('grid')" id="btn-view-grid" class="p-1 rounded text-xs text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-700 shadow-xs" title="Grid View">
+            📇
+          </button>
+          <button onclick="switchViewMode('reader')" id="btn-view-reader" class="p-1 rounded text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200" title="Reader View">
+            📖
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT CONTAINER ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+    
+    <!-- Status & Results Counter -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400" id="results-count-label">
+          กำลังแสดง 302 จาก 302 สไลด์
+        </span>
+        <span id="active-filter-badge" class="hidden px-2 py-0.5 text-[10px] rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-bold"></span>
+      </div>
+
+      <!-- Quick Jump to Slide Input -->
+      <div class="flex items-center gap-1.5 text-xs text-slate-500">
+        <span>ข้ามไปยังสไลด์:</span>
+        <input type="number" id="quick-jump-input" min="1" max="133" placeholder="เลขหน้า" 
+          class="w-16 px-2 py-1 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-center text-xs focus:ring-1 focus:ring-blue-500">
+        <button onclick="jumpToPage()" class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 hover:bg-blue-600 hover:text-white transition font-bold text-xs">
+          ไป
+        </button>
+      </div>
+    </div>
+
+    <!-- GRID VIEW CONTAINER -->
+    <div id="grid-view-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Slides will be dynamically injected here -->
+    </div>
+
+    <!-- READER VIEW CONTAINER (Initially Hidden) -->
+    <div id="reader-view-container" class="hidden">
+      <!-- Injected by JS in reader mode -->
+    </div>
+
+    <!-- NO RESULTS FOUND BANNER -->
+    <div id="no-results" class="hidden text-center py-16">
+      <div class="text-4xl mb-3">🔍</div>
+      <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 mb-1">ไม่พบสไลด์ที่ตรงกับคำค้นหา</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ลองค้นหาด้วยคำอื่น หรือล้างตัวกรองเพื่อดูสไลด์ทั้งหมด</p>
+      <button onclick="resetAllFilters()" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition">
+        รีเซ็ตตัวกรองทั้งหมด
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ================= SLIDE DETAIL MODAL (FULLSCREEN / DIALOG) ================= -->
+  <div id="slide-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-2 md:p-6 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden relative">
+      
+      <!-- Modal Header -->
+      <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/80 dark:bg-slate-800/80">
+        <div class="flex items-center gap-2.5">
+          <span id="modal-lecture-badge" class="px-2.5 py-1 text-xs font-black rounded-lg bg-blue-600 text-white"></span>
+          <span id="modal-slide-num" class="text-xs font-bold text-slate-500 dark:text-slate-400"></span>
+          <span id="modal-category-badge" class="px-2 py-0.5 text-[11px] rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold"></span>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <!-- Bookmark Button -->
+          <button id="modal-bookmark-btn" onclick="toggleBookmarkCurrentModal()" class="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-500 text-sm" title="บันทึกสไลด์นี้">
+            ⭐
+          </button>
+          <!-- Close Button -->
+          <button onclick="closeModal()" class="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition text-sm">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (Two-column layout on large screens) -->
+      <div class="flex-1 overflow-y-auto p-5 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: High-Res Slide Image -->
+        <div class="lg:col-span-6 flex flex-col gap-3">
+          <div class="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-md">
+            <img id="modal-image" src="" alt="Slide Image" class="w-full h-auto object-contain transition duration-200 cursor-zoom-in" onclick="openLightbox(this.src)">
+            <div class="absolute bottom-2 right-2 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-white text-[10px] font-mono opacity-80 group-hover:opacity-100 transition">
+              🔍 คลิกเพื่อดูรูปขนาดเต็ม (HD)
+            </div>
+          </div>
+
+          <!-- Slide English Title -->
+          <div class="px-1">
+            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">ชื่อหัวข้อสไลด์ต้นฉบับ</div>
+            <div id="modal-title-en" class="text-xs font-semibold text-slate-600 dark:text-slate-300 font-mono"></div>
+          </div>
+
+          <!-- Extracted Original Slide Text Drawer (Collapsible) -->
+          <details class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-3 text-xs">
+            <summary class="font-bold cursor-pointer text-slate-600 dark:text-slate-400 hover:text-blue-600 transition flex items-center justify-between">
+              <span>📄 ดูข้อความดิบจากสไลด์ต้นฉบับ (Raw Text)</span>
+              <span class="text-[10px]">▼</span>
+            </summary>
+            <pre id="modal-raw-text" class="mt-2.5 p-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap max-h-48 overflow-y-auto leading-relaxed"></pre>
+          </details>
+        </div>
+
+        <!-- Right Column: Rich Thai Technical Breakdown -->
+        <div class="lg:col-span-6 flex flex-col gap-4">
+          
+          <!-- Slide Thai Title -->
+          <div>
+            <h2 id="modal-title-th" class="text-base md:text-lg font-black text-slate-900 dark:text-white leading-snug"></h2>
+            <p id="modal-summary-th" class="mt-1 text-xs text-blue-600 dark:text-blue-400 font-semibold leading-relaxed"></p>
+          </div>
+
+          <!-- In-depth Technical Explanation -->
+          <div class="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl p-4">
+            <h4 class="text-xs font-extrabold uppercase tracking-wider text-blue-800 dark:text-blue-300 flex items-center gap-1.5 mb-2">
+              <span>🔬 คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown)</span>
+            </h4>
+            <div id="modal-explanation-th" class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-2 whitespace-pre-line font-thai"></div>
+          </div>
+
+          <!-- Key Takeaways & Exam Checklist -->
+          <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 rounded-xl p-4">
+            <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5 mb-2">
+              <span>🎯 จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Takeaways)</span>
+            </h4>
+            <ul id="modal-key-points" class="list-disc pl-4 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-thai"></ul>
+          </div>
+
+          <!-- Formula / Chemical Equation (If Applicable) -->
+          <div id="modal-formula-container" class="hidden bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/60 rounded-xl p-3.5">
+            <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 mb-1.5">
+              ⚗️ สมการหรือปฏิกิริยาเคมีที่เกี่ยวข้อง (Chemical Reaction / Formula)
+            </h4>
+            <div id="modal-formula-content" class="text-xs md:text-sm text-slate-800 dark:text-slate-100 font-mono py-1 overflow-x-auto"></div>
+          </div>
+
+          <!-- Exam Focus Tip from Dr. Nithi Atthi -->
+          <div id="modal-exam-tip-container" class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 rounded-xl p-3.5">
+            <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center gap-1 mb-1">
+              <span>💡 จุดเน้นย้ำพิเศษจาก ดร. นิติ เอี่ยมถิ (TMEC Cleanroom Tips)</span>
+            </h4>
+            <p id="modal-exam-tip" class="text-xs text-amber-900 dark:text-amber-200 leading-relaxed font-thai"></p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer (Navigation Controls) -->
+      <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 flex items-center justify-between">
+        <button onclick="navigateModal(-1)" id="btn-modal-prev" class="px-3.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition flex items-center gap-1 text-slate-700 dark:text-slate-200">
+          <span>◀ สไลด์ก่อนหน้า</span>
+        </button>
+
+        <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+          <span id="modal-current-index">1</span> / <span id="modal-total-filtered">302</span>
+        </div>
+
+        <button onclick="navigateModal(1)" id="btn-modal-next" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm">
+          <span>สไลด์ถัดไป ▶</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= LIGHTBOX MODAL FOR FULLSCREEN IMAGE ZOOM ================= -->
+  <div id="lightbox-modal" class="fixed inset-0 z-60 bg-black/95 hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+    <div class="absolute top-4 right-4 flex items-center gap-3">
+      <span class="text-white/70 text-xs">คลิกที่ใดก็ได้เพื่อปิด (หรือกด Esc)</span>
+      <button class="text-white text-2xl font-bold p-2 hover:text-red-400 transition" onclick="closeLightbox()">✕</button>
+    </div>
+    <img id="lightbox-img" src="" alt="Full Resolution Slide" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 px-4 md:px-8 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      <div>
+        <strong>ระบบคลังคำอธิบายสไลด์เซมิคอนดักเตอร์ฉบับสมบูรณ์ (L4, L5, L6 รวม 302 สไลด์)</strong>
+        <p class="text-[11px] text-slate-400">วิทยากร: ดร. นิติ เอี่ยมถิ (Dr. Nithi Atthi) — ศูนย์นวัตกรรมไมโครอิเล็กทรอนิกส์ (TMEC สวทช.)</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="text-blue-600 dark:text-blue-400 font-bold hover:underline">🏠 หน้าหลัก Exam Portal</a>
+        <span>•</span>
+        <a href="https://www.tmec.or.th" target="_blank" class="hover:underline">www.tmec.or.th</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= CORE CLIENT-SIDE APPLICATION SCRIPT ================= -->
+  <script>
+    // State management
+    let currentLecture = 'ALL';
+    let currentCategory = 'ALL';
+    let searchQuery = '';
+    let bookmarkOnly = false;
+    let viewMode = 'grid'; // 'grid' or 'reader'
+    let currentFilteredSlides = [];
+    let currentModalIndex = 0;
+    let bookmarks = new Set(JSON.parse(localStorage.getItem('slide_bookmarks') || '[]'));
+
+    // Initialize application
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check dark mode
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-icon').textContent = '☀️';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-icon').textContent = '🌙';
+      }
+
+      updateBookmarkBadge();
+      populateCategoryDropdown();
+      applyFiltersAndRender();
+
+      // Keyboard event listeners
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+          closeModal();
+        } else if (document.getElementById('slide-modal').classList.contains('flex')) {
+          if (e.key === 'ArrowLeft') navigateModal(-1);
+          if (e.key === 'ArrowRight') navigateModal(1);
+          if (e.key.toLowerCase() === 'b') toggleBookmarkCurrentModal();
+        }
+      });
+    });
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+        document.getElementById('theme-icon').textContent = '🌙';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+        document.getElementById('theme-icon').textContent = '☀️';
+      }
+    }
+
+    // Populate Category Dropdown dynamically based on current slide set
+    function populateCategoryDropdown() {
+      const select = document.getElementById('category-filter');
+      select.innerHTML = '<option value="ALL">📂 ทุกหมวดหมู่ (All Categories)</option>';
+      
+      const categories = new Set();
+      window.ALL_SLIDES.forEach(s => {
+        if (currentLecture === 'ALL' || s.lecture === currentLecture) {
+          categories.add(s.categoryTh);
+        }
+      });
+
+      Array.from(categories).sort().forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
+      });
+    }
+
+    // Lecture tab selection
+    function selectLecture(lec) {
+      currentLecture = lec;
+      bookmarkOnly = false;
+      document.querySelectorAll('.lec-tab').forEach(b => {
+        b.className = 'lec-tab px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800';
+      });
+
+      const activeBtn = document.getElementById(`tab-${lec.toLowerCase()}`);
+      if (activeBtn) {
+        activeBtn.className = 'lec-tab px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-blue-600 text-white shadow-sm';
+      }
+
+      populateCategoryDropdown();
+      applyFiltersAndRender();
+    }
+
+    // Search handling
+    function handleSearch() {
+      searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+      document.getElementById('clear-search-btn').classList.toggle('hidden', searchQuery.length === 0);
+      applyFiltersAndRender();
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      searchQuery = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      applyFiltersAndRender();
+    }
+
+    // Category filter handling
+    function handleCategoryFilter() {
+      currentCategory = document.getElementById('category-filter').value;
+      applyFiltersAndRender();
+    }
+
+    // Toggle bookmark filter
+    function toggleBookmarkFilter() {
+      bookmarkOnly = !bookmarkOnly;
+      const btn = document.getElementById('btn-bookmark-badge');
+      if (bookmarkOnly) {
+        btn.classList.add('ring-2', 'ring-amber-500', 'bg-amber-100', 'dark:bg-amber-900/60');
+      } else {
+        btn.classList.remove('ring-2', 'ring-amber-500', 'bg-amber-100', 'dark:bg-amber-900/60');
+      }
+      applyFiltersAndRender();
+    }
+
+    // Quick jump to slide
+    function jumpToPage() {
+      const pageNum = parseInt(document.getElementById('quick-jump-input').value);
+      if (!pageNum) return;
+
+      const target = window.ALL_SLIDES.find(s => {
+        if (currentLecture !== 'ALL' && s.lecture !== currentLecture) return false;
+        return s.page === pageNum;
+      });
+
+      if (target) {
+        openModalBySlideId(target.id);
+      } else {
+        alert(`ไม่พบสไลด์หน้าที่ ${pageNum} ในการคัดเลือกปัจจุบัน`);
+      }
+    }
+
+    // Switch View Mode
+    function switchViewMode(mode) {
+      viewMode = mode;
+      const btnGrid = document.getElementById('btn-view-grid');
+      const btnReader = document.getElementById('btn-view-reader');
+      const gridContainer = document.getElementById('grid-view-container');
+      const readerContainer = document.getElementById('reader-view-container');
+
+      if (mode === 'grid') {
+        btnGrid.className = 'p-1 rounded text-xs text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-700 shadow-xs';
+        btnReader.className = 'p-1 rounded text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200';
+        gridContainer.classList.remove('hidden');
+        readerContainer.classList.add('hidden');
+      } else {
+        btnReader.className = 'p-1 rounded text-xs text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-700 shadow-xs';
+        btnGrid.className = 'p-1 rounded text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200';
+        gridContainer.classList.add('hidden');
+        readerContainer.classList.remove('hidden');
+        renderReaderView();
+      }
+    }
+
+    // Master Filter & Render Logic
+    function applyFiltersAndRender() {
+      currentFilteredSlides = window.ALL_SLIDES.filter(slide => {
+        // Lecture Filter
+        if (currentLecture !== 'ALL' && slide.lecture !== currentLecture) return false;
+
+        // Bookmark Filter
+        if (bookmarkOnly && !bookmarks.has(slide.id)) return false;
+
+        // Category Filter
+        if (currentCategory !== 'ALL' && slide.categoryTh !== currentCategory) return false;
+
+        // Search Query
+        if (searchQuery) {
+          const matchId = slide.id.toLowerCase().includes(searchQuery);
+          const matchPage = slide.page.toString() === searchQuery;
+          const matchTitleEn = slide.titleEn.toLowerCase().includes(searchQuery);
+          const matchTitleTh = slide.titleTh.toLowerCase().includes(searchQuery);
+          const matchSum = slide.summaryTh.toLowerCase().includes(searchQuery);
+          const matchExp = slide.explanationTh.toLowerCase().includes(searchQuery);
+          const matchRaw = slide.rawText.toLowerCase().includes(searchQuery);
+          const matchTip = (slide.examTip || '').toLowerCase().includes(searchQuery);
+          if (!matchId && !matchPage && !matchTitleEn && !matchTitleTh && !matchSum && !matchExp && !matchRaw && !matchTip) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      // Update counters
+      document.getElementById('results-count-label').textContent = 
+        `กำลังแสดง ${currentFilteredSlides.length} จาก ${window.ALL_SLIDES.length} สไลด์`;
+      
+      const noResults = document.getElementById('no-results');
+      if (currentFilteredSlides.length === 0) {
+        noResults.classList.remove('hidden');
+        document.getElementById('grid-view-container').innerHTML = '';
+        document.getElementById('reader-view-container').innerHTML = '';
+        return;
+      } else {
+        noResults.classList.add('hidden');
+      }
+
+      if (viewMode === 'grid') {
+        renderGridView();
+      } else {
+        renderReaderView();
+      }
+    }
+
+    // Render Grid View
+    function renderGridView() {
+      const container = document.getElementById('grid-view-container');
+      container.innerHTML = '';
+
+      currentFilteredSlides.forEach((slide, index) => {
+        const isBookmarked = bookmarks.has(slide.id);
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col slide-shadow transition duration-200 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500';
+        
+        // Color badges for lectures
+        let badgeColor = 'bg-blue-600 text-white';
+        if (slide.lecture === 'L5') badgeColor = 'bg-indigo-600 text-white';
+        if (slide.lecture === 'L6') badgeColor = 'bg-cyan-700 text-white';
+
+        card.innerHTML = `
+          <!-- Slide Preview Image -->
+          <div class="relative bg-slate-900 group aspect-[16/10] overflow-hidden cursor-pointer" onclick="openModalByIndex(${index})">
+            <img src="${slide.image}" alt="Slide ${slide.page}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition"></div>
+            
+            <!-- Badges -->
+            <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+              <span class="px-2 py-0.5 text-[10px] font-black rounded-md ${badgeColor} shadow-xs">
+                ${slide.lecture} • หน้า ${slide.page}/${slide.totalPages}
+              </span>
+            </div>
+
+            <!-- Bookmark Button -->
+            <button onclick="event.stopPropagation(); toggleBookmark('${slide.id}')" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-xs text-white hover:text-amber-400 transition" title="บันทึกสไลด์นี้">
+              ${isBookmarked ? '⭐' : '☆'}
+            </button>
+
+            <!-- Bottom Title Preview -->
+            <div class="absolute bottom-2 left-2.5 right-2.5 text-white">
+              <p class="text-xs font-bold line-clamp-1">${slide.titleTh}</p>
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="p-4 flex-1 flex flex-col justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="px-1.5 py-0.5 text-[10px] rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-semibold truncate max-w-[200px]">
+                  ${slide.categoryTh}
+                </span>
+              </div>
+              <h3 class="text-xs md:text-sm font-bold text-slate-900 dark:text-white line-clamp-2 mb-1.5 cursor-pointer hover:text-blue-600 transition" onclick="openModalByIndex(${index})">
+                ${slide.titleTh}
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed font-thai">
+                ${slide.summaryTh}
+              </p>
+            </div>
+
+            <!-- Card Bottom Bar -->
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
+              <span class="text-[11px] font-mono text-slate-400">${slide.id}</span>
+              <button onclick="openModalByIndex(${index})" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 font-bold flex items-center gap-1 text-xs">
+                <span>อ่านคำอธิบายละเอียด</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Trigger KaTeX rendering
+      if (window.renderMathInElement) {
+        renderMathInElement(container, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    // Render Reader View (Focused Single-Slide Book Layout)
+    function renderReaderView() {
+      const container = document.getElementById('reader-view-container');
+      if (currentFilteredSlides.length === 0) return;
+
+      const slide = currentFilteredSlides[currentModalIndex] || currentFilteredSlides[0];
+      const isBookmarked = bookmarks.has(slide.id);
+
+      container.innerHTML = `
+        <div class="glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col gap-6">
+          
+          <!-- Reader Top Controls -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 text-xs font-black rounded-lg bg-blue-600 text-white">${slide.lecture}</span>
+              <span class="text-xs font-bold text-slate-500">สไลด์ที่ ${slide.page} จาก ${slide.totalPages} หน้า</span>
+              <span class="px-2 py-0.5 text-xs rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${slide.categoryTh}</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button onclick="toggleBookmark('${slide.id}'); renderReaderView();" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold transition flex items-center gap-1">
+                <span>${isBookmarked ? '⭐ บันทึกแล้ว' : '☆ บันทึกสไลด์นี้'}</span>
+              </button>
+              <button onclick="navigateReader(-1)" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-bold">◀ ก่อนหน้า</button>
+              <span class="text-xs font-mono text-slate-500">${currentModalIndex + 1}/${currentFilteredSlides.length}</span>
+              <button onclick="navigateReader(1)" class="p-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold">ถัดไป ▶</button>
+            </div>
+          </div>
+
+          <!-- Reader Main Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-6">
+              <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md bg-slate-900 cursor-zoom-in" onclick="openLightbox('${slide.image}')">
+                <img src="${slide.image}" alt="Slide ${slide.page}" class="w-full h-auto object-contain">
+              </div>
+              <div class="mt-3 text-xs text-slate-500 text-center font-mono">
+                ${slide.titleEn}
+              </div>
+            </div>
+
+            <div class="lg:col-span-6 flex flex-col gap-4">
+              <div>
+                <h2 class="text-lg font-black text-slate-900 dark:text-white">${slide.titleTh}</h2>
+                <p class="text-xs text-blue-600 dark:text-blue-400 font-semibold mt-1">${slide.summaryTh}</p>
+              </div>
+
+              <div class="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl p-4">
+                <h4 class="text-xs font-bold text-blue-800 dark:text-blue-300 mb-1.5">🔬 คำอธิบายอย่างละเอียด:</h4>
+                <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-2 whitespace-pre-line font-thai">${slide.explanationTh}</div>
+              </div>
+
+              <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 rounded-xl p-4">
+                <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">🎯 จุดสำคัญที่ต้องจำ (Key Takeaways):</h4>
+                <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-thai">
+                  ${slide.keyPoints.map(kp => `<li>${kp}</li>`).join('')}
+                </ul>
+              </div>
+
+              ${slide.formula ? `
+                <div class="bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/60 rounded-xl p-3.5">
+                  <h4 class="text-[11px] font-bold text-emerald-800 dark:text-emerald-300 mb-1">⚗️ สูตร/ปฏิกิริยาเคมี:</h4>
+                  <div class="text-xs font-mono py-1 overflow-x-auto">$$${slide.formula}$$</div>
+                </div>
+              ` : ''}
+
+              ${slide.examTip ? `
+                <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 rounded-xl p-3.5">
+                  <h4 class="text-[11px] font-bold text-amber-800 dark:text-amber-300 mb-1">💡 คำแนะนำพิเศษจาก ดร. นิติ:</h4>
+                  <p class="text-xs text-amber-900 dark:text-amber-200 leading-relaxed font-thai">${slide.examTip}</p>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      if (window.renderMathInElement) {
+        renderMathInElement(container, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function navigateReader(direction) {
+      currentModalIndex += direction;
+      if (currentModalIndex < 0) currentModalIndex = 0;
+      if (currentModalIndex >= currentFilteredSlides.length) currentModalIndex = currentFilteredSlides.length - 1;
+      renderReaderView();
+    }
+
+    // Modal Display Functions
+    function openModalByIndex(index) {
+      currentModalIndex = index;
+      const slide = currentFilteredSlides[index];
+      if (!slide) return;
+
+      document.getElementById('modal-lecture-badge').textContent = slide.lecture;
+      document.getElementById('modal-slide-num').textContent = `สไลด์ที่ ${slide.page} / ${slide.totalPages}`;
+      document.getElementById('modal-category-badge').textContent = slide.categoryTh;
+      document.getElementById('modal-image').src = slide.image;
+      document.getElementById('modal-title-en').textContent = slide.titleEn;
+      document.getElementById('modal-raw-text').textContent = slide.rawText || 'ไม่มีข้อความสกัดในสไลด์นี้';
+      document.getElementById('modal-title-th').textContent = slide.titleTh;
+      document.getElementById('modal-summary-th').textContent = slide.summaryTh;
+      document.getElementById('modal-explanation-th').textContent = slide.explanationTh;
+
+      // Key points list
+      const kpList = document.getElementById('modal-key-points');
+      kpList.innerHTML = '';
+      slide.keyPoints.forEach(kp => {
+        const li = document.createElement('li');
+        li.textContent = kp;
+        kpList.appendChild(li);
+      });
+
+      // Formula container
+      const formulaBox = document.getElementById('modal-formula-container');
+      const formulaContent = document.getElementById('modal-formula-content');
+      if (slide.formula && slide.formula.trim().length > 0) {
+        formulaBox.classList.remove('hidden');
+        formulaContent.textContent = `$$${slide.formula}$$`;
+      } else {
+        formulaBox.classList.add('hidden');
+      }
+
+      // Exam tip
+      const tipBox = document.getElementById('modal-exam-tip-container');
+      const tipText = document.getElementById('modal-exam-tip');
+      if (slide.examTip && slide.examTip.trim().length > 0) {
+        tipBox.classList.remove('hidden');
+        tipText.textContent = slide.examTip;
+      } else {
+        tipBox.classList.add('hidden');
+      }
+
+      // Footer navigation numbers
+      document.getElementById('modal-current-index').textContent = index + 1;
+      document.getElementById('modal-total-filtered').textContent = currentFilteredSlides.length;
+
+      // Update bookmark icon in modal
+      updateModalBookmarkIcon(slide.id);
+
+      // Show modal
+      const modal = document.getElementById('slide-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+
+      // KaTeX rendering inside modal
+      if (window.renderMathInElement) {
+        renderMathInElement(modal, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function openModalBySlideId(slideId) {
+      const idx = currentFilteredSlides.findIndex(s => s.id === slideId);
+      if (idx !== -1) {
+        openModalByIndex(idx);
+      } else {
+        // Fallback: search in all slides and clear filters
+        resetAllFilters();
+        const newIdx = currentFilteredSlides.findIndex(s => s.id === slideId);
+        if (newIdx !== -1) openModalByIndex(newIdx);
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('slide-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function navigateModal(direction) {
+      const newIndex = currentModalIndex + direction;
+      if (newIndex >= 0 && newIndex < currentFilteredSlides.length) {
+        openModalByIndex(newIndex);
+      }
+    }
+
+    // Bookmark handling
+    function toggleBookmark(slideId) {
+      if (bookmarks.has(slideId)) {
+        bookmarks.delete(slideId);
+      } else {
+        bookmarks.add(slideId);
+      }
+      localStorage.setItem('slide_bookmarks', JSON.stringify(Array.from(bookmarks)));
+      updateBookmarkBadge();
+      applyFiltersAndRender();
+    }
+
+    function toggleBookmarkCurrentModal() {
+      const slide = currentFilteredSlides[currentModalIndex];
+      if (slide) {
+        toggleBookmark(slide.id);
+        updateModalBookmarkIcon(slide.id);
+      }
+    }
+
+    function updateModalBookmarkIcon(slideId) {
+      const btn = document.getElementById('modal-bookmark-btn');
+      if (bookmarks.has(slideId)) {
+        btn.textContent = '⭐';
+        btn.title = 'ยกเลิกการบันทึกสไลด์นี้';
+      } else {
+        btn.textContent = '☆';
+        btn.title = 'บันทึกสไลด์นี้';
+      }
+    }
+
+    function updateBookmarkBadge() {
+      document.getElementById('bookmark-count').textContent = bookmarks.size;
+    }
+
+    function resetAllFilters() {
+      currentLecture = 'ALL';
+      currentCategory = 'ALL';
+      searchQuery = '';
+      bookmarkOnly = false;
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      document.getElementById('category-filter').value = 'ALL';
+      document.getElementById('btn-bookmark-badge').classList.remove('ring-2', 'ring-amber-500');
+      selectLecture('ALL');
+    }
+
+    // Lightbox for HD images
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-modal').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
+

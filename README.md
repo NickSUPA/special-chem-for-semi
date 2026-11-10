@@ -36,9 +36,10 @@ flowchart TD
 
 ## 🌟 จุดเด่นของระบบ (Key Features)
 
-1. **10 Dedicated Tabs Architecture**: แยกเนื้อหาแต่ละบทเรียนชัดเจน ไม่ปะปนกัน จัดวางแบบ Modern Card Layout สบายตา
-2. **150 High-Resolution Slide Snapshots**: ภาพสไลด์จริงจากเอกสารการสอน 150 ภาพ พร้อมระบบ **Image Lightbox Modal** คลิกขยายภาพใหญ่
-3. **KaTeX Mathematical & Chemical Formula Engine**: เรนเดอร์สมการจลนศาสตร์และปฏิกิริยาเคมีด้วย KaTeX คมชัด
+1. **คลังคำอธิบายสไลด์ทุกหน้า 302 สไลด์ (L4 • L5 • L6 ครบถ้วน 100% ห้ามขาด ภาษาไทย)**: ระบบอธิบายสไลด์เจาะลึกทุกหน้า (`slides.html`) ครอบคลุม L4 (133 หน้า), L5 (105 หน้า), L6 (64 หน้า) พร้อมภาพ HD, สรุปย่อ, คำอธิบายเชิงลึก, สูตร KaTeX, และจุดเน้นข้อสอบ
+2. **10 Dedicated Tabs Architecture**: แยกเนื้อหาแต่ละบทเรียนชัดเจน ไม่ปะปนกัน จัดวางแบบ Modern Card Layout สบายตา
+3. **302 High-Resolution Slide Snapshots**: ภาพสไลด์จริงความละเอียดสูงครบทุกหน้า 302 ภาพ พร้อมระบบ **Image Lightbox Modal** คลิกขยายภาพใหญ่
+4. **KaTeX Mathematical & Chemical Formula Engine**: เรนเดอร์สมการจลนศาสตร์และปฏิกิริยาเคมีด้วย KaTeX คมชัด
 4. **4 Interactive 2D Simulators (HTML5 Canvas)**:
    - Preston Kinematics Simulator (Platen vs Carrier relative velocity $\omega_p = \omega_w \implies |\vec{V}_{rel}| = \omega R_c$)
    - Zeta Potential ($\zeta$) & DLVO Energy Barrier Curve vs pH (IEP danger threshold)
@@ -71,14 +72,16 @@ flowchart TD
 ## 📚 โครงสร้างไฟล์ใน Repository
 
 ```text
-├── index.html            # เว็บแอปพลิเคชันระบบการเรียนรู้หลัก (570+ KB, 10 Tabs, KaTeX, Tailwind, Lucide)
+├── index.html            # เว็บแอปพลิเคชันระบบการเรียนรู้หลัก (10 Tabs, KaTeX, Tailwind)
+├── slides.html           # ระบบคลังคำอธิบายสไลด์ทุกหน้า 302 สไลด์ (L4, L5, L6) ภาษาไทยละเอียด
+├── slides_data.js        # ฐานข้อมูลคำอธิบายสไลด์ 302 หน้า พร้อมสูตร KaTeX และจุดเน้นข้อสอบ
 ├── server.py             # Python HTTP Server รองรับ Multi-threading, CORS, Auto-open browser
 ├── start_server.bat      # Windows batch script สำหรับเปิดเซิร์ฟเวอร์ใน 1 คลิก
-├── images/               # รวมภาพสไลด์ความละเอียดสูง 150 ภาพ (L4, L5, L6)
+├── images/               # รวมภาพสไลด์ความละเอียดสูงครบ 302 ภาพ (L4, L5, L6)
 ├── web_app/              # โฟลเดอร์สำรองพร้อม redirect index.html
-├── L4_Specialty Chemicals...pdf     # เอกสารประกอบการสอนบทที่ 1 & 2
-├── L5_Specialty gases...pdf         # เอกสารประกอบการสอนบทที่ 3 (Lithography)
-└── Lecture 6_CMP chemicals...pdf   # เอกสารประกอบการสอนบทที่ 4 (CMP)
+├── L4_Specialty Chemicals...pdf     # เอกสารประกอบการสอนบทที่ 1 & 2 (133 หน้า)
+├── L5_Specialty gases...pdf         # เอกสารประกอบการสอนบทที่ 3 Lithography (105 หน้า)
+└── Lecture 6_CMP chemicals...pdf   # เอกสารประกอบการสอนบทที่ 4 CMP (64 หน้า)
 ```
 
 ---
