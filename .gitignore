@@ -7,4 +7,7 @@ desktop.ini
 .vscode/
 .idea/
 *.log
+test_*.py
+seed_cache.py
+find_working_model.py
 
