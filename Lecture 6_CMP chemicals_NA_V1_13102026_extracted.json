@@ -1,0 +1,258 @@
+[
+  {
+    "page": 1,
+    "text": "Specialty Chemicals and Gases for \nSemiconductor Devices Fabrication \n(Metallization & Planarization Process)\nDr. Nithi Atthi \nFab Manager \nThai Microelectronics Center (TMEC)\nNational Science and Technology Development Agency (NSTDA)\nLecture 6: 13 October 2026 \nSpecialty Chemicals and Gases for Semiconductor Fabrication \n"
+  },
+  {
+    "page": 2,
+    "text": "Dr. Nithi Atthi\nFab ManagerThai Microelectronics Center (TMEC) \n2 \nnithi.att@nstda.or.th\n23+ Years\nSemiconductor \nExperience\nExpertise\nCMOS | 3D FinFETs\nMEMS | Si Photonics\n45+ Publications\nPeer-Reviewed Journals\n27 Patents\nInnovation & IP\nPh.D., Tokyo Institute of Technology \nMultiple International Awards\n"
+  },
+  {
+    "page": 3,
+    "text": "3 \nOutline\nMain Focus\nTopic\nSection\nDevice integration, interconnects, importance of \nplanarization\nIntroduction to Metallization & CMP\n1\nCMP principles, polishing mechanisms, removal rate\nCMP Fundamentals & Equipment\n2\nAbrasives, oxidizers, complexants, inhibitors, pH, zeta \npotential\nCMP Slurry & Specialty Chemicals\n3\nDielectric, STI, tungsten, copper, and other materials\nMaterial-Specific CMP Chemistry\n4\nSelectivity, endpoint, dishing, erosion, metrology\nCMP Process Control & Defects\n5\nContamination, cleaning chemistry, cleaning mechanisms\nPost-CMP Cleaning\n6\nChemical hazards, handling, waste segregation and \ntreatment\nChemical Safety & Waste \nManagement\n7\nChemical–mechanical interactions and manufacturing \nchallenges\nSummary & Key Takeaways\n8\n"
+  },
+  {
+    "page": 4,
+    "text": "CMOS Inverter process integration \nStep 1: N-select, N-well, P-select layers\nStep 2: Poly-Si layer\nStep 3: N+ Diffusion for NMOS, N-select, N+ diffusion for \nPMOS body contact\nStep 4: P+ Diffusion for PMOS\nStep 5: Metal-1 contact layer\nhttps://www.vlsi-expert.com/2014/#google_vignette\n4 \n"
+  },
+  {
+    "page": 5,
+    "text": "Etching process in MOSFET device \n5 \n"
+  },
+  {
+    "page": 6,
+    "text": "Metal Interconnection (Metal layer + Via) \nhttps://www.mks.com/n/metal-thin-films\nhttps://www.semiconductor-digest.com/intel-4-process-drops-cobalt-interconnect-goes-with-tried-and-tested-copper-with-cobalt-liner-cap/\nSEM image of Intel Pentium 4 with 18 metal layers \n(M1-M18) \n6 \n"
+  },
+  {
+    "page": 7,
+    "text": "TiN\nTiN\nTiN\nTiN/Ti\nTiN/Ti\nSilicon\nOxide\nTiSi2\nMetal Interconnection\n(Al contact, TiN diffusion barrier layer, TiSi2 contact, and W plug) \nMultilayer contact structure \nwith TiSi2/TiN contact/barrier \nlayers between the Si and Al \nTiN acts like both “Shunt” and \nAnti-reflective layer  \n7 \nConductivity \n(/Ω-m)\nResistivity \n(Ω-m)\nMaterial\n6.29 x 10\n7\n1.59 x 10\n-8\nAg\n5.95 x 10\n7\n1.68 x 10\n-8\nCu\n4.10 x 10\n7\n2.44 x 10\n-8\nAu\n5.81 x 10\n7\n2.65 x 10\n-8\nAl\n1.79 x 10\n7\n5.6 x 10\n-8\nW\n1.03 x 10\n7\n9.71 x 10\n-8\nFe\n0.94 x 10\n7\n10.6 x 10\n-8\nPt\n0.45 x 10\n7\n22 x 10\n-8\nPb\n0.21 x 10\n7\n48.2 x 10\n-8\nMn\n0.20 x 10\n7\n49 x 10\n-8\n(Ni, Cu)\n010 x 10\n7\n98 x 10\n-8\nHg\n0.10 x 10\n7\n100 x 10\n-8\n(Ni, Fe, Cr \nAlloy)\n--\n3-60 x 10\n-5\nCarbon \n(Graphite)\nSilicon\nTiSi2\nTiN\nAl\nN+\nOxide\nOxide\nW\nAlCu (Metal-2)\nAlCu (Metal-1)\nW\nW\nhttps://www.mks.com/n/metal-thin-films\n"
+  },
+  {
+    "page": 8,
+    "text": "8 \nW vias, Al wires, & Cu Dual Damascene Process \nDOI: 10.13140/RG.2.1.2425.5766\nProcess flow of tungsten vias \nOxide \ndeposition \nVia \nlithography \nVia etch \nW, TiN, Ti \npolish \nTi liner & TiN\nbarrier deposition \nand CVD W fill \nProcess flow of aluminum alloy wires \nMetal stack deposition \nWire lithography \nWire etch \nOxide gap fill deposition \nOxide polish \nDual-Damascene process flow \nfor Cu interconnects \nOxide \ndeposition \nLine & via \netch \nMetal barrier \ndeposition \nCu \nfill \nCu & barrier \npolish \nDielectric \nbarrier \npassivation \n"
+  },
+  {
+    "page": 9,
+    "text": "Cu Dual Damascene methods \n9 \nDOI: 10.13140/RG.2.1.2425.5766\n(1) Buried etch stop approach \nVia-and wire-level \nILD deposition \n(4) Full via first approach \n(5) Line first approach \n(2) Clustered approach \n(3) Partial via first approach \nWire lithography \nand etch \nVia lithography \nVia etch \nVia-and wire-level \nILD deposition \nVia lithography \nand etch \nWire lithography \nWire and \nextended via etch \nVia-and wire-level \nILD deposition \nWire and extended \nvia etch \nVia mask \netch \nPartial via etch \ndeposition \nVia-and wire-\nlevel lithography \nVia-and wire-level \nILD deposition \nWire and extended \nvia etch \nWire lithography \nVia lithography & \npartially etch \nVia-level ILD & etch \nstop deposition \nVia etch \nVia lithography \n& etch \nWire-level ILD \ndeposition \nEtch stop (via) \nlithography & etch \n"
+  },
+  {
+    "page": 10,
+    "text": "10 \nWhy Is CMP needed in Semiconductor \nManufacturing? \nCMP is essential for achieving a highly planar wafer surface, controlling film thickness, and \nenabling reliable multilayer device fabrication.\nKey Purposes of CMP\n1.\nSurface Planarization: Removes surface topography and reduces height variations caused \nby deposition, etching, and patterning.\n2. Multilayer Integration: Provides a flat surface for subsequent lithography and thin-film \ndeposition in advanced semiconductor devices.\n3. Improved Lithography: Minimizes focus variation and depth-of-focus (DOF) limitations, \nimproving pattern resolution and overlay performance.\n4. Selective Material Removal: Removes excess materials while retaining desired structures, \nsuch as Cu interconnects, W plugs, and shallow trench isolation (STI).\n5. Film Thickness Control: Achieves uniform dielectric and metal film thickness across the \nwafer.\n6. Improved Device Yield and Reliability: Reduces topography-related defects, electrical \nfailures, and process variability.\n"
+  },
+  {
+    "page": 11,
+    "text": "Chemical Mechanical Polishing (CMP) \nhttps://www.horiba.com/int/semiconductor/process/chemical-mechanical-planarization-cmp/\nhttps://www.mks.com/n/chemical-mechanical-polishing\n11 \nChip stack without CMP \nChip stack with CMP\n(without CMP defects) \nChip stack with CMP\n(with Dishing & Erosion side defects) \n"
+  },
+  {
+    "page": 12,
+    "text": "12 \nChemical Mechanical Planarization (CMP) and \nPost-CMP Cleaning \nhttps://www.horiba.com/ind/semiconductor/applications/chemical-mechanical-planarization-cmp/\nChemical mechanical polishing (CMP) is a powerful fabrication technique that \nuses chemical oxidation and mechanical abrasion to remove material and achieve \nvery high levels of planarity.\nPost-CMP Cleaning:\n•\nRemoves abrasive particles, polishing byproducts, organic residues, and metallic \ncontaminants remaining after CMP.\n•\nPrevents defects caused by slurry particles and contaminants adhering to wafer surfaces.\n•\nEnsures wafer cleanliness while minimizing scratches, watermarks, surface roughness, \ncorrosion, and dielectric property changes.\nCMP:\n•\nCombines chemical reactions (oxidation) and mechanical abrasion to achieve selective \nmaterial removal and high surface planarity.\n•\nUses specially formulated slurries containing chemicals and abrasive particles.\n•\nWidely applied in semiconductor manufacturing for surface planarization and device \nstructure formation.\n"
+  },
+  {
+    "page": 13,
+    "text": "13 \nCMP Equipment and Operating Principles \n"
+  },
+  {
+    "page": 14,
+    "text": "14 \nCMP Machine \nhttps://www.ebara.com.sg/precision-machinery-products/semiconductor-manufacturing-system/chemical-mechanical-polishing-cmp-f-rex300x\n"
+  },
+  {
+    "page": 15,
+    "text": "15 \nCMP Removal Rate & Preston’s Equation\nChemical Mechanical Polishing (CMP) combines chemical reactions and mechanical abrasion to \nremove materials and achieve wafer surface planarization.\nTypical Unit\nDescription\nParameter\nnm/min \nor µm/min\nMaterial \nremoval rate\nRR\nnm/(min·kPa·m/s)\nPreston \ncoefficient \n(process-\ndependent)\nKₚ\nkPa \nor psi\nApplied \npolishing \npressure\nP\nm/s\nRelative \nvelocity \nbetween \nwafer and \npolishing pad\nV\nKey Factors Affecting CMP Removal Rate\nMechanical Factors\n•\nDownforce / pressure\n•\nPad and platen velocity\n•\nPad hardness and conditioning\n•\nAbrasive particle size and concentration\nChemical Factors\n•\nSlurry pH\n•\nOxidizers (e.g., H₂O₂)\n•\nComplexing agents and inhibitors\n•\nMaterial surface chemistry\nRR = Kp x P x V\n"
+  },
+  {
+    "page": 16,
+    "text": "16 \n•\nIncreasing polishing pressure or relative \nvelocity generally increases removal rate.\n•\nThe Preston coefficient depends on slurry \nchemistry, pad properties, wafer material, \nand process conditions.\n•\nPreston’s equation is an empirical \napproximation; real CMP may exhibit \nnonlinear behavior.\n•\nCMP optimization requires balancing \nremoval rate, selectivity, uniformity, \ndishing, erosion, and defectivity.\nCMP Removal Rate & Preston’s Equation\n"
+  },
+  {
+    "page": 17,
+    "text": "17 \nTypical chemicals/materials\nFunction\nComponent\nSiO₂, CeO₂, Al₂O₃\nMechanical removal\nAbrasive\nH₂O₂, Fe(NO₃)₃, KIO₃\nOxidizes/softens metal surface\nOxidizer\nGlycine, citric acid\nKeeps dissolved metal ions soluble\nComplexing/Chelating agent\nBenzotriazole (BTA)\nPrevents excessive metal dissolution\nCorrosion inhibitor\nKOH, NH₄OH, HNO₃, organic acids\nControls surface reaction and particle \ncharge\npH adjuster/buffer\nProprietary surfactants\nWetting / particle interaction / defect \ncontrol\nSurfactant\nPolymers / polyelectrolytes\nPrevents abrasive agglomeration\nDispersant\nProprietary\nControls microbial growth\nBiocide\nUltrapure water\nSolvent/carrier\nDI/UPW\nMajor CMP slurry components \nCMP slurry is a liquid chemical mixture containing fine abrasive particles and chemical additives, used during \nChemical Mechanical Planarization (CMP) to remove material from a wafer surface and achieve a highly flat, \nsmooth surface. CMP slurry combines two mechanisms:\n1.\nChemical action: Chemicals react with the wafer surface, forming a modified layer that is easier to remove.\n2.\nMechanical action: Abrasive particles, together with the polishing pad, mechanically remove the reacted \nmaterial.\n"
+  },
+  {
+    "page": 18,
+    "text": "18 \nCMP chemicals are mainly divided into abrasives, oxidizers, complexing agents, corrosion \ninhibitors, pH adjusters, surfactants, and post-CMP cleaning chemicals.\nChemicals Used in CMP Process \nMain function\nFormula\nChemical\nCategory\nMechanical removal and polishing\nSiO₂\nColloidal silica\nAbrasive\nOxide polishing, high SiO₂ selectivity\nCeO₂\nCerium oxide (ceria)\nMetal polishing\nAl₂O₃\nAluminum oxide (alumina)\nOxidizes Cu, W and other metals\nH₂O₂\nHydrogen peroxide\nOxidizer\nOxidation, particularly in W CMP\nFe(NO₃)₃\nFerric nitrate\nOxidizer for certain metal CMP processes\nKIO₃\nPotassium iodate\nComplexes dissolved metal ions\nC₂H₅NO₂\nGlycine\nComplexing agent\nMetal-ion complexation\nC₆H₈O₇\nCitric acid\nMetal chelation\nC₁₀H₁₆N₂O₈\nEDTA\nPrevents Cu corrosion\nC₆H₅N₃\nBenzotriazole (BTA)\nCorrosion inhibitor\nProtects Cu surfaces\nC₇H₇N₃\nTolyltriazole (TTA)\nAdjusts alkaline slurry pH\nKOH\nPotassium hydroxide\npH adjuster\nAdjusts alkaline slurry pH\nNH₄OH (aq.)\nAmmonium hydroxide\nAdjusts acidic slurry pH\nHNO₃\nNitric acid\nAdjusts acidic slurry pH\nH₂SO₄\nSulfuric acid\nDispersion and surface wetting\nH(OCH₂CH₂)ₙOH\nPolyethylene glycol (PEG)\nSurfactant\nRemoves particles and residues in formulated \ncleaners\nTMAH\nTetramethylammonium hydroxide\nPost-CMP cleaner\nRemoves oxide residues in selected processes\nHF\nHydrofluoric acid\nRemoves metal contamination\nC₆H₈O₇\nCitric acid\nAlkaline cleaning and particle removal\nNH₄OH (aq.)\nAmmonium hydroxide\n"
+  },
+  {
+    "page": 19,
+    "text": "19 \nSilica-based slurry (SiO₂)\nCommonly used for Si, SiO₂, \nCu, W, and other materials. \nOffers controllable removal \nrates and relatively low \nscratching when properly \nformulated.\nCeria-based slurry (CeO₂)\nWidely used for shallow \ntrench isolation (STI) oxide \nCMP. Surface chemical \ninteractions can provide high \noxide removal with \ncontrolled nitride selectivity.\nAlumina-based slurry (Al₂O₃)\nUsed in selected metal CMP \nprocesses, including tungsten \npolishing. Its hardness can improve \nabrasion but requires careful \nscratch control.\nTypes of CMP Slurry \n"
+  },
+  {
+    "page": 20,
+    "text": "20 \nCMP Slurry: Particle Size and Zeta Potential\nSlurry particle size and zeta potential are critical parameters controlling CMP removal rate, \nsurface quality, particle dispersion stability, and defectivity.\nEffect on CMP Performance\nParameter\nTypically ~20–200 nm, depending on \nabrasive material and application\nParticle Size\nGenerally reduce scratching; may \nlower mechanical removal efficiency\nSmall Particles\nCan increase mechanical removal but \nraise scratch risk\nLarge Particles\nNarrow distribution improves process \nconsistency\nParticle Size \nDistribution (PSD)\nLarge particle clusters can cause \nscratches and defects\nAgglomeration\n"
+  },
+  {
+    "page": 21,
+    "text": "21 \nCMP Slurry: Particle Size and Zeta Potential\nZeta potential is the electrokinetic potential at the slipping plane of particles suspended in a \nliquid. It influences electrostatic repulsion, colloidal stability, and particle–wafer interactions.\nGeneral Dispersion Behavior\nZeta Potential\nOften good electrostatic stability\nζ ≤ −30 mV or ≥ +30 mV\nModerate or formulation-\ndependent stability\n−30 to −10 mV or +10 to +30 \nmV\nHigher aggregation risk without \nother stabilization\n−10 to +10 mV\nImpact on CMP Performance\n•\nRemoval Rate (RR): Particle size, concentration, and surface charge affect mechanical and \nchemical interactions.\n•\nDefectivity: Agglomerated particles and large-particle tails increase scratching risk.\n•\nSlurry Stability: Sufficient electrostatic or steric repulsion helps prevent particle aggregation.\n•\nPost-CMP Cleaning: Particle–wafer electrostatic interactions influence particle adhesion and \nremoval.\n"
+  },
+  {
+    "page": 22,
+    "text": "22 \nTypical pH\nOxidizer concentration\nAbrasive concentration\nCMP type\n9–11\nUsually none added\nSilica: 1–10 wt%\nSi CMP\n9–11\nUsually none added\nSilica: 2–15 wt%\nSiO₂ CMP\n4–10\nUsually none added\nCeria: 0.1–5 wt%\nSTI oxide CMP\n3–8\nH₂O₂: 0.1–5 wt%\nSilica: 0.1–5 wt%\nCu CMP\n2–5\nH₂O₂: 0.1–5 wt%\nSilica: 1–5 wt%\nW CMP\n2–11\nFormulation-dependent\nSilica: 1–10 wt%\nSiC CMP\nTypical CMP Slurry Compositions \n"
+  },
+  {
+    "page": 23,
+    "text": "23 \nMain objective\nKey chemicals\nTypical abrasive\nCMP application\nSilicon planarization\nKOH, NH₄OH, organic additives\nColloidal silica\nSilicon (Si)\nDielectric planarization\nKOH, NH₄OH, dispersants\nSilica, ceria\nSilicon dioxide (SiO₂)\nNitride removal or controlled \nstopping\npH modifiers, selectivity additives\nSilica, ceria\nSilicon nitride (Si₃N₄)\nCu removal and planarization\nH₂O₂, glycine, BTA\nSilica, alumina\nCopper (Cu)\nW plug planarization\nH₂O₂, Fe(NO₃)₃, organic acids\nSilica, alumina\nTungsten (W)\nBarrier removal\nOxidizers, complexing agents, pH \nmodifiers\nSilica, alumina\nTantalum/TaN\nMetal/barrier planarization\nH₂O₂, organic acids\nSilica, alumina\nTitanium/TiN\nCo interconnect planarization\nH₂O₂, complexants, corrosion \ninhibitors\nSilica\nCobalt (Co)\nRu interconnect planarization\nFormulated oxidizers, complexants\nSilica, alumina\nRuthenium (Ru)\nSurface finishing and defect \nreduction\nH₂O₂, KMnO₄ or other oxidizers\nSilica, ceria, \nalumina\nSilicon carbide (SiC)\nCMP Chemicals by Semiconductor Material \n"
+  },
+  {
+    "page": 24,
+    "text": "24 \nOxidation and Complexation in Metal CMP\nMetal CMP combines chemical oxidation, complexation, and mechanical abrasion to achieve \ncontrolled metal removal and surface planarization.\nOxidation modifies the metal surface, complexation helps remove dissolved metal species, and \nmechanical abrasion continuously renews the surface.\n"
+  },
+  {
+    "page": 25,
+    "text": "25 \nTypical Chemicals Used in Metal CMP\nPurpose\nTypical Chemicals\nFunction\nPromote metal oxidation\nH₂O₂, Fe(NO₃)₃, KIO₃\nOxidizer\nBind metal ions and control dissolution\nGlycine, citric acid, EDTA\nComplexing \nAgent\nSuppress uncontrolled corrosion, particularly for \nCu\nBenzotriazole (BTA), \ntriazoles\nCorrosion \nInhibitor\nMechanically remove modified surface layers\nSilica (SiO₂), alumina (Al₂O₃)\nAbrasive\nControl surface chemistry and reaction kinetics\nKOH, NH₄OH, HNO₃\npH Adjuster\nKey Process Challenges\n•\nExcessive oxidation: May increase corrosion, pitting, and unwanted metal dissolution.\n•\nExcessive complexation: May increase static etch rate and cause dishing.\n•\nInsufficient oxidation: Can reduce removal rate and polishing efficiency.\n•\nChemical balance: Oxidizers, complexants, inhibitors, and abrasives must be optimized \ntogether.\n"
+  },
+  {
+    "page": 26,
+    "text": "26 \nSurface Chemistry in Dielectric CMP\nDielectric CMP relies on surface hydration, chemical bond formation, and mechanical abrasion to \nremove SiO₂ and other dielectric materials while achieving high planarization efficiency and \nselectivity.\nChemical Mechanisms of Dielectric CMP\nStep 1 — Surface Hydrolysis and Hydration\nWater reacts with Si–O–Si bonds on the oxide surface, forming silanol (Si–OH) groups.\nStep 2 — Abrasive–Surface Interaction\nSilica (SiO₂) or ceria (CeO₂) particles interact with the hydrated dielectric surface.\n•\nSilica: Silanol interactions and mechanical abrasion\n•\nCeria: Strong chemical affinity toward SiO₂ through interfacial Ce–O–Si bonding\nStep 3 — Mechanical Removal\nPolishing pad pressure and relative motion facilitate removal of the chemically modified \nsurface layer.\n"
+  },
+  {
+    "page": 27,
+    "text": "27 \nTypical Chemicals Used in Dielectric CMP\nFunction\nChemical / Material\nAbrasive for oxide planarization\nColloidal Silica (SiO₂)\nReactive abrasive for oxide CMP, particularly STI\nCeria (CeO₂)\nAdjust pH and promote silica surface dissolution\nKOH / NH₄OH\nControl slurry pH and surface chemistry\nOrganic Acids / Buffers\nStabilize abrasive particles and reduce defects\nSurfactants / Dispersants\nControl oxide-to-Si₃N₄ removal selectivity\nSelectivity Additives\n"
+  },
+  {
+    "page": 28,
+    "text": "28 \nSurface Chemistry and CMP Selectivity\nEffect on CMP Performance\nParameter\nControls surface charge, silica dissolution, and abrasive interactions\nSlurry pH\nFacilitates chemical modification and removal\nSurface Hydration\nInfluences particle–wafer attraction, repulsion, and dispersion \nstability\nZeta Potential\nCeria provides stronger chemical interactions with oxide than silica\nAbrasive Chemistry\nControl selectivity, removal rate, and defectivity\nAdditives\nKey Process Challenges\n•\nOxide removal rate: Optimize hydration, slurry pH, and abrasive chemistry.\n•\nSelectivity: Control SiO₂ removal relative to Si₃N₄ and other materials.\n•\nDefectivity: Minimize scratches, particle residues, and surface damage.\n•\nPlanarity: Reduce oxide dishing and pattern-density-dependent erosion.\n"
+  },
+  {
+    "page": 29,
+    "text": "29 \nDielectric Planarization CMP \nOxide Surface Planarization \nRemove excess dielectric material and eliminate surface topography \nto achieve a highly planar wafer surface for subsequent lithography, \nthin-film deposition, and multilayer semiconductor fabrication.\nProcess Principle\n•\nDielectric Deposition: Deposit SiO₂-based dielectric films (e.g., \nPECVD SiO₂, TEOS oxide, or HDP-CVD oxide) over patterned \nstructures, creating surface topography.\n•\nCMP Planarization: Remove raised dielectric regions through \nchemical reactions and mechanical abrasion.\n•\nSurface Leveling: Higher regions experience greater initial material \nremoval, reducing height variations across the wafer.\n•\nThickness Control: Control the final dielectric thickness, within-\nwafer uniformity, and surface planarity.\n"
+  },
+  {
+    "page": 30,
+    "text": "30 \nDielectric Planarization CMP \nOxide Surface Planarization \n"
+  },
+  {
+    "page": 31,
+    "text": "31 \nTypical Dielectric CMP Materials and Chemicals \nFunction\nMaterial / Chemical\nComponent\nDielectric planarization\nSiO₂, TEOS oxide, doped SiO₂\nFilm to polish\nMechanical material removal\nSiO₂ (silica), CeO₂ (ceria)\nAbrasive\nPromote surface reactions and oxide \nremoval\nAlkaline or formulated aqueous \nsolutions\nSlurry chemistry\nControl pH and slurry stability\nKOH, NH₄OH, organic bases\npH adjuster\nImprove particle stability and defect \ncontrol\nDispersants, surfactants\nAdditives\nRemove residual slurry and particles\nDI water, dilute alkaline or formulated \ncleaners\nCleaning \nchemicals\nKey Process Challenges\n•\nWithin-wafer non-uniformity: Variation in dielectric removal rate and final film thickness.\n•\nPattern-dependent planarization: Different polishing rates between dense and isolated \nstructures.\n•\nOverpolishing: Excessive dielectric removal, reducing insulation thickness.\n•\nSurface defects: Scratches, residual abrasive particles, and surface roughness.\n•\nFilm damage: Moisture uptake or chemical damage in sensitive low-k dielectric materials.\n"
+  },
+  {
+    "page": 32,
+    "text": "32 \nSTI CMP – Removal of Overburden Oxide \nRemove excess SiO₂ deposited during Shallow Trench Isolation (STI) fabrication while maintaining \noxide-filled trenches and a planar wafer surface.\n•\nOxide Deposition: Fill etched silicon trenches \nwith SiO₂ (e.g., HDP-CVD or flowable oxide), \nleaving excess oxide above the surface. \n•\nCMP Planarization: Remove the SiO₂ overburden \nusing chemical reactions and mechanical \nabrasion. \n•\nSelective Polishing: Use an oxide-selective \nslurry to remove SiO₂ while minimizing erosion \nof the underlying Si₃N₄ polishing stop layer. \n•\nEndpoint Control: Stop polishing after oxide \nclearing, with controlled overpolishing to \nminimize residual oxide and nitride loss.\nhttps://www.sciencedirect.com/topics/engineering/silicon-and-silicon-oxide\n"
+  },
+  {
+    "page": 33,
+    "text": "33 \nFunction\nMaterial / \nChemical\nComponent\nOverburden oxide\nSiO₂\nFilm to remove\nCMP stop / active-\narea protection\nSi₃N₄\nStop layer\nOxide removal\nCeO₂ (ceria)\nAbrasive\nControl oxide \nremoval and \nselectivity\nWater-based, pH-\nadjusted additives\nSlurry chemistry\nControl particle \nstability and \nnitride removal\nDispersants, \nselectivity \nmodifiers\nAdditives\nSTI CMP – Removal of Overburden Oxide \nKey Process Challenges\n•\nOxide dishing: Excessive \noxide removal within \ntrenches.\n•\nNitride erosion: Loss of \nthe Si₃N₄ stop layer.\n•\nNon-uniformity: Uneven \noxide removal across \nthe wafer.\n•\nDefects: Scratches, \nresidual ceria particles, \nand surface \ncontamination.\n"
+  },
+  {
+    "page": 34,
+    "text": "34 \nTungsten (W) CMP — Chemical Reactions \nand Removal Mechanisms\nTungsten CMP uses controlled oxidation, surface passivation, and mechanical abrasion to remove \nW overburden during contact plug and via fabrication.\n1. Main Chemical Reactions\nStep 1 — Tungsten Oxidation\nHydrogen peroxide (H₂O₂) oxidizes metallic tungsten to tungsten oxide (WO₃).\nStep 2 — Oxide Hydration and Dissolution\nTungsten oxide may form hydrated oxide or soluble tungstate species, depending on slurry pH.\nUnder alkaline conditions:\n𝐖𝐎𝟑+ 𝐇𝟐𝐎⇌𝐇𝟐𝐖𝐎𝟒\nStep 3 — Mechanical Removal\nAbrasive particles (SiO₂ or Al₂O₃) and polishing pad contact remove the oxidized surface layer, \nexposing fresh W for continued oxidation.\n𝐖𝐎𝟑+ 𝟐𝐎𝐇ି\n→𝐖𝐎𝟒\n𝟐ି+ 𝐇𝟐𝐎\n𝐖+ 𝟑𝐇𝟐𝐎𝟐→𝐖𝐎𝟑+ 𝟑𝐇𝟐𝐎\n"
+  },
+  {
+    "page": 35,
+    "text": "35 \nTypical Chemicals Used in Tungsten CMP\nFunction\nChemical\nOxidizer; forms tungsten oxide\nH₂O₂\nOxidation catalyst in certain W CMP formulations\nFe(NO₃)₃ / Fe³⁺\nAbrasive for mechanical removal\nSilica (SiO₂)\nAlternative abrasive for W removal\nAlumina (Al₂O₃)\nAdjust pH and influence oxide dissolution\nHNO₃ / Organic Acids\nSuppress unwanted W dissolution and defects\nCorrosion Inhibitors\n"
+  },
+  {
+    "page": 36,
+    "text": "36 \nKey Process Parameters & Challenges\nEffect on W CMP\nParameter\nControls oxidation rate and surface passivation\nH₂O₂ Concentration\nInfluences WO₃ stability and tungstate dissolution\nSlurry pH\nCan accelerate oxidation through catalytic reactions\nFe³⁺ Concentration\nAffects removal rate and scratching\nAbrasive Size / Loading\nControls mechanical removal of the modified surface\nDownforce / Pad Velocity\n•\nW dishing: Excessive tungsten removal inside contact plugs.\n•\nOxide erosion: Unwanted removal of surrounding dielectric.\n•\nCorrosion and pitting: Excessive chemical dissolution or localized electrochemical reactions.\n•\nSelectivity: Control W removal relative to Ti/TiN barrier layers and SiO₂.\n"
+  },
+  {
+    "page": 37,
+    "text": "37 \nTungsten (W) Contact Plug CMP \nRemoval of W Overburden \nRemove excess tungsten (W) and barrier/liner materials after contact or via filling, leaving \nisolated W plugs with a planar surface for subsequent semiconductor fabrication.\n•\nContact/Via Formation: Etch contact holes \nthrough dielectric layers (SiO₂) to expose \nunderlying electrical connection regions.\n•\nBarrier/Liner Deposition: Deposit Ti/TiN or TiN\nto promote adhesion, provide contact \nfunctionality, and support W deposition.\n•\nTungsten Deposition: Fill contact holes with W, \ntypically using chemical vapor deposition (CVD), \nleaving W overburden.\n•\nCMP Planarization: Remove excess W and \nbarrier materials while retaining W inside \ncontact holes.\n•\nEndpoint Control: Stop polishing after clearing \nthe overburden and barrier layer, minimizing W \nrecess and dielectric erosion.\n"
+  },
+  {
+    "page": 38,
+    "text": "38 \nTypical W CMP Materials and Chemicals \nFunction\nMaterial / Chemical\nComponent\nRemove metal overburden\nW (tungsten)\nFilm to remove\nRemove exposed liner after W clearing\nTi / TiN\nBarrier/liner\nMechanical removal\nSiO₂ (silica), Al₂O₃ (alumina)\nAbrasive\nPromote W surface oxidation\nH₂O₂, Fe(NO₃)₃-based systems\nOxidizing \nagent\nAccelerate W oxidation\nFe-based compounds (selected \nslurries)\nCatalyst\nControl removal rate and slurry stability\nAcids / pH adjusters\npH control\nControl W recess, defects, and particle \nstability\nCorrosion inhibitors, dispersants\nAdditives\nKey Process Challenges\n•\nW plug recess: Excessive W removal below the surrounding dielectric surface.\n•\nDielectric erosion: Unwanted removal of SiO₂ around contact plugs.\n•\nResidual W/barrier: Incomplete removal can cause electrical shorts.\n•\nCorrosion and defects: Surface corrosion, scratches, metallic contamination, and residual \nabrasive particles.\n"
+  },
+  {
+    "page": 39,
+    "text": "39 \nFor example, in copper CMP:\n1.\nOxidation: H₂O₂ oxidizes the Cu surface to \nform copper oxide or hydroxide species.\n2. Complexation: Glycine and other \ncomplexants facilitate the dissolution of \noxidized Cu.\n3. Corrosion inhibition: BTA forms a protective \nsurface film, helping control unwanted \ncorrosion.\n4. Mechanical removal: Abrasive particles and \npad contact remove the reacted surface \nlayer.\n5. Planarization: The combined action \npreferentially removes protruding regions \nunder appropriate process conditions.\nChemical Mechanism of CMP \n"
+  },
+  {
+    "page": 40,
+    "text": "40 \nCu CMP — best case study for specialty chemicals \nCu CMP gives you an excellent example which can clearly see the roles of individual chemical families.\nA simplified mechanism is:\nCu → oxidized/passivated Cu surface → abrasive removes modiﬁed layer → fresh Cu exposed → oxidation \nrepeats\nHydrogen peroxide is commonly used to oxidize Cu, while complexing agents such as glycine or citrate keep \nCu ions soluble. BTA is widely used to inhibit excessive Cu dissolution. ScienceDirect\nExample chemistry\nOxidation:\nCu Cu+/Cu2+\n[H₂O₂ promotes formation of Cu oxide/hydroxide species.\nComplexation: Cu2+ + nL CuLn\nwhere L = glycine, citrate, etc.\nCorrosion inhibition: Cu + BTA → Cu–BTA protective/passivation layer\nThe abrasive then mechanically disrupts/removes the surface layer at contact points.\nThis creates a useful conceptual competition:\nOxidation + complexation → removal versus Passivation/inhibition → protection\nCMP performance comes from balancing the two\n"
+  },
+  {
+    "page": 41,
+    "text": "41 \nCu CMP for 11 Metal Layers CMOS \nhttps://www.sciencedirect.com/science/chapter/edited-volume/abs/pii/B9780081001653000012\n"
+  },
+  {
+    "page": 42,
+    "text": "42 \nCu Interconnects (BEOL) CMP\nCopper Damascene Planarization \nRemove excess copper (Cu) and barrier/liner materials after damascene metallization, forming \nelectrically isolated Cu interconnects with a planar surface for multilayer Back-End-of-Line (BEOL) \nintegration.\nProcess Principle\n•\nTrench/Via Formation: Pattern and etch trenches \nand vias in dielectric layers (SiO₂ or low-k materials).\n•\nBarrier/Seed Deposition: Deposit Ta/TaN or other \nsuitable diffusion barriers and Cu seed layers.\n•\nCu Electroplating (ECP): Fill trenches and vias with \nCu, leaving excess Cu overburden.\n•\nCu CMP: Remove excess Cu through controlled \nchemical oxidation, dissolution, and mechanical \nabrasion.\n•\nBarrier CMP: Remove exposed barrier materials (e.g., \nTa/TaN) while minimizing dielectric loss and Cu \nrecess.\n"
+  },
+  {
+    "page": 43,
+    "text": "43 \nFunction\nMaterial / Chemical\nComponent\nRemove Cu overburden\nCu\nFilm to remove\nRemove exposed diffusion barrier\nTa / TaN\nBarrier layer\nMechanical removal\nSiO₂ (silica), Al₂O₃ (alumina)\nAbrasive\nPromote Cu surface oxidation\nH₂O₂\nOxidizing agent\nEnhance Cu dissolution\nGlycine, citric acid\nComplexing agent\nSuppress Cu corrosion and dishing\nBenzotriazole (BTA)\nCorrosion inhibitor\nControl removal rate and slurry stability\nNH₄OH, KOH, organic acids\npH adjuster\nImprove slurry stability and defect control\nSurfactants, dispersants\nAdditives\nTypical Cu CMP Materials and Chemicals \nKey Process Challenges\n•\nCu dishing: Excessive Cu removal within wide trenches, causing recessed interconnect \nsurfaces.\n•\nDielectric erosion: Unwanted dielectric removal, particularly in dense interconnect regions.\n•\nCu corrosion: Chemical attack, pitting, or galvanic corrosion during CMP and cleaning.\n•\nResidual Cu/barrier: Incomplete removal may cause electrical shorts between interconnects.\n•\nSurface defects: Scratches, abrasive particles, organic residues, and metallic contamination.\n"
+  },
+  {
+    "page": 44,
+    "text": "44 \n• Material removal rate (MRR), typically nm/min\n• Selectivity between target and stop layers\n• Within-wafer non-uniformity (WIWNU)\n• Dishing and erosion\n• Surface roughness (Ra/Rq)\n• Defect density, scratches, and particle contamination\n• Slurry stability, pH, oxidizer decomposition, and shelf life\n• Environmental, health, and safety considerations\nKey CMP Process Parameters \nFor semiconductor manufacturing, chemical selection should be \nevaluated together with:\n"
+  },
+  {
+    "page": 45,
+    "text": "45 \nCMP Selectivity and Endpoint Control \nCMP selectivity determines the relative removal rates of different materials, while endpoint \ncontrol determines when polishing should stop to achieve the required film thickness and \nminimize over-polishing.\nCMP Selectivity\nRR = Removal Rate (nm/min or µm/min)\nPurpose\nSelectivity Requirement\nCMP \nApplication\nStop on Si₃N₄ and minimize nitride loss\nHigh SiO₂ : Si₃N₄\nSTI CMP\nRemove W overburden while protecting plugs \nand dielectric\nControlled W : Ti/TiN : SiO₂\nW Contact \nCMP\nMinimize Cu dishing and dielectric erosion\nControlled Cu : Barrier : \nDielectric\nCu CMP\nAchieve target thickness and uniform \nplanarization\nControlled oxide removal\nILD CMP\n"
+  },
+  {
+    "page": 46,
+    "text": "46 \nCMP Endpoint Detection Methods \nOptical Endpoint Detection\nMonitors reflected light intensity or spectral changes to detect \nfilm thickness and material transitions. Common in dielectric \nCMP and compatible metal CMP applications.\nMotor Current / Friction Monitoring\nDetects changes in polishing friction or motor \ntorque when the exposed surface material changes.\nEddy Current Monitoring\nMeasures changes in conductive metal film \nthickness, particularly useful for Cu CMP.\n"
+  },
+  {
+    "page": 47,
+    "text": "47 \nTime-Based Endpoint\nUses calibrated removal rate and polishing time. Simple but sensitive to process drift and wafer-\nto-wafer variations.\nCMP Endpoint Detection Methods \n•\nUnder-polishing: Residual metal or dielectric \noverburden remains.\n•\nOver-polishing: Excessive dishing, erosion, and \nstop-layer loss.\n•\nEndpoint optimization: Combine in-situ \ndetection, calibrated over-polish, and post-CMP \nmetrology.\nKey Process Challenges\n•\nSelectivity vs. removal rate: High \nremoval rate must be balanced against \nstop-layer protection.\n•\nEndpoint accuracy: Influenced by \npattern density, film thickness variation, \nand sensor sensitivity.\n•\nWafer uniformity: Different wafer \nregions may reach endpoint at different \ntimes.\n•\nProcess control: Slurry chemistry, pad \nconditioning, and polishing parameters \nmust remain stable.\n"
+  },
+  {
+    "page": 48,
+    "text": "48 \nImportant CMP defects to connect to chemistry \nChemical/process relationship\nDefect/problem\nLarge/agglomerated abrasive particles\nScratches\nExcessive Cu removal / overpolish\nDishing\nPattern-density/selectivity effects\nErosion\nInsufficient inhibition\nCorrosion\nCu/barrier electrochemical potential difference\nGalvanic corrosion\nSlurry/additive/metal residues\nResidue\nSlurry stability / post-CMP cleaning\nParticle contamination\nExcessive passivation or weak oxidation\nLow removal rate\nAggressive oxidation/complexation\nHigh removal rate\nSlurry transport + pad + chemical kinetics\nNon-uniformity\n"
+  },
+  {
+    "page": 49,
+    "text": "49 \nAnalysis tools for CMP process \nhttps://www.horiba.com/ind/semiconductor/applications/chemical-mechanical-planarization-cmp/\n•\nParticle Size and Count \nMeasurement\n•\nZeta Potential Measurement\n•\nCMP Slurry Composition \nMonitoring\n•\nph Monitoring\n•\nChemical Concentration \nMeasurement\n•\nThin Film Thickness Measurement\n•\nTrench Profile Measurement\n"
+  },
+  {
+    "page": 50,
+    "text": "50 \nWhy wafer cleaning matters\nCleaning the most critical yield enablers in semiconductor manufacturing\nDefectivity\nReliability\nDevice \nperformance\nDefect sensitivity increases \ndramatically at advanced nodes\nAt advanced nodes, even sub-10 nm \nparticles can cause yield loss\nSmaller Particles\nMore Critical\nLarger Particles\nLess Critical\nParticles size (µm)\n7 nm and \nbelow\n(CFET, 2D-\nMaterials FET)\n10-14 nm\n(GAAFET)\n28 nm\n(FinFET)\n65 nm and \nabove\n(Planar MOSFET, \nMEMS, Si \nphotonics, \nPower devices)\nRelative Yield (%)\nYield\nCleaning impacts:\n30-40%\nOf process steps \ninvolve cleaning\nYIELD vs PARTICLE SIZE RELATIONSHIP\n"
+  },
+  {
+    "page": 51,
+    "text": "51 \nSources of Contamination\nContamination can be introduced throughout the manufacturing flow\nTOOLS/EQUIPMENT\n•\nParticle generation from \nchambers, robotics, \npumps\n•\nTool wear and corrosion\n•\nResidue from previous \nwafers\nAIR/ENVIRONMENT\n•\nAirborne particles (dust)\n•\nVibration and air flow\n•\nHVAC and filtration leaks\nHUMANS\n•\nSkin flakes, hair, fibers\n•\nGloves, masks, \napparel\n•\nHuman activity\nCHEMICAL/MATERIAL\n•\nChemical impurities\n•\nParticle contamination in \nchemicals/slurry\n•\nOutgassing from materials\nPARTICLES\nDust, tool particles, \nabrasives, metal \nflakes\nORGANIC/RESIDUES\nResist residue, \npolymers, oils, \nsurfactants\nMETALLIC IONS\nFe, Cu, Na, Ni, \nand other metal \nions\nMOISTURE/IONIC\nWater, ionic \nresidue, corrosive \nspecies\nKEY TAKEAWAY\nContamination can enter at \nevery step from multiple \nsources. Control requires a \nholistic end-to-end approach.\nContamination \ninsertion points\nContamination \ninsertion points\nContamination \ninsertion points\nContamination \ninsertion points\nContamination \ninsertion points\nCONTAMINATION SOURCES\nETCH\nCMP\nIMPLANTATION\nPACKAGING\nLITHOGRAPHY\nTYPICAL CONTAMINATIONS INTRODUCED\nSEMICONDUCTOR MANUFACTURING PROCESS FLOW\n"
+  },
+  {
+    "page": 52,
+    "text": "52 \nWafer Cleaning Classification\n•\nOrganic residues\n•\nMetal ions\n•\nNative oxide\n•\nParticles\n•\nOrganic film\n•\nPhotoresist residue\n•\nPolymer\n•\nVOCs\n•\nPartibles \n•\nHeavy contamination\n•\nMetallic particles\n•\nFine particles\n•\nSub-micron particles\n•\nHigh aspect ratio \nstructures\n•\nNative oxide\n•\nStiction layers\n•\nSacrificial oxide\n•\nStiction-free drying\n•\nOrganic residues\n•\nMicro-mechanical \nstructures (MEMS)\nChemical solution dissolves, \ncomplex, or oxidize \ncontaminants; surfactants \nand agitation help lift \nparticles from the surface\nHigh-frequency sound waves \n(0.5-2 MHz) create cavitation \nbubbles in the liquid that \ncollapse and dislodge particles\nVapor-phase chemicals react \nwith surface contaminants \nand residues; by-products \nare pumped away\nSupercritical CO2 has gas-like \ndiffusivity and liquid- like \ndensity- dissolves organics \nand removes contaminants \nwithout liquid-vapor interface\nPhysical brushing and chemical \naction remove particles \nthrough mechanical force and \nsolution flow\nReactive species (ions, \nradicals, photons) break \ndown or volatilize organic \nfilms and residues without \nliquid contact\n"
+  },
+  {
+    "page": 53,
+    "text": "53 \nPurpose: Remove slurry particles, metal ions, organic residues, and polishing byproducts without \ndamaging wafer surfaces.\nCleaning mechanisms\n•\nChemical dissolution and chelation\n•\nElectrostatic particle repulsion\n•\nPVA brush mechanical removal\n•\nMegasonic-assisted particle detachment\n•\nUPW rinsing and drying\nKey chemicals: NH₄OH, organic acids, chelators, surfactants, formulated corrosion inhibitors, and \nUPW.\nMajor challenges: Particle redeposition, Cu/W corrosion, brush-induced defects, watermarks, \nand cross-contamination.\nKey message: Effective post-CMP cleaning requires optimizing chemical formulation and \nmechanical cleaning together to achieve low defectivity and high device yield.\nPost-CMP Cleaning \n"
+  },
+  {
+    "page": 54,
+    "text": "54 \nPost-CMP Cleaning \nRemove residual slurry particles, organic contaminants, metallic impurities, and chemical residues \nfrom wafer surfaces after CMP.\nThe primary objective is to achieve a particle-free, residue-free, corrosion-free, and defect-free \nwafer surface before subsequent semiconductor fabrication processes.\nPotential problems\nTypical sources\nContamination type\nDefects, scratches, electrical \nfailures\nSiO₂, CeO₂, Al₂O₃ slurry\nAbrasive particles\nLeakage current, reliability \ndegradation\nCu, W, Fe, Co and other metals\nMetallic \ncontamination\nPoor adhesion, surface defects\nSurfactants, corrosion inhibitors, \ndispersants\nOrganic residues\nCorrosion, surface instability\nOxidizers, complexing agents, pH \nadjusters\nChemical residues\nSurface contamination, defects\nMetal oxides, hydroxides, reaction \nproducts\nPolishing byproducts\nParticle defects, surface \ncontamination\nPolyurethane polishing pad\nPad debris\n"
+  },
+  {
+    "page": 55,
+    "text": "55 \nKey challenge: CMP combines chemical and mechanical material removal, so post-CMP cleaning \nmust address both chemical residues and physically attached particles without damaging the \nunderlying films.\nPVA Brush Scrubbing\nUses soft, porous polyvinyl alcohol brushes and cleaning chemicals to detach slurry particles and \nresidues. Widely used in single-wafer post-CMP cleaning. \nMegasonic Cleaning\nUses high-frequency acoustic energy to detach fine particles without direct brush contact. Useful \nfor sensitive surfaces, although acoustic damage must be controlled.\nSpray / Spin Cleaning\nUses chemical or UPW spray on a rotating wafer to rinse contaminants and residues. Often \ncombined with chemical treatment and spin drying.\nPost-CMP Cleaning \n"
+  },
+  {
+    "page": 56,
+    "text": "56 \nMegasonic Cleaning\nHigh-frequency acoustic energy for superior particle removal\nUltrasonic\n(Low Frequency)\nMegasonic\n(High Frequency)\n20 -100 kHz\n0.5-5 MHz\nFrequency\nCavitation\n(Bubble collapse)\nAcoustic streaming\n(Non-cavitation)\nAcoustic mechanism\nLarge bubbles, \nViolent collapse\nVery fine, stable bubbles\n(No violent collapse)\nBubble activity\nShock waves, bubble collapse\nMicrostreaming, shear, microjets\nCleaning action\nhigher\nVery Low\nSurface damage risk\nGeneral cleaning, particles, bulk \ncontaminants\nAdvanced nodes, fragile \nstructure, low-k, EUV\nBest for\nGood for large particles\n(> 0.1 µm) \nExcellent for fine particles\n(< 0.1 µm)\nParticle removal\n1.\nAcoustic Wave \nGeneration\nHigh-frequency sound \nwaves propagate \nthrough the liquid\n2. Acoustic \nStreaming\n(Bubble Streaming)\nThe acoustic waves \ncreate microstreaming \nand intense liquid flow \n3. Particle Detachment \n& Removal\nStreaming, microjets, and \nshear forces dislodge \nparticles from the surface\n4. Clean Surface\nParticles are removed \nand fresh solution \nreaches the surface\nShear Forces\nShear stress from \nstreaming lifts and \ncarries particles away \nfrom the surface \nMicrojets\nLocalized high-velocity \njets remove particles \nfrom surface features\nAcoustic Streaming\nHigh-frequency waves \ngenerate circulating flow \nin the liquid\nMegasonic\nTransducer\nHOW MEGASONIC CLEANING WORKS (MECHANISM)\nMECHANISM IN DETAIL\nMEGASONIC vs ULTRASONIC\nSi wafer\nSi wafer\nSi wafer\nSi wafer\nSi wafer\n"
+  },
+  {
+    "page": 57,
+    "text": "57 \nWafer scrubber & Brush for cleaning process\nHigh-efficiency physical cleaning for particle and residue removal\nLOAD \nWAFER\nWafer is \nloaded onto \nthe rotation \nchuck\nCHEMICAL \nDISPENSE\nDI water or cleaning \nchemical sprayed \nonto the wafer\nSCRUBBING\nBrush contacts the \nwafer surface while \nchuck rotates\nRINSE\nDI water rinse \nremoves chemicals \nand loosened \nparticles\nSPIN DRY\nHigh-speed spin \ndries the wafer \nbefore unloaded\nPhysical \nscrubbing \nremoves \nparticles and \nresidues\nChemical \nenhanced \ncleaning\nRotation for \nuniform \ncleaning\nEffective \nremoval of \nstubborn \ncontamination\nDrain\nDI water/ \nchemical supply\nSpray Nozzles\nScrub Brush\nWafer\nChuck \n(Rotation)\nParticles/residues on \nwafer surface\nChemical + Brush \naction\nParticles Lifted \nfrom Surface\nClean surface \nafter rinse & dry\nSi wafer\nSi wafer\nSi wafer\nSi wafer\n1. WAFER SCRUBBER\n2. CLEANING PROCESS\n3. HOW IT WORKS\n"
+  },
+  {
+    "page": 58,
+    "text": "58 \nSingle-wafer spin cleaning\nHigh-performance cleaning with uniform chemical distribution\n1. Chemical \nDispense\n2. Spin \nCleaning\n3. Rinse\n4. Spin Dry\n5. Complete\nDI water rinse \nremoves \nchemicals and \nby-products\nHigh-speed spin \nremoves water \nfrom the water \nsurface\nClean, dry wafer \nready for the \nnext process\nRotation and \nchemical action \nremove \nparticles and \norganic \nresidues\nChemical are \nsprayed onto \nthe rotating \nwafer\n• High cleaning uniformity and \nrepeatability\n• Excellent particle and contamination \nremoval\n• Improves yield and device reliability\n• Low chemical consumption and waste\n• Ideal for advanced node\nBEFORE CLEANING\nParticles, organics, \nand residues presents\nAFTER CLEANING\nClean, particle-free, \nresidue-free surface\nPost-CMP \ncleaning\nPhotoresist \nremoval\nFront-end \ncleaning\nGeneral \nwafer \ncleaning\nSpray Nozzles\nUniform chemical \ncoverage\nChemical Jets\nHigh-velocity jets \ndeliver chemicals \nuniformly\nRotating Wafer\nWafer spins at 500-\n3000 rpm for \neffective cleaning\nVacuum Chuck\nHolds wafer \nsecurely during \nrotation\nDrain\nRemoves used \nchemicals and by-\nproducts\n2. CLEANING PROCESS FLOW\n1. SPIN CLEANING CHAMBER\n3. BEFORE/ AFTER CLEANING\n4. KEY BENEFITS\n5. TYPICAL APPLICATIONS\n"
+  },
+  {
+    "page": 59,
+    "text": "59 \nRecommended Cleaning Chemistry by \nCMP Application \nCritical concern\nMain cleaning objective\nTypical cleaning chemistry\nCMP application\nStrong ceria \nadhesion\nRemove CeO₂ and oxide \nresidues\nAlkaline cleaners, specialized ceria-\nremoval chemistry\nSTI oxide CMP\nParticle redeposition\nRemove silica particles\nDilute NH₄OH, surfactants, formulated \nalkaline cleaners\nDielectric CMP\nW corrosion, oxide \nattack\nRemove W/Fe residues and \nsilica\nOrganic acids, chelators, formulated \npH-controlled cleaners\nTungsten plug \nCMP\nCu corrosion, \ngalvanic attack\nRemove Cu residues, BTA \nand particles\nOrganic acids, chelators, surfactants, \ncontrolled inhibitors\nCu interconnect \nCMP\nMixed-material \ncompatibility\nRemove barrier residues \nand particles\nFormulated acidic or alkaline cleaners\nBarrier CMP \n(Ta/TaN)\nSurface defects and \nscratches\nRemove abrasives and \noxidized residues\nFormulated cleaners, surfactants and \nchelators\nSiC CMP\n"
+  },
+  {
+    "page": 60,
+    "text": "60 \nCritical Process Parameters for \nPost-CMP Cleaning \nWhy it matters\nParameter\nControls particle surface charge, solubility and corrosion\nCleaning chemistry / pH\nBalances cleaning efficiency and material compatibility\nChemical concentration\nControls particle removal and mechanical damage\nBrush pressure / rotation speed\nInfluences particle removal and pattern damage\nMegasonic power / frequency\nControls residue removal and potential surface attack\nCleaning time\nPrevents ionic and particulate recontamination\nUPW quality\nPrevents watermarks and residual stains\nDrying conditions\nPrevents cross-contamination and particle redeposition\nBrush condition\n"
+  },
+  {
+    "page": 61,
+    "text": "61 \nChemical Safety and Waste Management \nin CMP \nSafety Precautions\nMajor Hazards\nChemical / Material\nSegregate from organics, metals, and \nincompatible chemicals\nStrong oxidizer; decomposition and \npressure buildup\nH₂O₂ (Hydrogen \nPeroxide)\nChemical-resistant PPE and local \nexhaust\nCorrosive alkaline chemicals; NH₃ vapor \nfrom ammonium hydroxide\nKOH / NH₄OH\nAcid-compatible storage and handling\nCorrosion, burns, potentially hazardous \nfumes\nHNO₃ / Acidic \nSlurries\nClosed chemical delivery and \nappropriate filtration\nParticle exposure, irritation, sedimentation\nSilica / Ceria / \nAlumina Slurry\nSegregated collection and metal \nremoval treatment\nCu, W, Co, Ni contamination\nMetal-Containing \nWaste\nAppropriate storage and wastewater \ntreatment\nChemical exposure, increased wastewater \nCOD\nOrganic Additives\n"
+  },
+  {
+    "page": 62,
+    "text": "62 \nKey Waste Management Considerations \nTypical Treatment\nWaste Type\nCoagulation, flocculation, sedimentation, membrane filtration\nAbrasive particles\nChemical precipitation, adsorption, ion exchange\nDissolved metal ions\nControlled pH neutralization\nAcidic / Alkaline wastewater\nBiological treatment or advanced oxidation, as appropriate\nOrganic compounds\nDewatering, characterization, and licensed waste disposal\nCMP sludge\n•\nWaste segregation: Prevent incompatible chemicals from mixing, especially oxidizers with \norganic-rich or reactive waste streams.\n•\nWastewater monitoring: Track pH, TSS, COD, dissolved metals, and other site-specific \ndischarge parameters.\n•\nWater reuse: Apply suitable filtration and polishing treatment where technically and \neconomically feasible.\n•\nRegulatory compliance: Follow applicable Thai industrial wastewater, hazardous waste, and \noccupational safety requirements.\n"
+  },
+  {
+    "page": 63,
+    "text": "63 \nCMP Chemicals and Post-CMP Cleaning — Key Takeaways \n•\nCMP is essential for semiconductor integration, enabling planarization of STI, \ndielectric films, W contacts, and Cu interconnects.\n•\nCMP slurry is a chemically engineered formulation combining abrasives, oxidizers, \ncomplexants, inhibitors, and other additives.\n•\nDifferent materials require different slurry chemistries to achieve controlled \nremoval rates, selectivity, and defect performance.\n•\nPost-CMP cleaning is essential for yield and reliability, removing particles, organic \nresidues, and metallic contamination while protecting sensitive films.\n•\nCMP performance requires integrated control of chemistry, polishing mechanics, \ncleaning, metrology, and contamination.\n"
+  },
+  {
+    "page": 64,
+    "text": "www.tmec.or.th\n+66 38 857 100\n51/4 Moo 1, Wangtakien District,\nAmphur Muang, Chachoengsao,\nThailand 24000\ninfo-tmec@nectec.or.th\nContact us\nf\nThai Microelectronics Center-TMEC\n"
+  }
+]
