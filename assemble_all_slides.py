@@ -1,11 +1,73 @@
 """
 assemble_all_slides.py
-Merges L4, L5, and L6 datasets and outputs slides_data.js
+Merges L4, L5, and L6 datasets, applies beautiful Thai typography formatting, and outputs slides_data.js
 """
 import json
+import os
+import re
 from build_l4 import generate_l4_dataset
 from build_l5 import generate_l5_dataset
 from build_l6 import generate_l6_dataset
+
+def format_thai_text(text):
+    if not text:
+        return ""
+    text = text.strip()
+    
+    # 1. Normalize whitespace
+    text = re.sub(r'[ \t]+', ' ', text)
+    
+    # 2. Check for numbered points (e.g., " 1. ", " 2. ", " 3. ")
+    match_num = re.search(r'(?::?\s+|^)1\.\s+', text)
+    if match_num:
+        intro_part = text[:match_num.start()].strip()
+        intro_part = re.sub(r'[:\s]+$', '', intro_part)
+        if intro_part and not intro_part.endswith(':'):
+            intro_part += ":"
+            
+        rest_part = text[match_num.start():].strip()
+        items = re.split(r'(?:\s+|^)(\d+)\.\s+', rest_part)
+        
+        formatted_items = []
+        for i in range(1, len(items), 2):
+            num = items[i]
+            content = items[i+1].strip()
+            
+            # Check if there is a title before colon
+            colon_match = re.search(r'^([^:]{2,55}):\s*(.*)', content, re.DOTALL)
+            if colon_match:
+                title = colon_match.group(1).strip()
+                body = colon_match.group(2).strip()
+                formatted_items.append(f"• **{num}. {title}:** {body}")
+            else:
+                formatted_items.append(f"• **ข้อที่ {num}:** {content}")
+                
+        out = ""
+        if intro_part:
+            out += intro_part + "\n\n"
+        out += "\n\n".join(formatted_items)
+        return out
+        
+    # 3. Check for sub-points like (ก), (ข)
+    if re.search(r'\([กขค-ฮa-zA-Z0-9]\)', text):
+        items = re.split(r'(\([กขค-ฮa-zA-Z0-9]\))', text)
+        if len(items) > 2:
+            intro = items[0].strip()
+            out_items = []
+            for i in range(1, len(items), 2):
+                tag = items[i]
+                cnt = items[i+1].strip()
+                out_items.append(f"• **{tag}** {cnt}")
+            res = (intro + "\n\n" if intro else "") + "\n\n".join(out_items)
+            return res
+
+    # 4. Long text without breaks
+    if '\n' not in text and len(text) > 200:
+        sentences = re.split(r'([.!?]\s+|(?<=[ก-ฮa-zA-Z0-9])\s+(?=[1-9]\.|\bโดยที่|\bประกอบด้วย|\bในทางตรงกันข้าม|\bเป้าหมายคือ|\bข้อควรระวัง))', text)
+        if len(sentences) > 2:
+            return "\n\n".join(s.strip() for s in sentences if len(s.strip()) > 1)
+
+    return text
 
 print("Assembling all slides from L4, L5, L6...")
 l4 = generate_l4_dataset()
@@ -15,19 +77,17 @@ l6 = generate_l6_dataset()
 all_slides = l4 + l5 + l6
 print(f"Total assembled slides: {len(all_slides)} (L4: {len(l4)}, L5: {len(l5)}, L6: {len(l6)})")
 
+# Format Thai explanations for readability
+for s in all_slides:
+    s['explanationTh'] = format_thai_text(s.get('explanationTh', ''))
+
 # Validation check
 assert len(all_slides) == 302, f"Expected 302 slides, got {len(all_slides)}"
 
 # Check that every image exists
-import os
-missing_images = []
-for s in all_slides:
-    if not os.path.exists(s["image"]):
-        missing_images.append(s["image"])
-
+missing_images = [s["image"] for s in all_slides if not os.path.exists(s["image"])]
 if missing_images:
     print(f"WARNING: {len(missing_images)} missing images!")
-    print(missing_images[:10])
 else:
     print("ALL 302 slide images verified on disk!")
 
@@ -40,4 +100,3 @@ with open('slides_data.js', 'w', encoding='utf-8') as f:
     f.write(js_content)
 
 print(f"Wrote slides_data.js successfully. File size: {len(js_content)/(1024):.1f} KB")
-

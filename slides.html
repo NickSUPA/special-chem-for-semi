@@ -8,7 +8,7 @@
   <!-- Google Fonts: Prompt & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +18,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Prompt', 'sans-serif'],
+            sans: ['Prompt', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             thai: ['Prompt', 'sans-serif']
           },
           colors: {
@@ -46,41 +46,56 @@
   <script src="slides_data.js"></script>
 
   <style>
-    /* Custom Scrollbar */
+    /* Global Typography Enhancement */
+    body {
+      font-family: 'Prompt', 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: 0.012em;
+    }
+
+    /* Custom Sleek Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: rgba(100, 116, 139, 0.1);
+      background: rgba(148, 163, 184, 0.1);
+      border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(100, 116, 139, 0.3);
-      border-radius: 4px;
+      background: rgba(148, 163, 184, 0.35);
+      border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(100, 116, 139, 0.5);
+      background: rgba(148, 163, 184, 0.6);
     }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.8);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
     }
     .dark .glass-card {
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(51, 65, 85, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(51, 65, 85, 0.9);
     }
 
     .slide-shadow {
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
     }
     .slide-shadow:hover {
-      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.18), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Thai Typography Rules */
+    .thai-text-body {
+      font-family: 'Prompt', sans-serif;
+      font-size: 14.5px;
+      line-height: 1.85;
+      letter-spacing: 0.015em;
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans antialiased transition-colors duration-200">
+<body class="bg-slate-100/70 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans antialiased transition-colors duration-200">
 
   <!-- ================= TOP HEADER ================= -->
   <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 md:px-8 py-3 shadow-sm">
@@ -231,109 +246,118 @@
   </main>
 
   <!-- ================= SLIDE DETAIL MODAL (FULLSCREEN / DIALOG) ================= -->
-  <div id="slide-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-2 md:p-6 overflow-y-auto">
-    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden relative">
+  <div id="slide-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-6xl w-full max-h-[94vh] flex flex-col shadow-2xl overflow-hidden relative">
       
       <!-- Modal Header -->
-      <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/80 dark:bg-slate-800/80">
+      <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/90 dark:bg-slate-800/90">
         <div class="flex items-center gap-2.5">
-          <span id="modal-lecture-badge" class="px-2.5 py-1 text-xs font-black rounded-lg bg-blue-600 text-white"></span>
-          <span id="modal-slide-num" class="text-xs font-bold text-slate-500 dark:text-slate-400"></span>
-          <span id="modal-category-badge" class="px-2 py-0.5 text-[11px] rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold"></span>
+          <span id="modal-lecture-badge" class="px-2.5 py-1 text-xs font-black rounded-lg bg-blue-600 text-white shadow-xs"></span>
+          <span id="modal-slide-num" class="text-xs font-bold text-slate-600 dark:text-slate-300 font-mono"></span>
+          <span id="modal-category-badge" class="px-2.5 py-0.5 text-[11px] rounded-md bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold"></span>
         </div>
         
         <div class="flex items-center gap-2">
           <!-- Bookmark Button -->
-          <button id="modal-bookmark-btn" onclick="toggleBookmarkCurrentModal()" class="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-500 text-sm" title="บันทึกสไลด์นี้">
-            ⭐
+          <button id="modal-bookmark-btn" onclick="toggleBookmarkCurrentModal()" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-600 dark:text-slate-300 text-xs font-bold flex items-center gap-1" title="บันทึกสไลด์นี้">
+            <span id="modal-bookmark-star">⭐</span>
+            <span class="hidden sm:inline">บุ๊กมาร์ก</span>
           </button>
           <!-- Close Button -->
-          <button onclick="closeModal()" class="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition text-sm">
+          <button onclick="closeModal()" class="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition text-base leading-none px-2.5 py-1.5 font-bold">
             ✕
           </button>
         </div>
       </div>
 
       <!-- Modal Body (Two-column layout on large screens) -->
-      <div class="flex-1 overflow-y-auto p-5 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="flex-1 overflow-y-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Left Column: High-Res Slide Image -->
-        <div class="lg:col-span-6 flex flex-col gap-3">
-          <div class="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-md">
-            <img id="modal-image" src="" alt="Slide Image" class="w-full h-auto object-contain transition duration-200 cursor-zoom-in" onclick="openLightbox(this.src)">
-            <div class="absolute bottom-2 right-2 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-white text-[10px] font-mono opacity-80 group-hover:opacity-100 transition">
-              🔍 คลิกเพื่อดูรูปขนาดเต็ม (HD)
+        <!-- Left Column: High-Res Slide Image & Original Text -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <div class="sticky top-0 flex flex-col gap-3">
+            <div class="relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-md">
+              <img id="modal-image" src="" alt="Slide Image" class="w-full h-auto object-contain transition duration-200 cursor-zoom-in hover:brightness-105" onclick="openLightbox(this.src)">
+              <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md text-white text-[10px] font-semibold opacity-85 group-hover:opacity-100 transition flex items-center gap-1 shadow-sm">
+                <span>🔍 คลิกดูภาพขยายใหญ่ (HD)</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Slide English Title -->
-          <div class="px-1">
-            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">ชื่อหัวข้อสไลด์ต้นฉบับ</div>
-            <div id="modal-title-en" class="text-xs font-semibold text-slate-600 dark:text-slate-300 font-mono"></div>
-          </div>
+            <!-- Slide English Title -->
+            <div class="px-1">
+              <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">ชื่อหัวข้อสไลด์ต้นฉบับ (Original Slide Title)</div>
+              <div id="modal-title-en" class="text-xs font-bold text-slate-700 dark:text-slate-300 font-mono mt-0.5 leading-snug"></div>
+            </div>
 
-          <!-- Extracted Original Slide Text Drawer (Collapsible) -->
-          <details class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-3 text-xs">
-            <summary class="font-bold cursor-pointer text-slate-600 dark:text-slate-400 hover:text-blue-600 transition flex items-center justify-between">
-              <span>📄 ดูข้อความดิบจากสไลด์ต้นฉบับ (Raw Text)</span>
-              <span class="text-[10px]">▼</span>
-            </summary>
-            <pre id="modal-raw-text" class="mt-2.5 p-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap max-h-48 overflow-y-auto leading-relaxed"></pre>
-          </details>
+            <!-- Extracted Original Slide Text Drawer (Collapsible) -->
+            <details class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-3 text-xs">
+              <summary class="font-bold cursor-pointer text-slate-600 dark:text-slate-400 hover:text-blue-600 transition flex items-center justify-between">
+                <span>📄 ข้อความสกัดจากสไลด์ต้นฉบับ (Extracted Raw Text)</span>
+                <span class="text-[10px]">▼</span>
+              </summary>
+              <pre id="modal-raw-text" class="mt-2.5 p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap max-h-44 overflow-y-auto leading-relaxed"></pre>
+            </details>
+          </div>
         </div>
 
         <!-- Right Column: Rich Thai Technical Breakdown -->
-        <div class="lg:col-span-6 flex flex-col gap-4">
+        <div class="lg:col-span-7 flex flex-col gap-4 max-h-[82vh] overflow-y-auto pr-1">
           
-          <!-- Slide Thai Title -->
-          <div>
-            <h2 id="modal-title-th" class="text-base md:text-lg font-black text-slate-900 dark:text-white leading-snug"></h2>
-            <p id="modal-summary-th" class="mt-1 text-xs text-blue-600 dark:text-blue-400 font-semibold leading-relaxed"></p>
+          <!-- Slide Thai Title Header -->
+          <div class="pb-3 border-b border-slate-200 dark:border-slate-800">
+            <h2 id="modal-title-th" class="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-snug"></h2>
+            <p id="modal-summary-th" class="mt-1 text-xs md:text-sm text-blue-600 dark:text-blue-400 font-medium leading-relaxed"></p>
           </div>
 
-          <!-- In-depth Technical Explanation -->
-          <div class="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl p-4">
-            <h4 class="text-xs font-extrabold uppercase tracking-wider text-blue-800 dark:text-blue-300 flex items-center gap-1.5 mb-2">
-              <span>🔬 คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown)</span>
-            </h4>
-            <div id="modal-explanation-th" class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-2 whitespace-pre-line font-thai"></div>
+          <!-- In-depth Technical Explanation Box (Formatted with Beautiful Cards) -->
+          <div class="rounded-2xl p-4 md:p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div class="flex items-center justify-between pb-2.5 mb-3.5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>🔬 คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown)</span>
+              </div>
+              <span class="text-[10px] font-bold text-slate-400 uppercase">TMEC Process Notes</span>
+            </div>
+            
+            <!-- Dynamic HTML Container for Formatted Explanation -->
+            <div id="modal-explanation-th" class="thai-text-body space-y-2"></div>
           </div>
 
           <!-- Key Takeaways & Exam Checklist -->
-          <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 rounded-xl p-4">
-            <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5 mb-2">
-              <span>🎯 จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Takeaways)</span>
+          <div class="rounded-2xl p-4 md:p-5 bg-slate-50/80 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5 mb-3">
+              <span>🎯 จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Exam Takeaways)</span>
             </h4>
-            <ul id="modal-key-points" class="list-disc pl-4 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-thai"></ul>
+            <div id="modal-key-points" class="space-y-2.5"></div>
           </div>
 
           <!-- Formula / Chemical Equation (If Applicable) -->
-          <div id="modal-formula-container" class="hidden bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/60 rounded-xl p-3.5">
-            <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 mb-1.5">
-              ⚗️ สมการหรือปฏิกิริยาเคมีที่เกี่ยวข้อง (Chemical Reaction / Formula)
+          <div id="modal-formula-container" class="hidden rounded-2xl p-4 bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 shadow-xs">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5 mb-2">
+              <span>⚗️ สมการหรือปฏิกิริยาเคมีที่เกี่ยวข้อง (Chemical Reaction & Formula)</span>
             </h4>
-            <div id="modal-formula-content" class="text-xs md:text-sm text-slate-800 dark:text-slate-100 font-mono py-1 overflow-x-auto"></div>
+            <div id="modal-formula-content" class="text-sm md:text-base text-slate-900 dark:text-slate-100 font-mono py-2 text-center overflow-x-auto bg-white/80 dark:bg-slate-900/80 rounded-xl border border-emerald-100 dark:border-emerald-900/40"></div>
           </div>
 
           <!-- Exam Focus Tip from Dr. Nithi Atthi -->
-          <div id="modal-exam-tip-container" class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 rounded-xl p-3.5">
-            <h4 class="text-[11px] font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center gap-1 mb-1">
+          <div id="modal-exam-tip-container" class="rounded-2xl p-4 bg-amber-500/10 border-l-4 border-amber-500 border-t border-r border-b border-amber-200 dark:border-amber-800/50 shadow-xs">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center gap-1.5 mb-1.5">
               <span>💡 จุดเน้นย้ำพิเศษจาก ดร. นิติ เอี่ยมถิ (TMEC Cleanroom Tips)</span>
             </h4>
-            <p id="modal-exam-tip" class="text-xs text-amber-900 dark:text-amber-200 leading-relaxed font-thai"></p>
+            <p id="modal-exam-tip" class="text-xs md:text-sm text-amber-950 dark:text-amber-100 leading-[1.8] font-thai font-medium"></p>
           </div>
 
         </div>
       </div>
 
       <!-- Modal Footer (Navigation Controls) -->
-      <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 flex items-center justify-between">
-        <button onclick="navigateModal(-1)" id="btn-modal-prev" class="px-3.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition flex items-center gap-1 text-slate-700 dark:text-slate-200">
+      <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-850 flex items-center justify-between">
+        <button onclick="navigateModal(-1)" id="btn-modal-prev" class="px-3.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition flex items-center gap-1 text-slate-700 dark:text-slate-200 shadow-2xs">
           <span>◀ สไลด์ก่อนหน้า</span>
         </button>
 
-        <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
-          <span id="modal-current-index">1</span> / <span id="modal-total-filtered">302</span>
+        <div class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
+          <span id="modal-current-index" class="text-blue-600 dark:text-blue-400">1</span> / <span id="modal-total-filtered">302</span>
         </div>
 
         <button onclick="navigateModal(1)" id="btn-modal-next" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm">
@@ -532,16 +556,10 @@
     // Master Filter & Render Logic
     function applyFiltersAndRender() {
       currentFilteredSlides = window.ALL_SLIDES.filter(slide => {
-        // Lecture Filter
         if (currentLecture !== 'ALL' && slide.lecture !== currentLecture) return false;
-
-        // Bookmark Filter
         if (bookmarkOnly && !bookmarks.has(slide.id)) return false;
-
-        // Category Filter
         if (currentCategory !== 'ALL' && slide.categoryTh !== currentCategory) return false;
 
-        // Search Query
         if (searchQuery) {
           const matchId = slide.id.toLowerCase().includes(searchQuery);
           const matchPage = slide.page.toString() === searchQuery;
@@ -559,7 +577,6 @@
         return true;
       });
 
-      // Update counters
       document.getElementById('results-count-label').textContent = 
         `กำลังแสดง ${currentFilteredSlides.length} จาก ${window.ALL_SLIDES.length} สไลด์`;
       
@@ -580,6 +597,64 @@
       }
     }
 
+    // ================= RICH THAI TEXT FORMATTER =================
+    // Converts unstructured text into beautifully designed cards, badges, and readable paragraphs
+    function formatExplanationToHTML(text) {
+      if (!text) return '';
+      
+      const paragraphs = text.split(/\n\n+/);
+      
+      return paragraphs.map(p => {
+        p = p.trim();
+        if (!p) return '';
+        
+        // Check if paragraph is a bullet/numbered item
+        // e.g. "• **1. Title:** Body" or "• **Title:** Body" or "1. Title: Body"
+        const bulletMatch = p.match(/^(?:[•📌\-*]|\d+\.)\s*(?:\*\*(.*?)\*\*|([^:]+):)\s*(.*)/s);
+        if (bulletMatch) {
+          const title = (bulletMatch[1] || bulletMatch[2] || '').trim();
+          const body = (bulletMatch[3] || '').trim();
+          
+          // Check if title has a number
+          const numMatch = title.match(/^(\d+|[กขค-ฮa-zA-Z])/);
+          let badgeHTML = '';
+          if (numMatch) {
+            badgeHTML = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-blue-600 text-white text-xs font-black shadow-xs flex-shrink-0">${numMatch[1]}</span>`;
+          } else {
+            badgeHTML = `<span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 text-xs font-black flex-shrink-0">▪</span>`;
+          }
+          
+          const cleanTitle = title.replace(/^(\d+|[กขค-ฮa-zA-Z])[\.\)]\s*/, '');
+          
+          return `
+            <div class="my-3 p-3.5 md:p-4 rounded-xl bg-slate-50/80 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:border-blue-400 dark:hover:border-blue-500 transition">
+              <div class="flex items-center gap-2 mb-2 font-bold text-sm md:text-base text-blue-900 dark:text-blue-200">
+                ${badgeHTML}
+                <span>${highlightMarkdown(cleanTitle || title)}</span>
+              </div>
+              <div class="text-slate-700 dark:text-slate-200 text-xs md:text-sm leading-[1.85] pl-1 font-thai">
+                ${highlightMarkdown(body)}
+              </div>
+            </div>
+          `;
+        }
+        
+        // Standard introductory or conclusion paragraph
+        return `
+          <p class="mb-3 text-slate-800 dark:text-slate-200 text-xs md:text-sm leading-[1.85] font-thai">
+            ${highlightMarkdown(p)}
+          </p>
+        `;
+      }).join('');
+    }
+
+    function highlightMarkdown(str) {
+      if (!str) return '';
+      // Bold **text** -> high contrast readable badge/strong
+      str = str.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-slate-900 dark:text-white bg-blue-50/80 dark:bg-blue-900/40 px-1 py-0.5 rounded">$1</strong>');
+      return str;
+    }
+
     // Render Grid View
     function renderGridView() {
       const container = document.getElementById('grid-view-container');
@@ -590,7 +665,6 @@
         const card = document.createElement('div');
         card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col slide-shadow transition duration-200 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500';
         
-        // Color badges for lectures
         let badgeColor = 'bg-blue-600 text-white';
         if (slide.lecture === 'L5') badgeColor = 'bg-indigo-600 text-white';
         if (slide.lecture === 'L6') badgeColor = 'bg-cyan-700 text-white';
@@ -648,7 +722,6 @@
         container.appendChild(card);
       });
 
-      // Trigger KaTeX rendering
       if (window.renderMathInElement) {
         renderMathInElement(container, {
           delimiters: [
@@ -675,8 +748,8 @@
           <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 text-xs font-black rounded-lg bg-blue-600 text-white">${slide.lecture}</span>
-              <span class="text-xs font-bold text-slate-500">สไลด์ที่ ${slide.page} จาก ${slide.totalPages} หน้า</span>
-              <span class="px-2 py-0.5 text-xs rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${slide.categoryTh}</span>
+              <span class="text-xs font-bold text-slate-500 font-mono">สไลด์ที่ ${slide.page} / ${slide.totalPages} หน้า</span>
+              <span class="px-2.5 py-0.5 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold">${slide.categoryTh}</span>
             </div>
 
             <div class="flex items-center gap-2">
@@ -684,51 +757,67 @@
                 <span>${isBookmarked ? '⭐ บันทึกแล้ว' : '☆ บันทึกสไลด์นี้'}</span>
               </button>
               <button onclick="navigateReader(-1)" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-bold">◀ ก่อนหน้า</button>
-              <span class="text-xs font-mono text-slate-500">${currentModalIndex + 1}/${currentFilteredSlides.length}</span>
+              <span class="text-xs font-mono font-bold text-slate-500">${currentModalIndex + 1}/${currentFilteredSlides.length}</span>
               <button onclick="navigateReader(1)" class="p-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold">ถัดไป ▶</button>
             </div>
           </div>
 
           <!-- Reader Main Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-6">
-              <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md bg-slate-900 cursor-zoom-in" onclick="openLightbox('${slide.image}')">
-                <img src="${slide.image}" alt="Slide ${slide.page}" class="w-full h-auto object-contain">
-              </div>
-              <div class="mt-3 text-xs text-slate-500 text-center font-mono">
-                ${slide.titleEn}
+            <div class="lg:col-span-5">
+              <div class="sticky top-20 flex flex-col gap-3">
+                <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md bg-slate-900 cursor-zoom-in" onclick="openLightbox('${slide.image}')">
+                  <img src="${slide.image}" alt="Slide ${slide.page}" class="w-full h-auto object-contain">
+                </div>
+                <div class="text-xs text-slate-500 text-center font-mono">
+                  ${slide.titleEn}
+                </div>
               </div>
             </div>
 
-            <div class="lg:col-span-6 flex flex-col gap-4">
-              <div>
-                <h2 class="text-lg font-black text-slate-900 dark:text-white">${slide.titleTh}</h2>
-                <p class="text-xs text-blue-600 dark:text-blue-400 font-semibold mt-1">${slide.summaryTh}</p>
+            <div class="lg:col-span-7 flex flex-col gap-5">
+              <div class="pb-3 border-b border-slate-200 dark:border-slate-800">
+                <h2 class="text-xl font-black text-slate-900 dark:text-white">${slide.titleTh}</h2>
+                <p class="text-xs md:text-sm text-blue-600 dark:text-blue-400 font-medium mt-1">${slide.summaryTh}</p>
               </div>
 
-              <div class="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl p-4">
-                <h4 class="text-xs font-bold text-blue-800 dark:text-blue-300 mb-1.5">🔬 คำอธิบายอย่างละเอียด:</h4>
-                <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-2 whitespace-pre-line font-thai">${slide.explanationTh}</div>
+              <!-- Formatted Explanation Breakdown -->
+              <div class="rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-3 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                  <span>🔬 คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown):</span>
+                </h4>
+                <div class="thai-text-body space-y-2">
+                  ${formatExplanationToHTML(slide.explanationTh)}
+                </div>
               </div>
 
-              <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 rounded-xl p-4">
-                <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">🎯 จุดสำคัญที่ต้องจำ (Key Takeaways):</h4>
-                <ul class="list-disc pl-4 space-y-1 text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-thai">
-                  ${slide.keyPoints.map(kp => `<li>${kp}</li>`).join('')}
-                </ul>
+              <!-- Checklist Takeaways -->
+              <div class="rounded-2xl p-5 bg-slate-50/80 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
+                <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 mb-3">
+                  🎯 จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Takeaways):
+                </h4>
+                <div class="space-y-2.5">
+                  ${slide.keyPoints.map(kp => `
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
+                      <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+                      <span class="text-xs md:text-sm text-slate-700 dark:text-slate-200 leading-[1.8] font-thai">${kp}</span>
+                    </div>
+                  `).join('')}
+                </div>
               </div>
 
               ${slide.formula ? `
-                <div class="bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/60 rounded-xl p-3.5">
-                  <h4 class="text-[11px] font-bold text-emerald-800 dark:text-emerald-300 mb-1">⚗️ สูตร/ปฏิกิริยาเคมี:</h4>
-                  <div class="text-xs font-mono py-1 overflow-x-auto">$$${slide.formula}$$</div>
+                <div class="rounded-2xl p-4 bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 shadow-xs">
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 mb-2">⚗️ สูตรและปฏิกิริยาเคมี:</h4>
+                  <div class="text-sm md:text-base font-mono py-2 text-center overflow-x-auto bg-white/80 dark:bg-slate-900/80 rounded-xl border border-emerald-100 dark:border-emerald-900/40">$$${slide.formula}$$</div>
                 </div>
               ` : ''}
 
               ${slide.examTip ? `
-                <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 rounded-xl p-3.5">
-                  <h4 class="text-[11px] font-bold text-amber-800 dark:text-amber-300 mb-1">💡 คำแนะนำพิเศษจาก ดร. นิติ:</h4>
-                  <p class="text-xs text-amber-900 dark:text-amber-200 leading-relaxed font-thai">${slide.examTip}</p>
+                <div class="rounded-2xl p-4 bg-amber-500/10 border-l-4 border-amber-500 border-t border-r border-b border-amber-200 dark:border-amber-800/50 shadow-xs">
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 mb-1.5">💡 คำแนะนำพิเศษจาก ดร. นิติ เอี่ยมถิ:</h4>
+                  <p class="text-xs md:text-sm text-amber-950 dark:text-amber-100 leading-[1.8] font-thai font-medium">${slide.examTip}</p>
                 </div>
               ` : ''}
             </div>
@@ -769,15 +858,22 @@
       document.getElementById('modal-raw-text').textContent = slide.rawText || 'ไม่มีข้อความสกัดในสไลด์นี้';
       document.getElementById('modal-title-th').textContent = slide.titleTh;
       document.getElementById('modal-summary-th').textContent = slide.summaryTh;
-      document.getElementById('modal-explanation-th').textContent = slide.explanationTh;
 
-      // Key points list
+      // Render Rich Formatted Explanation into cards
+      const expContainer = document.getElementById('modal-explanation-th');
+      expContainer.innerHTML = formatExplanationToHTML(slide.explanationTh);
+
+      // Key points checklist cards
       const kpList = document.getElementById('modal-key-points');
       kpList.innerHTML = '';
       slide.keyPoints.forEach(kp => {
-        const li = document.createElement('li');
-        li.textContent = kp;
-        kpList.appendChild(li);
+        const item = document.createElement('div');
+        item.className = 'flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-2xs';
+        item.innerHTML = `
+          <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5">✓</span>
+          <span class="text-xs md:text-sm text-slate-700 dark:text-slate-200 leading-[1.8] font-thai">${kp}</span>
+        `;
+        kpList.appendChild(item);
       });
 
       // Formula container
@@ -830,7 +926,6 @@
       if (idx !== -1) {
         openModalByIndex(idx);
       } else {
-        // Fallback: search in all slides and clear filters
         resetAllFilters();
         const newIdx = currentFilteredSlides.findIndex(s => s.id === slideId);
         if (newIdx !== -1) openModalByIndex(newIdx);
@@ -872,13 +967,11 @@
     }
 
     function updateModalBookmarkIcon(slideId) {
-      const btn = document.getElementById('modal-bookmark-btn');
+      const star = document.getElementById('modal-bookmark-star');
       if (bookmarks.has(slideId)) {
-        btn.textContent = '⭐';
-        btn.title = 'ยกเลิกการบันทึกสไลด์นี้';
+        star.textContent = '⭐';
       } else {
-        btn.textContent = '☆';
-        btn.title = 'บันทึกสไลด์นี้';
+        star.textContent = '☆';
       }
     }
 
@@ -910,4 +1003,3 @@
   </script>
 </body>
 </html>
-
