@@ -88,10 +88,14 @@
 
     /* Thai Typography Rules */
     .thai-text-body {
-      font-family: 'Prompt', sans-serif;
+      font-family: 'Prompt', 'Plus Jakarta Sans', sans-serif;
       font-size: 14.5px;
       line-height: 1.85;
       letter-spacing: 0.015em;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
   </style>
 </head>
@@ -602,60 +606,306 @@
     }
 
     // ================= RICH THAI TEXT FORMATTER =================
-    // Converts unstructured text into beautifully designed cards, badges, and readable paragraphs
+    // Converts unstructured technical text into beautifully structured cards, badges, and readable lists
     function formatExplanationToHTML(text) {
       if (!text) return '';
+
+      const lines = text.replace(/\r\n/g, '\n').split('\n');
+      let out = [];
       
-      const paragraphs = text.split(/\n\n+/);
-      
-      return paragraphs.map(p => {
-        p = p.trim();
-        if (!p) return '';
-        
-        // Check if paragraph is a bullet/numbered item
-        // e.g. "• **1. Title:** Body" or "• **Title:** Body" or "1. Title: Body"
-        const bulletMatch = p.match(/^(?:[•📌\-*]|\d+\.)\s*(?:\*\*(.*?)\*\*|([^:]+):)\s*(.*)/s);
-        if (bulletMatch) {
-          const rawTitle = (bulletMatch[1] || bulletMatch[2] || '').trim();
-          const body = (bulletMatch[3] || '').trim();
-          
-          const numMatch = rawTitle.match(/^(\d+|[กขค-ฮa-zA-Z])/);
-          let badgeHTML = '';
-          if (numMatch) {
-            badgeHTML = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-blue-600 text-white text-xs font-black shadow-xs flex-shrink-0">${numMatch[1]}</span>`;
-          } else {
-            badgeHTML = `<span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 text-xs font-black flex-shrink-0">▪</span>`;
-          }
-          
-          const cleanTitle = rawTitle.replace(/^(\d+|[กขค-ฮa-zA-Z])[\.\)]\s*/, '');
-          
-          return `
-            <div class="my-3 p-3.5 md:p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:border-blue-400 dark:hover:border-blue-500 transition">
-              <div class="flex items-center gap-2 mb-2 font-bold text-sm md:text-base text-blue-900 dark:text-blue-200">
-                ${badgeHTML}
-                <span>${highlightMarkdown(cleanTitle || rawTitle)}</span>
+      let currentCard = null;
+      let looseBullets = [];
+
+      function formatInline(str) {
+        if (!str) return '';
+        // Backticks `code`
+        str = str.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 mx-0.5 text-xs font-mono font-bold rounded-md bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-slate-700/80">$1</code>');
+        // Bold **text**
+        str = str.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-slate-900 dark:text-white">$1</strong>');
+        // Italic *text*
+        str = str.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em class="italic text-slate-700 dark:text-slate-300">$1</em>');
+        return str;
+      }
+
+      function flushLooseBullets() {
+        if (looseBullets.length > 0) {
+          out.push(`
+            <div class="my-3.5 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-2.5">
+              ${looseBullets.join('')}
+            </div>
+          `);
+          looseBullets = [];
+        }
+      }
+
+      function flushCard() {
+        flushLooseBullets();
+        if (currentCard) {
+          out.push(`
+            <div class="my-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-xs overflow-hidden transition-all duration-200 hover:border-blue-400/80 dark:hover:border-blue-500/80">
+              <div class="px-4 py-3 bg-gradient-to-r from-blue-50/90 via-indigo-50/40 to-transparent dark:from-slate-800/90 dark:via-slate-800/40 dark:to-transparent border-b border-slate-200/80 dark:border-slate-800 flex items-center gap-2.5">
+                ${currentCard.badge}
+                <h4 class="text-sm md:text-[15px] font-bold text-blue-900 dark:text-blue-200 leading-snug font-thai">
+                  ${formatInline(currentCard.title)}
+                </h4>
               </div>
-              <div class="text-slate-700 dark:text-slate-200 text-xs md:text-sm leading-[1.85] pl-1 font-thai">
-                ${highlightMarkdown(body)}
+              <div class="p-4 space-y-2.5 thai-text-body">
+                ${currentCard.body.join('')}
               </div>
             </div>
-          `;
+          `);
+          currentCard = null;
         }
-        
-        // Standard introductory or conclusion paragraph
-        return `
-          <p class="mb-3.5 text-slate-800 dark:text-slate-200 text-sm md:text-[14.5px] leading-[1.85] font-thai">
-            ${highlightMarkdown(p)}
+      }
+
+      function isFollowedByBullets(idx) {
+        for (let j = idx + 1; j < lines.length; j++) {
+          const next = lines[j].trim();
+          if (!next) continue;
+          if (next.startsWith('-') || next.startsWith('*') || next.startsWith('•')) {
+            return true;
+          }
+          break;
+        }
+        return false;
+      }
+
+      function isFollowedBySubItems(idx) {
+        for (let j = idx + 1; j < lines.length; j++) {
+          const nextRaw = lines[j];
+          const next = nextRaw.trim();
+          if (!next) continue;
+          if (nextRaw.startsWith('  ') || nextRaw.startsWith('\t')) {
+            return true;
+          }
+          break;
+        }
+        return false;
+      }
+
+      for (let i = 0; i < lines.length; i++) {
+        const rawLine = lines[i];
+        const line = rawLine.trim();
+
+        if (!line) {
+          continue;
+        }
+
+        // 1. Goal / Takeaway / Conclusion: e.g. "* เป้าหมายหลัก (OUR GOAL):" or "* บทสรุป:"
+        if (line.match(/^[-*•]\s*(?:เป้าหมายหลัก|our goal|บทสรุป|ข้อสรุป)/i)) {
+          flushCard();
+          const content = line.replace(/^[-*•]\s*/, '').trim();
+          const labelMatch = content.match(/^(.*?):\s*(.*)/);
+          const label = labelMatch ? labelMatch[1] : 'เป้าหมายสำคัญ (Core Objective)';
+          const desc = labelMatch ? labelMatch[2] : content;
+
+          out.push(`
+            <div class="my-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-950/20 dark:via-amber-900/10 dark:to-transparent border-l-4 border-amber-500 border-t border-r border-b border-amber-200 dark:border-amber-800/40 shadow-xs">
+              <div class="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 mb-1">
+                <span class="text-base">🎯</span>
+                <span>${formatInline(label)}:</span>
+              </div>
+              <p class="text-xs md:text-sm text-amber-950 dark:text-amber-100 leading-[1.85] font-thai">
+                ${formatInline(desc)}
+              </p>
+            </div>
+          `);
+          continue;
+        }
+
+        // 2. Check for Markdown Headers: ### 1. Title or ## Title or # Title
+        const headerMatch = line.match(/^#{1,4}\s+(?:(\d+|[A-Zก-ฮ])[\.\)]\s*)?(.*)/);
+        if (headerMatch) {
+          flushCard();
+          const num = headerMatch[1];
+          const title = headerMatch[2].trim();
+          const badge = num 
+            ? `<span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-blue-600 text-white text-xs font-black shadow-xs flex-shrink-0">${num}</span>`
+            : `<span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-black flex-shrink-0">🔬</span>`;
+
+          currentCard = {
+            badge,
+            title,
+            body: []
+          };
+          continue;
+        }
+
+        // 3. Numbered Line (e.g. "1. Title:" or "1. **Process:** ...")
+        const numberedMatch = line.match(/^(\d+|[A-Zก-ฮ])[\.\)]\s*(.*)/);
+        if (numberedMatch && !rawLine.startsWith(' ') && !rawLine.startsWith('\t')) {
+          const num = numberedMatch[1];
+          const rest = numberedMatch[2].trim();
+          
+          // If followed by bullets, it's a Section Card Header!
+          if (isFollowedByBullets(i) || rest.endsWith(':') || rest.length < 50) {
+            flushCard();
+            const cleanTitle = rest.replace(/\*\*(.*?)\*\*/g, '$1').replace(/[:：]\s*$/, '').trim();
+            const badge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-indigo-600 text-white text-xs font-black shadow-xs flex-shrink-0">${num}</span>`;
+
+            currentCard = {
+              badge,
+              title: cleanTitle,
+              body: []
+            };
+            continue;
+          } else {
+            // It's a Numbered Step / Row with content directly in the line!
+            const stepHTML = `
+              <div class="flex items-start gap-2.5 py-1.5 my-1">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 text-xs font-bold flex-shrink-0 mt-0.5">${num}</span>
+                <div class="text-xs md:text-sm leading-[1.85] text-slate-800 dark:text-slate-200 font-thai">
+                  ${formatInline(rest)}
+                </div>
+              </div>
+            `;
+            if (currentCard) {
+              currentCard.body.push(stepHTML);
+            } else {
+              looseBullets.push(stepHTML);
+            }
+            continue;
+          }
+        }
+
+        // 4. Bullet followed by sub-items: e.g. "- **บทบาทและสมบัติของ PI:**" followed by "  - ..."
+        const bulletWithSubItems = line.match(/^[-*•]\s+\*\*(.*?)\*\*(?::)?\s*$/);
+        if (bulletWithSubItems && isFollowedBySubItems(i)) {
+          flushCard();
+          const title = bulletWithSubItems[1].trim();
+          const badge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-black flex-shrink-0">🔹</span>`;
+          currentCard = {
+            badge,
+            title,
+            body: []
+          };
+          continue;
+        }
+
+        // 5. Indented Sub-items: "  - Sub-item" or "  1. **Item**:" or "    * Sub-item"
+        const indentedMatch = rawLine.match(/^(\s{2,}|\t+)(?:(?:(\d+|[a-zA-Zก-ฮ])[\.\)]|[-*•]))\s*(.*)/);
+        if (indentedMatch) {
+          const subNum = indentedMatch[2];
+          const content = indentedMatch[3].trim();
+          
+          const subKeyMatch = content.match(/^\*\*(.*?)\*\*(?::)?\s*(.*)/);
+          let subHTML = '';
+          if (subKeyMatch) {
+            const cleanSubKey = subKeyMatch[1].replace(/[:：]\s*$/, '').trim();
+            subHTML = `
+              <div class="ml-5 pl-3.5 border-l-2 border-indigo-200 dark:border-indigo-800/70 my-1.5 py-0.5 flex items-start gap-2">
+                ${subNum ? `<span class="inline-flex items-center justify-center w-4 h-4 rounded bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold flex-shrink-0 mt-0.5">${subNum}</span>` : `<span class="text-indigo-500 dark:text-indigo-400 text-xs mt-0.5 flex-shrink-0">↳</span>`}
+                <div class="text-xs md:text-[13.5px] leading-[1.8] font-thai text-slate-700 dark:text-slate-300">
+                  <span class="font-bold text-slate-900 dark:text-white mr-1">${cleanSubKey}:</span>
+                  ${formatInline(subKeyMatch[2])}
+                </div>
+              </div>
+            `;
+          } else {
+            subHTML = `
+              <div class="ml-5 pl-3.5 border-l-2 border-blue-200 dark:border-blue-800/70 my-1.5 py-0.5 flex items-start gap-2">
+                ${subNum ? `<span class="inline-flex items-center justify-center w-4 h-4 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold flex-shrink-0 mt-0.5">${subNum}</span>` : `<span class="text-blue-500 dark:text-blue-400 text-xs mt-0.5 flex-shrink-0">↳</span>`}
+                <div class="text-xs md:text-[13.5px] text-slate-600 dark:text-slate-300 leading-[1.8] font-thai">
+                  ${formatInline(content)}
+                </div>
+              </div>
+            `;
+          }
+
+          if (currentCard) {
+            currentCard.body.push(subHTML);
+          } else {
+            looseBullets.push(subHTML);
+          }
+          continue;
+        }
+
+        // 6. Main bullet: "- Item" or "* Item" or "• Item"
+        const bulletMatch = line.match(/^[-*•]\s+(.*)/);
+        if (bulletMatch) {
+          const content = bulletMatch[1].trim();
+
+          // Check if bullet starts with a bold key: "**Key:** Value"
+          const boldKeyMatch = content.match(/^\*\*(.*?)\*\*(?::)?\s*(.*)/);
+          // Or general key ending with colon: "Key (En): Value"
+          const generalKeyMatch = !boldKeyMatch ? content.match(/^([A-Za-z0-9\u0E00-\u0E7F\s\(\)\/\.,&-]{2,55}:)\s*(.*)/) : null;
+
+          let itemHTML = '';
+          if (boldKeyMatch) {
+            const cleanKey = boldKeyMatch[1].replace(/[:：]\s*$/, '').trim();
+            const val = boldKeyMatch[2].trim();
+            itemHTML = `
+              <div class="flex items-start gap-2.5 py-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400 mt-2 flex-shrink-0 shadow-2xs"></span>
+                <div class="text-xs md:text-sm leading-[1.85] text-slate-800 dark:text-slate-200 font-thai">
+                  <span class="font-bold text-slate-900 dark:text-white bg-blue-100/70 dark:bg-blue-900/40 text-blue-900 dark:text-blue-200 px-2 py-0.5 rounded-md border border-blue-200/60 dark:border-blue-800/40 mr-1.5">${cleanKey}</span>
+                  ${formatInline(val)}
+                </div>
+              </div>
+            `;
+          } else if (generalKeyMatch) {
+            const cleanKey = generalKeyMatch[1].replace(/[:：]\s*$/, '').trim();
+            const val = generalKeyMatch[2].trim();
+            itemHTML = `
+              <div class="flex items-start gap-2.5 py-1.5">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 dark:bg-indigo-400 mt-2 flex-shrink-0 shadow-2xs"></span>
+                <div class="text-xs md:text-sm leading-[1.85] text-slate-800 dark:text-slate-200 font-thai">
+                  <span class="font-bold text-indigo-900 dark:text-indigo-200 bg-indigo-100/70 dark:bg-indigo-900/40 px-2 py-0.5 rounded-md border border-indigo-200/60 dark:border-indigo-800/40 mr-1.5">${cleanKey}</span>
+                  ${formatInline(val)}
+                </div>
+              </div>
+            `;
+          } else {
+            itemHTML = `
+              <div class="flex items-start gap-2.5 py-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-400 dark:bg-blue-500 mt-2 flex-shrink-0"></span>
+                <div class="text-xs md:text-sm leading-[1.85] text-slate-800 dark:text-slate-200 font-thai">
+                  ${formatInline(content)}
+                </div>
+              </div>
+            `;
+          }
+
+          if (currentCard) {
+            currentCard.body.push(itemHTML);
+          } else {
+            looseBullets.push(itemHTML);
+          }
+          continue;
+        }
+
+        // 7. Introductory Overview paragraph (e.g. starts with "สไลด์...", "แผนภาพ...", "เนื้อหา...")
+        if (i === 0 || (i <= 2 && !currentCard)) {
+          flushLooseBullets();
+          out.push(`
+            <div class="mb-3.5 p-3.5 md:p-4 rounded-2xl bg-gradient-to-r from-blue-50/70 via-indigo-50/30 to-transparent dark:from-slate-800/70 dark:via-slate-800/30 dark:to-transparent border border-blue-100 dark:border-slate-700/60 shadow-2xs">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-1.5">
+                <span class="text-sm">🧭</span>
+                <span>ภาพรวมสาระสำคัญ (Executive Overview):</span>
+              </div>
+              <p class="text-xs md:text-sm text-slate-800 dark:text-slate-200 leading-[1.85] font-thai">
+                ${formatInline(line)}
+              </p>
+            </div>
+          `);
+          continue;
+        }
+
+        // 8. Standard body paragraph
+        const pHTML = `
+          <p class="mb-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-[1.85] font-thai">
+            ${formatInline(line)}
           </p>
         `;
-      }).join('');
-    }
+        if (currentCard) {
+          currentCard.body.push(pHTML);
+        } else {
+          out.push(pHTML);
+        }
+      }
 
-    function highlightMarkdown(str) {
-      if (!str) return '';
-      // Bold **text** -> high contrast readable badge/strong
-      str = str.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-slate-900 dark:text-white bg-blue-50/80 dark:bg-blue-900/40 px-1 py-0.5 rounded">$1</strong>');
-      return str;
+      flushCard();
+      return out.join('');
     }
 
     // Render Grid View
