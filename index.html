@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Semiconductor Specialty Chemicals & Processes — Final Exam Master Learning Portal</title>
   
+    <!-- Google Fonts: Prompt & Plus Jakarta Sans for High-Legibility Thai & English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -34,6 +39,20 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
 
   <style>
+    
+    body {
+      font-family: 'Prompt', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: 0.01em;
+    }
+    .katex {
+      font-size: 1.05em !important;
+    }
+    .katex-display {
+      margin: 0.75em 0 !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.25em 0;
+    }
     .flashcard { perspective: 1000px; }
     .flashcard-inner { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
     .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
@@ -2757,6 +2776,31 @@
 
   <!-- Combined JavaScript Suite -->
   <script>
+    // Robust KaTeX Configuration & Rendering Engine
+    const KATEX_CONFIG = {
+      delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false", display: true},
+        {left: "\\(", right: "\\)", display: false},
+        {left: "$", right: "$", display: false}
+      ],
+      throwOnError: false
+    };
+
+    function renderKaTeX(el, customOptions) {
+      if (window.renderMathInElement && el) {
+        try {
+          window.renderMathInElement(el, customOptions || KATEX_CONFIG);
+        } catch(e) {
+          console.warn("KaTeX render error:", e);
+        }
+      }
+    }
+
+
     // Tab switching for 10 dedicated tabs
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -2977,8 +3021,13 @@
     function openPrintModal() {
       document.getElementById('printModal')?.classList.remove('hidden');
       if (window.renderMathInElement) {
-        window.renderMathInElement(document.getElementById('printableContent'), {
-          delimiters: [{left: "$$", right: "$$", display: true}, {left: "\(", right: "\)", display: false}]
+        renderKaTeX(document.getElementById('printableContent'), {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false
         });
       }
     }
@@ -3053,7 +3102,7 @@
       `;
 
       modal.classList.remove('hidden');
-      if (window.renderMathInElement) window.renderMathInElement(content);
+      if (window.renderMathInElement) renderKaTeX(content);
     }
 
     function closeChemModal() {
@@ -3153,16 +3202,7 @@
 
     // KaTeX Init
     function initKaTeX() {
-      if (window.renderMathInElement) {
-        window.renderMathInElement(document.body, {
-          delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "\(", right: "\)", display: false},
-            {left: "$", right: "$", display: false}
-          ],
-          throwOnError: false
-        });
-      }
+      renderKaTeX(document.body);
     }
 
     // Dark Mode Toggle
@@ -3249,13 +3289,13 @@
       if (Math.abs(wp_rpm - ww_rpm) < 1) {
         wiwnuEl.className = "text-lg font-black text-emerald-500 font-mono mt-0.5";
         alertEl.className = "p-3 rounded-xl text-xs leading-relaxed border bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200";
-        alertEl.innerHTML = `<strong>✨ ความเร็วรอบเท่ากันสมบูรณ์ (\(\omega_p = \omega_w = ${wp_rpm}\) rpm):</strong> เวกเตอร์ความเร็วสัมพัทธ์มีขนาดคงที่เท่ากันเป๊ะทั่วทั้งแผ่น (\(|V_{rel}| = \omega R_c = ${V_center.toFixed(2)}\) m/s) ส่งผลให้การขัดสม่ำเสมอทั่วทั้งแผ่น (WIWNU ต่ำสุด)`;
+        alertEl.innerHTML = `<strong>✨ ความเร็วรอบเท่ากันสมบูรณ์ (\\(\\omega_p = \\omega_w = ${wp_rpm}\\) rpm):</strong> เวกเตอร์ความเร็วสัมพัทธ์มีขนาดคงที่เท่ากันเป๊ะทั่วทั้งแผ่น (\\(|V_{rel}| = \\omega R_c = ${V_center.toFixed(2)}\\) m/s) ส่งผลให้การขัดสม่ำเสมอทั่วทั้งแผ่น (WIWNU ต่ำสุด)`;
       } else {
         wiwnuEl.className = "text-lg font-black text-amber-500 font-mono mt-0.5";
         alertEl.className = "p-3 rounded-xl text-xs leading-relaxed border bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-200";
-        alertEl.innerHTML = `<strong>⚠️ ความเร็วรอบไม่ตรงกัน (\(\Delta \omega = ${Math.abs(wp_rpm - ww_rpm)}\) rpm):</strong> ความเร็วสัมพัทธ์ที่ขอบแผ่น (${V_edge.toFixed(2)} m/s) แตกต่างจากจุดศูนย์กลาง (${V_center.toFixed(2)} m/s) เกิดปัญหาขอบแผ่นขัดเร็วเกินไป (Edge-fast) และทำลายความสม่ำเสมอของฟิล์ม`;
+        alertEl.innerHTML = `<strong>⚠️ ความเร็วรอบไม่ตรงกัน (\\(\\Delta \\omega = ${Math.abs(wp_rpm - ww_rpm)}\\) rpm):</strong> ความเร็วสัมพัทธ์ที่ขอบแผ่น (${V_edge.toFixed(2)} m/s) แตกต่างจากจุดศูนย์กลาง (${V_center.toFixed(2)} m/s) เกิดปัญหาขอบแผ่นขัดเร็วเกินไป (Edge-fast) และทำลายความสม่ำเสมอของฟิล์ม`;
       }
-      if (window.renderMathInElement) window.renderMathInElement(alertEl);
+      if (window.renderMathInElement) renderKaTeX(alertEl);
     }
 
     function startPrestonAnimation() {
@@ -3459,15 +3499,15 @@
 
       if (Math.abs(pH - 2.1) < 0.6 || absZeta < 15) {
         alertEl.className = "p-3.5 rounded-xl text-xs leading-relaxed border bg-red-50 dark:bg-red-950/40 border-red-300 dark:border-red-800 text-red-900 dark:text-red-200";
-        alertEl.innerHTML = `<strong>🚨 สภาวะวิกฤตใกล้จุด IEP (pH ${pH.toFixed(1)}):</strong> ศักย์ซีต้าต่ำมาก (|\(\zeta\)| < 15 mV) แนวกั้นพลังงานผลักไฟฟ้าสถิต DLVO พังทลายลง อนุภาคนาโนถูกแรงดูด van der Waals ดึงดูดจับตัวเป็นก้อนใหญ่ (Agglomeration) ซึ่งจะขูดขีดผิวเวเฟอร์เกิดรอยขีดข่วนรุนแรง (Micro-scratches!)`;
+        alertEl.innerHTML = `<strong>🚨 สภาวะวิกฤตใกล้จุด IEP (pH ${pH.toFixed(1)}):</strong> ศักย์ซีต้าต่ำมาก (|\\(\\zeta\\)| < 15 mV) แนวกั้นพลังงานผลักไฟฟ้าสถิต DLVO พังทลายลง อนุภาคนาโนถูกแรงดูด van der Waals ดึงดูดจับตัวเป็นก้อนใหญ่ (Agglomeration) ซึ่งจะขูดขีดผิวเวเฟอร์เกิดรอยขีดข่วนรุนแรง (Micro-scratches!)`;
       } else if (absZeta >= 30) {
         alertEl.className = "p-3.5 rounded-xl text-xs leading-relaxed border bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200";
-        alertEl.innerHTML = `<strong>🛡️ สภาวะคอลลอยด์เสถียรยอดเยี่ยม (|\(\zeta\)| = ${absZeta.toFixed(1)} mV ≥ 30 mV):</strong> ประจุลบหนาแน่นสร้างแรงผลักไฟฟ้าสถิตสูงลิบลิ่ว (DLVO Barrier > 25 \(k_B T\)) อนุภาคแขวนลอยอย่างอิสระ ไม่จับก้อน และป้องกันการเกาะติดซ้ำของอนุภาคบนเวเฟอร์`;
+        alertEl.innerHTML = `<strong>🛡️ สภาวะคอลลอยด์เสถียรยอดเยี่ยม (|\\(\\zeta\\)| = ${absZeta.toFixed(1)} mV ≥ 30 mV):</strong> ประจุลบหนาแน่นสร้างแรงผลักไฟฟ้าสถิตสูงลิบลิ่ว (DLVO Barrier > 25 \\(k_B T\\)) อนุภาคแขวนลอยอย่างอิสระ ไม่จับก้อน และป้องกันการเกาะติดซ้ำของอนุภาคบนเวเฟอร์`;
       } else {
         alertEl.className = "p-3.5 rounded-xl text-xs leading-relaxed border bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200";
-        alertEl.innerHTML = `<strong>⚠️ ย่านความเสถียรปานกลาง (15 mV ≤ |\(\zeta\)| < 30 mV):</strong> อนุภาคเริ่มสูญเสียแรงผลักไฟฟ้าสถิต มีความเสี่ยงต่อการเกิดการตกตะกอนเมื่อเวลาผ่านไป`;
+        alertEl.innerHTML = `<strong>⚠️ ย่านความเสถียรปานกลาง (15 mV ≤ |\\(\\zeta\\)| < 30 mV):</strong> อนุภาคเริ่มสูญเสียแรงผลักไฟฟ้าสถิต มีความเสี่ยงต่อการเกิดการตกตะกอนเมื่อเวลาผ่านไป`;
       }
-      if (window.renderMathInElement) window.renderMathInElement(alertEl);
+      if (window.renderMathInElement) renderKaTeX(alertEl);
 
       drawDlvoCurve(zetaParticle, ionic);
     }
@@ -3649,15 +3689,15 @@
 
       if (A === 0) {
         regimeCard.className = "p-4 rounded-xl border leading-relaxed text-xs bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200";
-        regimeCard.innerHTML = `<strong>สภาวะ Isotropic สมบูรณ์ (A = 0.0, \(R_L = R_V\)):</strong> เกิดการกัดเซาะใต้หน้ากาก (Undercut) เท่ากับความลึกของการกัดในแนวดิ่ง มักพบในการกัดเปียก (Wet Etch เช่น BOE/DHF กัด SiO₂) หรือพลาสม่าฟรีเรดิคัลล้วน (Downstream CF₄/O₂) ไม่สามารถสร้างลวดลายขนาดซับไมครอนได้`;
+        regimeCard.innerHTML = `<strong>สภาวะ Isotropic สมบูรณ์ (A = 0.0, \\(R_L = R_V\\)):</strong> เกิดการกัดเซาะใต้หน้ากาก (Undercut) เท่ากับความลึกของการกัดในแนวดิ่ง มักพบในการกัดเปียก (Wet Etch เช่น BOE/DHF กัด SiO₂) หรือพลาสม่าฟรีเรดิคัลล้วน (Downstream CF₄/O₂) ไม่สามารถสร้างลวดลายขนาดซับไมครอนได้`;
       } else if (A > 0 && A < 0.8) {
         regimeCard.className = "p-4 rounded-xl border leading-relaxed text-xs bg-blue-50 dark:bg-blue-950/40 border-blue-300 dark:border-blue-800 text-blue-900 dark:text-blue-200";
         regimeCard.innerHTML = `<strong>สภาวะ Reactive Ion Etching ทั่วไป (0 < A < 0.8):</strong> เกิดจากการผสานแรงกระแทกของไอออนในแนวดิ่ง (Ion bombardment) กับปฏิกิริยาเคมีของฟรีเรดิคัล มีการกัดเซาะด้านข้างเล็กน้อย ผนังมีความลาดเอียง`;
       } else {
         regimeCard.className = "p-4 rounded-xl border leading-relaxed text-xs bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200";
-        regimeCard.innerHTML = `<strong>สภาวะ Highly Anisotropic / Bosch DRIE (A ≥ 0.8):</strong> การนำก๊าซสร้างพอลิเมอร์เคลือบผนังข้าง (Sidewall Passivation เช่น C₄F₈ หรือ CHF₃) มาช่วยปกป้องผนังร่อง ทำให้ \(R_L \to 0\) เกิดร่องลึกที่มีผนังตั้งตรงดิ่ง มี Aspect Ratio สูงลิบลิ่ว (> 50:1) สำหรับ TSV`;
+        regimeCard.innerHTML = `<strong>สภาวะ Highly Anisotropic / Bosch DRIE (A ≥ 0.8):</strong> การนำก๊าซสร้างพอลิเมอร์เคลือบผนังข้าง (Sidewall Passivation เช่น C₄F₈ หรือ CHF₃) มาช่วยปกป้องผนังร่อง ทำให้ \\(R_L \\to 0\\) เกิดร่องลึกที่มีผนังตั้งตรงดิ่ง มี Aspect Ratio สูงลิบลิ่ว (> 50:1) สำหรับ TSV`;
       }
-      if (window.renderMathInElement) window.renderMathInElement(regimeCard);
+      if (window.renderMathInElement) renderKaTeX(regimeCard);
 
       drawEtchCrossSection(A);
     }
@@ -3801,10 +3841,10 @@
         promptEl.innerHTML = `
           <p class="mb-2"><strong>สถานการณ์ใน Fab (TMEC Cleanroom):</strong> วิศวกรกำลังขัดแผ่นเวเฟอร์ฟิล์มทองแดง (Cu Damascene) ด้วยเครื่อง CMP โดยกำหนดเงื่อนไขดังนี้:</p>
           <ul class="list-disc ml-5 space-y-1 mb-2">
-            <li>แรงกดหัวจับเวเฟอร์ (Down-force Pressure, \(P\)) = <strong>${P.toFixed(1)} psi</strong></li>
-            <li>ความเร็วสัมพัทธ์ระหว่างแผ่นขัดกับเวเฟอร์ (Relative Velocity, \(V\)) = <strong>${V.toFixed(2)} m/s</strong></li>
-            <li>ค่าสัมประสิทธิ์ของเพรสตัน (Preston Coefficient, \(K_p\)) = <strong>${Kp} Å / (min · psi · m/s)</strong></li>
-            <li>ความหนาของชั้นทองแดงส่วนเกินที่ต้องการขัดออก (Target Overburden Removal, \(\Delta h\)) = <strong>${target.toLocaleString()} Å</strong></li>
+            <li>แรงกดหัวจับเวเฟอร์ (Down-force Pressure, \\(P\\)) = <strong>${P.toFixed(1)} psi</strong></li>
+            <li>ความเร็วสัมพัทธ์ระหว่างแผ่นขัดกับเวเฟอร์ (Relative Velocity, \\(V\\)) = <strong>${V.toFixed(2)} m/s</strong></li>
+            <li>ค่าสัมประสิทธิ์ของเพรสตัน (Preston Coefficient, \\(K_p\\)) = <strong>${Kp} Å / (min · psi · m/s)</strong></li>
+            <li>ความหนาของชั้นทองแดงส่วนเกินที่ต้องการขัดออก (Target Overburden Removal, \\(\\Delta h\\)) = <strong>${target.toLocaleString()} Å</strong></li>
           </ul>
           <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) อัตราการขัดเอาเนื้อออก (Removal Rate: RR ในหน่วย Å/min) และ (2) เวลาที่ต้องใช้ในการขัด (Polishing Time ในหน่วยวินาที)?</p>
         `;
@@ -3823,13 +3863,13 @@
         solutionContent.innerHTML = `
           <div class="p-3 bg-slate-800/80 rounded-xl mb-2">
             <strong class="text-emerald-300">ขั้นตอนที่ 1: คำนวณ Removal Rate (RR) จากสมการเพรสตัน</strong>
-            <p class="mt-1">$$RR = K_p \times P \times V$$</p>
-            <p class="mt-1">$$RR = ${Kp} \text{ \AA/(min\cdot psi\cdot m/s)} \times ${P.toFixed(1)} \text{ psi} \times ${V.toFixed(2)} \text{ m/s} = \mathbf{${RR.toFixed(1)}} \text{ \AA/min}$$</p>
+            <p class="mt-1">$$RR = K_p \\times P \\times V$$</p>
+            <p class="mt-1">$$RR = ${Kp} \\text{ \\AA/(min\\cdot psi\\cdot m/s)} \\times ${P.toFixed(1)} \\text{ psi} \\times ${V.toFixed(2)} \\text{ m/s} = \\mathbf{${RR.toFixed(1)}} \\text{ \\AA/min}$$</p>
           </div>
           <div class="p-3 bg-slate-800/80 rounded-xl">
             <strong class="text-emerald-300">ขั้นตอนที่ 2: คำนวณเวลาที่ใช้ในการขัด (t)</strong>
-            <p class="mt-1">$$t = \frac{\Delta h}{RR} = \frac{${target.toLocaleString()} \text{ \AA}}{${RR.toFixed(1)} \text{ \AA/min}} = ${(timeMin).toFixed(3)} \text{ นาที}$$</p>
-            <p class="mt-1">แปลงเป็นวินาที: $$t = ${(timeMin).toFixed(3)} \times 60 = \mathbf{${timeSec.toFixed(1)}} \text{ วินาที}$$</p>
+            <p class="mt-1">$$t = \\frac{\\Delta h}{RR} = \\frac{${target.toLocaleString()} \\text{ \\AA}}{${RR.toFixed(1)} \\text{ \\AA/min}} = ${(timeMin).toFixed(3)} \\text{ นาที}$$</p>
+            <p class="mt-1">แปลงเป็นวินาที: $$t = ${(timeMin).toFixed(3)} \\times 60 = \\mathbf{${timeSec.toFixed(1)}} \\text{ วินาที}$$</p>
           </div>
         `;
       }
@@ -3871,12 +3911,12 @@
         promptEl.innerHTML = `
           <p class="mb-2"><strong>สถานการณ์เครื่องขัด CMP:</strong> แผ่นรองขัด (Platen) และหัวจับเวเฟอร์ (Carrier) หมุนไปในทิศทางทวนเข็มนาฬิกาเหมือนกัน โดยมีพารามิเตอร์ดังนี้:</p>
           <ul class="list-disc ml-5 space-y-1 mb-2">
-            <li>ความเร็วรอบของ Platen (\(\omega_p\)) = <strong>${omega_p_rpm} RPM</strong></li>
-            <li>ความเร็วรอบของ Carrier (\(\omega_w\)) = <strong>${omega_w_rpm} RPM</strong> ${isMatched ? '<span class="text-emerald-600 dark:text-emerald-400 font-bold">(Matched Speed!)</span>' : '<span class="text-amber-600 dark:text-amber-400 font-bold">(Mismatched Speed!)</span>'}</li>
-            <li>ระยะห่างระหว่างจุดศูนย์กลาง Platen ถึงจุดศูนย์กลางเวเฟอร์ (\(R_c\)) = <strong>${Rc_cm} cm (0.30 m)</strong></li>
-            <li>รัศมีของแผ่นเวเฟอร์ 300 mm (\(r_w\)) = <strong>${rw_cm} cm (0.15 m)</strong></li>
+            <li>ความเร็วรอบของ Platen (\\(\\omega_p\\)) = <strong>${omega_p_rpm} RPM</strong></li>
+            <li>ความเร็วรอบของ Carrier (\\(\\omega_w\\)) = <strong>${omega_w_rpm} RPM</strong> ${isMatched ? '<span class="text-emerald-600 dark:text-emerald-400 font-bold">(Matched Speed!)</span>' : '<span class="text-amber-600 dark:text-amber-400 font-bold">(Mismatched Speed!)</span>'}</li>
+            <li>ระยะห่างระหว่างจุดศูนย์กลาง Platen ถึงจุดศูนย์กลางเวเฟอร์ (\\(R_c\\)) = <strong>${Rc_cm} cm (0.30 m)</strong></li>
+            <li>รัศมีของแผ่นเวเฟอร์ 300 mm (\\(r_w\\)) = <strong>${rw_cm} cm (0.15 m)</strong></li>
           </ul>
-          <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) ความเร็วสัมพัทธ์ ณ จุดศูนย์กลางเวเฟอร์ (\(V_{center}\) ในหน่วย m/s) และ (2) ความเร็วสัมพัทธ์ ณ ขอบนอกสุดของเวเฟอร์ (\(V_{edge}\) ในหน่วย m/s)?</p>
+          <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) ความเร็วสัมพัทธ์ ณ จุดศูนย์กลางเวเฟอร์ (\\(V_{center}\\) ในหน่วย m/s) และ (2) ความเร็วสัมพัทธ์ ณ ขอบนอกสุดของเวเฟอร์ (\\(V_{edge}\\) ในหน่วย m/s)?</p>
         `;
 
         inputsEl.innerHTML = `
@@ -3893,17 +3933,17 @@
         solutionContent.innerHTML = `
           <div class="p-3 bg-slate-800/80 rounded-xl mb-2">
             <strong class="text-emerald-300">ขั้นตอนที่ 1: แปลงความเร็วเชิงมุมจาก RPM เป็น rad/s</strong>
-            <p class="mt-1">$$\omega_p = ${omega_p_rpm} \times \frac{2\pi}{60} = ${(omega_p).toFixed(3)} \text{ rad/s}$$</p>
-            <p class="mt-1">$$\omega_w = ${omega_w_rpm} \times \frac{2\pi}{60} = ${(omega_w).toFixed(3)} \text{ rad/s}$$</p>
+            <p class="mt-1">$$\\omega_p = ${omega_p_rpm} \\times \\frac{2\\pi}{60} = ${(omega_p).toFixed(3)} \\text{ rad/s}$$</p>
+            <p class="mt-1">$$\\omega_w = ${omega_w_rpm} \\times \\frac{2\\pi}{60} = ${(omega_w).toFixed(3)} \\text{ rad/s}$$</p>
           </div>
           <div class="p-3 bg-slate-800/80 rounded-xl mb-2">
             <strong class="text-emerald-300">ขั้นตอนที่ 2: ความเร็วสัมพัทธ์ที่จุดศูนย์กลาง (Center)</strong>
-            <p class="mt-1">$$V_{center} = \omega_p \times R_c = ${(omega_p).toFixed(3)} \text{ rad/s} \times ${Rc} \text{ m} = \mathbf{${V_center.toFixed(3)}} \text{ m/s}$$</p>
+            <p class="mt-1">$$V_{center} = \\omega_p \\times R_c = ${(omega_p).toFixed(3)} \\text{ rad/s} \\times ${Rc} \\text{ m} = \\mathbf{${V_center.toFixed(3)}} \\text{ m/s}$$</p>
           </div>
           <div class="p-3 bg-slate-800/80 rounded-xl">
             <strong class="text-emerald-300">ขั้นตอนที่ 3: ความเร็วสัมพัทธ์ที่ขอบนอก (Outer Edge)</strong>
-            <p class="mt-1">$$V_{edge} = \omega_p(R_c + r_w) - \omega_w(r_w) = ${(omega_p).toFixed(3)}(${Rc + rw}) - ${(omega_w).toFixed(3)}(${rw}) = \mathbf{${V_edge.toFixed(3)}} \text{ m/s}$$</p>
-            <p class="mt-2 text-xs text-slate-300"><strong>ข้อสังเกตสำคัญสำหรับข้อสอบ:</strong> ${isMatched ? 'เมื่อ \(\omega_p = \omega_w\) จะได้ \(V_{edge} = V_{center}\) เป๊ะ! ส่งผลให้ความเร็วสัมพัทธ์คงที่สม่ำเสมอทั่วทั้งแผ่น (WIWNU ต่ำสุด)' : 'เมื่อความเร็วรอบไม่เท่ากัน ความเร็วที่ขอบจะแตกต่างจากจุดศูนย์กลาง ทำให้เกิดปัญหาขอบแผ่นขัดเร็วเกินไป (Edge-fast polishing) และทำลายความสม่ำเสมอ WIWNU'}</p>
+            <p class="mt-1">$$V_{edge} = \\omega_p(R_c + r_w) - \\omega_w(r_w) = ${(omega_p).toFixed(3)}(${Rc + rw}) - ${(omega_w).toFixed(3)}(${rw}) = \\mathbf{${V_edge.toFixed(3)}} \\text{ m/s}$$</p>
+            <p class="mt-2 text-xs text-slate-300"><strong>ข้อสังเกตสำคัญสำหรับข้อสอบ:</strong> ${isMatched ? 'เมื่อ \\(\\omega_p = \\omega_w\\) จะได้ \\(V_{edge} = V_{center}\\) เป๊ะ! ส่งผลให้ความเร็วสัมพัทธ์คงที่สม่ำเสมอทั่วทั้งแผ่น (WIWNU ต่ำสุด)' : 'เมื่อความเร็วรอบไม่เท่ากัน ความเร็วที่ขอบจะแตกต่างจากจุดศูนย์กลาง ทำให้เกิดปัญหาขอบแผ่นขัดเร็วเกินไป (Edge-fast polishing) และทำลายความสม่ำเสมอ WIWNU'}</p>
           </div>
         `;
       }
@@ -3940,19 +3980,19 @@
         };
 
         promptEl.innerHTML = `
-          <p class="mb-2"><strong>การวิเคราะห์เสถียรภาพของน้ำยาขัด CMP (Colloidal Slurry Stability):</strong> เครื่องวัดประจุอนุภาคตรวจวัดค่าความคล่องตัวเชิงอิเล็กโทรโฟเรติก (Electrophoretic Mobility, \(\mu_e\)) ของอนุภาคขัดซิลิกา (Silica) ในสารละลายสลอรี่ ได้ผลดังนี้:</p>
+          <p class="mb-2"><strong>การวิเคราะห์เสถียรภาพของน้ำยาขัด CMP (Colloidal Slurry Stability):</strong> เครื่องวัดประจุอนุภาคตรวจวัดค่าความคล่องตัวเชิงอิเล็กโทรโฟเรติก (Electrophoretic Mobility, \\(\\mu_e\\)) ของอนุภาคขัดซิลิกา (Silica) ในสารละลายสลอรี่ ได้ผลดังนี้:</p>
           <ul class="list-disc ml-5 space-y-1 mb-2">
-            <li>Electrophoretic Mobility (\(\mu_e\)) = <strong>${mu_val.toFixed(2)} \times 10^{-8} \text{ m}^2 / (\text{V} \cdot \text{s})</strong></li>
-            <li>ความหนืดของตัวกลางน้ำ (Viscosity, \(\eta\)) = <strong>0.001 Pa · s (1.0 cP)</strong></li>
-            <li>ค่าคงที่ไดอิเล็กทริกของน้ำ (Dielectric Constant, \(\varepsilon_r\)) = <strong>78.5</strong></li>
-            <li>สภาพยอมทางไฟฟ้าของสุญญากาศ (\(\varepsilon_0\)) = <strong>8.854 \times 10^{-12} F/m</strong></li>
+            <li>Electrophoretic Mobility (\\(\\mu_e\\)) = <strong>${mu_val.toFixed(2)} \\times 10^{-8} \\text{ m}^2 / (\\text{V} \\cdot \\text{s})</strong></li>
+            <li>ความหนืดของตัวกลางน้ำ (Viscosity, \\(\\eta\\)) = <strong>0.001 Pa · s (1.0 cP)</strong></li>
+            <li>ค่าคงที่ไดอิเล็กทริกของน้ำ (Dielectric Constant, \\(\\varepsilon_r\\)) = <strong>78.5</strong></li>
+            <li>สภาพยอมทางไฟฟ้าของสุญญากาศ (\\(\\varepsilon_0\\)) = <strong>8.854 \\times 10^{-12} F/m</strong></li>
           </ul>
-          <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) ค่าศักย์ซีต้า (Zeta Potential, \(\zeta\) ในหน่วย mV) และ (2) น้ำยาขัดนี้มีเสถียรภาพตามเกณฑ์ DLVO (|\(\zeta\)| ≥ 30 mV) หรือไม่?</p>
+          <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) ค่าศักย์ซีต้า (Zeta Potential, \\(\\zeta\\) ในหน่วย mV) และ (2) น้ำยาขัดนี้มีเสถียรภาพตามเกณฑ์ DLVO (|\\(\\zeta\\)| ≥ 30 mV) หรือไม่?</p>
         `;
 
         inputsEl.innerHTML = `
           <div>
-            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">1. Zeta Potential (\(\zeta\)) [mV]:</label>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">1. Zeta Potential (\\(\\zeta\\)) [mV]:</label>
             <input type="number" step="any" id="ans_zeta" placeholder="เช่น -35.2" class="w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-sm font-bold text-slate-900 dark:text-white">
           </div>
           <div>
@@ -3968,14 +4008,14 @@
         solutionContent.innerHTML = `
           <div class="p-3 bg-slate-800/80 rounded-xl mb-2">
             <strong class="text-emerald-300">ขั้นตอนที่ 1: สมการ Helmholtz-Smoluchowski</strong>
-            <p class="mt-1">$$\zeta = \frac{\eta \cdot \mu_e}{\varepsilon_0 \cdot \varepsilon_r}$$</p>
-            <p class="mt-1">$$\varepsilon = \varepsilon_0 \cdot \varepsilon_r = (8.854 \times 10^{-12}) \times 78.5 = 6.950 \times 10^{-10} \text{ F/m}$$</p>
+            <p class="mt-1">$$\\zeta = \\frac{\\eta \\cdot \\mu_e}{\\varepsilon_0 \\cdot \\varepsilon_r}$$</p>
+            <p class="mt-1">$$\\varepsilon = \\varepsilon_0 \\cdot \\varepsilon_r = (8.854 \\times 10^{-12}) \\times 78.5 = 6.950 \\times 10^{-10} \\text{ F/m}$$</p>
           </div>
           <div class="p-3 bg-slate-800/80 rounded-xl">
             <strong class="text-emerald-300">ขั้นตอนที่ 2: แทนค่าคำนวณศักย์ซีต้า (Zeta Potential)</strong>
-            <p class="mt-1">$$\zeta = \frac{0.001 \text{ Pa}\cdot\text{s} \times (${mu_val.toFixed(2)} \times 10^{-8} \text{ m}^2/\text{V}\cdot\text{s})}{6.950 \times 10^{-10} \text{ F/m}} = ${(zeta_V).toFixed(4)} \text{ V}$$</p>
-            <p class="mt-1">แปลงเป็นมิลลิโวลต์ (mV): $$\zeta = ${(zeta_V).toFixed(4)} \times 1000 = \mathbf{${zeta_mV.toFixed(1)}} \text{ mV}$$</p>
-            <p class="mt-2 text-xs text-slate-300"><strong>สรุปผลทางวิศวกรรม:</strong> เนื่องจากค่าสัมบูรณ์ $|\zeta| = ${Math.abs(zeta_mV).toFixed(1)} \text{ mV}$ ${isStable ? '≥ 30 mV แสดงว่าแรงผลักไฟฟ้าสถิตสูง คอลลอยด์มีความเสถียรยอดเยี่ยม ไม่อนุภาคจับตัวเป็นก้อน ไม่เกิดรอยขีดข่วน' : '< 30 mV แสดงว่าแรงผลักไฟฟ้าสถิตไม่เพียงพอ อนุภาคจะถูกแรงดูด van der Waals ดึงดูดจับก้อน (Agglomeration) และขูดขีดผิวเวเฟอร์จนเกิดรอยขีดข่วนรุนแรง'}</p>
+            <p class="mt-1">$$\\zeta = \\frac{0.001 \\text{ Pa}\\cdot\\text{s} \\times (${mu_val.toFixed(2)} \\times 10^{-8} \\text{ m}^2/\\text{V}\\cdot\\text{s})}{6.950 \\times 10^{-10} \\text{ F/m}} = ${(zeta_V).toFixed(4)} \\text{ V}$$</p>
+            <p class="mt-1">แปลงเป็นมิลลิโวลต์ (mV): $$\\zeta = ${(zeta_V).toFixed(4)} \\times 1000 = \\mathbf{${zeta_mV.toFixed(1)}} \\text{ mV}$$</p>
+            <p class="mt-2 text-xs text-slate-300"><strong>สรุปผลทางวิศวกรรม:</strong> เนื่องจากค่าสัมบูรณ์ $|\\zeta| = ${Math.abs(zeta_mV).toFixed(1)} \\text{ mV}$ ${isStable ? '≥ 30 mV แสดงว่าแรงผลักไฟฟ้าสถิตสูง คอลลอยด์มีความเสถียรยอดเยี่ยม ไม่อนุภาคจับตัวเป็นก้อน ไม่เกิดรอยขีดข่วน' : '< 30 mV แสดงว่าแรงผลักไฟฟ้าสถิตไม่เพียงพอ อนุภาคจะถูกแรงดูด van der Waals ดึงดูดจับก้อน (Agglomeration) และขูดขีดผิวเวเฟอร์จนเกิดรอยขีดข่วนรุนแรง'}</p>
           </div>
         `;
       }
@@ -4007,10 +4047,10 @@
         promptEl.innerHTML = `
           <p class="mb-2"><strong>ระบบพิมพ์ลวดลายโฟโต้ลิโธกราฟีขั้นสูง:</strong> วิศวกรกำลังประเมินระบบสแกนเนอร์ <strong>${sc.name}</strong> โดยมีข้อมูลทางทัศนศาสตร์ดังนี้:</p>
           <ul class="list-disc ml-5 space-y-1 mb-2">
-            <li>ความยาวคลื่นแสง (Wavelength, \(\lambda\)) = <strong>${sc.lambda} nm</strong></li>
-            <li>ตัวเลขช่องเปิดรับแสง (Numerical Aperture, \(NA\)) = <strong>${sc.NA}</strong></li>
-            <li>แฟกเตอร์กระบวนการพิมพ์ (Process Factor, \(k_1\)) = <strong>${sc.k1}</strong></li>
-            <li>แฟกเตอร์ระยะชัดลึก (Process Factor, \(k_2\)) = <strong>${sc.k2}</strong></li>
+            <li>ความยาวคลื่นแสง (Wavelength, \\(\\lambda\\)) = <strong>${sc.lambda} nm</strong></li>
+            <li>ตัวเลขช่องเปิดรับแสง (Numerical Aperture, \\(NA\\)) = <strong>${sc.NA}</strong></li>
+            <li>แฟกเตอร์กระบวนการพิมพ์ (Process Factor, \\(k_1\\)) = <strong>${sc.k1}</strong></li>
+            <li>แฟกเตอร์ระยะชัดลึก (Process Factor, \\(k_2\\)) = <strong>${sc.k2}</strong></li>
           </ul>
           <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) ขนาดลวดลายวิกฤตต่ำสุดที่พิมพ์ได้ (Resolution: R ในหน่วย nm) และ (2) ระยะชัดลึกของลำแสง (Depth of Focus: DOF ในหน่วย nm)?</p>
         `;
@@ -4029,12 +4069,12 @@
         solutionContent.innerHTML = `
           <div class="p-3 bg-slate-800/80 rounded-xl mb-2">
             <strong class="text-emerald-300">ขั้นตอนที่ 1: คำนวณความละเอียดจากสมการแรกของเรย์ลี (Resolution)</strong>
-            <p class="mt-1">$$R = k_1 \frac{\lambda}{NA} = ${sc.k1} \times \frac{${sc.lambda} \text{ nm}}{${sc.NA}} = \mathbf{${R.toFixed(2)}} \text{ nm}$$</p>
+            <p class="mt-1">$$R = k_1 \\frac{\\lambda}{NA} = ${sc.k1} \\times \\frac{${sc.lambda} \\text{ nm}}{${sc.NA}} = \\mathbf{${R.toFixed(2)}} \\text{ nm}$$</p>
           </div>
           <div class="p-3 bg-slate-800/80 rounded-xl">
             <strong class="text-emerald-300">ขั้นตอนที่ 2: คำนวณระยะชัดลึกจากสมการที่สองของเรย์ลี (Depth of Focus)</strong>
-            <p class="mt-1">$$DOF = k_2 \frac{\lambda}{NA^2} = ${sc.k2} \times \frac{${sc.lambda} \text{ nm}}{(${sc.NA})^2} = \mathbf{${DOF.toFixed(1)}} \text{ nm}$$</p>
-            <p class="mt-2 text-xs text-slate-300"><strong>บทวิเคราะห์ข้อสอบ:</strong> การเพิ่ม NA ส่งผลดีต่อความละเอียด R (เส้นเล็กลง) แต่ทำให้ระยะชัดลึก DOF ลดลงตามกำลังสอง (\(NA^2\)) ซึ่งทำให้แผ่นเวเฟอร์ต้องมีความเรียบระดับอะตอมผ่านกระบวนการ CMP ก่อนเข้าพิมพ์!</p>
+            <p class="mt-1">$$DOF = k_2 \\frac{\\lambda}{NA^2} = ${sc.k2} \\times \\frac{${sc.lambda} \\text{ nm}}{(${sc.NA})^2} = \\mathbf{${DOF.toFixed(1)}} \\text{ nm}$$</p>
+            <p class="mt-2 text-xs text-slate-300"><strong>บทวิเคราะห์ข้อสอบ:</strong> การเพิ่ม NA ส่งผลดีต่อความละเอียด R (เส้นเล็กลง) แต่ทำให้ระยะชัดลึก DOF ลดลงตามกำลังสอง (\\(NA^2\\)) ซึ่งทำให้แผ่นเวเฟอร์ต้องมีความเรียบระดับอะตอมผ่านกระบวนการ CMP ก่อนเข้าพิมพ์!</p>
           </div>
         `;
       }
@@ -4065,13 +4105,13 @@
         };
 
         promptEl.innerHTML = `
-          <p class="mb-2"><strong>การทดสอบกระบวนการกัดกร่อนด้วยพลาสม่า (Plasma Etch Process Evaluation):</strong> ในห้องทดลองกัดเซาะชั้นฟิล์ม Silicon Dioxide ด้วยพลาสม่า \(\text{CF}_4 / \text{CHF}_3\) วัดค่าอัตราการกัดได้ดังนี้:</p>
+          <p class="mb-2"><strong>การทดสอบกระบวนการกัดกร่อนด้วยพลาสม่า (Plasma Etch Process Evaluation):</strong> ในห้องทดลองกัดเซาะชั้นฟิล์ม Silicon Dioxide ด้วยพลาสม่า \\(\\text{CF}_4 / \\text{CHF}_3\\) วัดค่าอัตราการกัดได้ดังนี้:</p>
           <ul class="list-disc ml-5 space-y-1 mb-2">
-            <li>อัตราการกัดฟิล์มในแนวดิ่ง (Vertical Etch Rate, \(R_V\)) = <strong>${R_V} nm/min</strong></li>
-            <li>อัตราการกัดเซาะด้านข้างใต้หน้ากาก (Lateral Undercut Rate, \(R_L\)) = <strong>${R_L} nm/min</strong></li>
-            <li>อัตราการถูกกัดของหน้ากากโฟโต้รีซิสต์ (Mask Etch Rate, \(R_{mask}\)) = <strong>${R_mask} nm/min</strong></li>
+            <li>อัตราการกัดฟิล์มในแนวดิ่ง (Vertical Etch Rate, \\(R_V\\)) = <strong>${R_V} nm/min</strong></li>
+            <li>อัตราการกัดเซาะด้านข้างใต้หน้ากาก (Lateral Undercut Rate, \\(R_L\\)) = <strong>${R_L} nm/min</strong></li>
+            <li>อัตราการถูกกัดของหน้ากากโฟโต้รีซิสต์ (Mask Etch Rate, \\(R_{mask}\\)) = <strong>${R_mask} nm/min</strong></li>
           </ul>
-          <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) สภาพเลือกกัดระหว่างฟิล์มต่อหน้ากาก (Selectivity, \(S\)) และ (2) ค่าสัมประสิทธิ์แอนไอโซโทรปี (Anisotropy Factor, \(A\))?</p>
+          <p class="font-bold text-emerald-800 dark:text-emerald-300">คำถาม: จงคำนวณหา (1) สภาพเลือกกัดระหว่างฟิล์มต่อหน้ากาก (Selectivity, \\(S\\)) และ (2) ค่าสัมประสิทธิ์แอนไอโซโทรปี (Anisotropy Factor, \\(A\\))?</p>
         `;
 
         inputsEl.innerHTML = `
@@ -4088,19 +4128,29 @@
         solutionContent.innerHTML = `
           <div class="p-3 bg-slate-800/80 rounded-xl mb-2">
             <strong class="text-emerald-300">ขั้นตอนที่ 1: คำนวณค่าสภาพเลือกกัด (Selectivity: S)</strong>
-            <p class="mt-1">$$S = \frac{R_{film}}{R_{mask}} = \frac{${R_film} \text{ nm/min}}{${R_mask} \text{ nm/min}} = \mathbf{${S.toFixed(2)}} : 1$$</p>
+            <p class="mt-1">$$S = \\frac{R_{film}}{R_{mask}} = \\frac{${R_film} \\text{ nm/min}}{${R_mask} \\text{ nm/min}} = \\mathbf{${S.toFixed(2)}} : 1$$</p>
           </div>
           <div class="p-3 bg-slate-800/80 rounded-xl">
             <strong class="text-emerald-300">ขั้นตอนที่ 2: คำนวณสัมประสิทธิ์แอนไอโซโทรปี (Anisotropy: A)</strong>
-            <p class="mt-1">$$A = 1 - \frac{R_L}{R_V} = 1 - \frac{${R_L} \text{ nm/min}}{${R_V} \text{ nm/min}} = 1 - ${(R_L / R_V).toFixed(3)} = \mathbf{${A.toFixed(3)}}$$</p>
+            <p class="mt-1">$$A = 1 - \\frac{R_L}{R_V} = 1 - \\frac{${R_L} \\text{ nm/min}}{${R_V} \\text{ nm/min}} = 1 - ${(R_L / R_V).toFixed(3)} = \\mathbf{${A.toFixed(3)}}$$</p>
             <p class="mt-2 text-xs text-slate-300"><strong>สรุป:</strong> ค่า Anisotropy = ${A.toFixed(3)} (${(A * 100).toFixed(1)}% anisotropic) จัดเป็นกระบวนการ ${A > 0.9 ? 'DRIE หรือ RIE ขั้นสูงที่มีการปกป้องผนังข้างยอดเยี่ยม (Sidewall Passivation)' : 'RIE ทั่วไปที่มีการกัดเซาะด้านข้างเล็กน้อย (Moderate Undercut)'}</p>
           </div>
         `;
       }
 
       if (window.renderMathInElement) {
-        window.renderMathInElement(promptEl, { delimiters: [{left: "$$", right: "$$", display: true}, {left: "\(", right: "\)", display: false}] });
-        window.renderMathInElement(solutionContent, { delimiters: [{left: "$$", right: "$$", display: true}, {left: "\(", right: "\)", display: false}] });
+        renderKaTeX(promptEl, { delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false });
+        renderKaTeX(solutionContent, { delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false });
       }
     }
 
@@ -4338,8 +4388,8 @@
       document.getElementById('flashcardBox')?.classList.remove('flipped');
 
       if (window.renderMathInElement) {
-        window.renderMathInElement(document.getElementById('fcFrontText'));
-        window.renderMathInElement(document.getElementById('fcBackText'));
+        renderKaTeX(document.getElementById('fcFrontText'));
+        renderKaTeX(document.getElementById('fcBackText'));
       }
     }
 
@@ -4519,7 +4569,12 @@
       }).join('');
 
       if (window.renderMathInElement) {
-        window.renderMathInElement(container, { delimiters: [{left: "$$", right: "$$", display: true}, {left: "\(", right: "\)", display: false}] });
+        renderKaTeX(container, { delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false });
       }
     }
 
@@ -4656,8 +4711,8 @@
         prompt: `<strong>คำถามอัตนัยข้อที่ 1 (10 คะแนน):</strong><br>
         1.1 จงอธิบายผลกระทบของสิ่งปนเปื้อน 2 ชนิดต่อไปนี้ต่อสมบัติทางไฟฟ้าของอุปกรณ์ MOSFET: (ก) Mobile Ionic Contaminants (Na⁺, K⁺) และ (ข) Heavy Metals (Fe, Cu) (2 คะแนน)<br>
         1.2 จงระบุสูตรส่วนผสมเคมี อุณหภูมิ และเขียนสมการเคมีอธิบายกลไกของน้ำยา <strong>SC-1 (APM)</strong> และ <strong>SC-2 (HPM)</strong> (3 คะแนน)<br>
-        1.3 จงอธิบายว่าเหตุใดสารละลาย SC-1 (pH 10-11) จึงสามารถกำจัดอนุภาคขนาดเล็กมาก (Sub-micron particles) และป้องกันไม่ให้อนุภาคตกกลับมาเกาะติดซ้ำ (Particle Re-deposition) โดยอ้างอิงทฤษฎี <strong>Zeta Potential (\(\zeta\))</strong> และทฤษฎี DLVO (3 คะแนน)<br>
-        1.4 เหตุใดการทำแห้งแบบ <strong>Marangoni Drying</strong> จึงสามารถกำจัดปัญหารอยคราบน้ำ (Watermarks: \(\text{H}_2\text{SiO}_3\)) ได้อย่างสมบูรณ์เมื่อเทียบกับการปั่นแห้งแบบหมุนเหวี่ยง? (2 คะแนน)`,
+        1.3 จงอธิบายว่าเหตุใดสารละลาย SC-1 (pH 10-11) จึงสามารถกำจัดอนุภาคขนาดเล็กมาก (Sub-micron particles) และป้องกันไม่ให้อนุภาคตกกลับมาเกาะติดซ้ำ (Particle Re-deposition) โดยอ้างอิงทฤษฎี <strong>Zeta Potential (\\(\\zeta\\))</strong> และทฤษฎี DLVO (3 คะแนน)<br>
+        1.4 เหตุใดการทำแห้งแบบ <strong>Marangoni Drying</strong> จึงสามารถกำจัดปัญหารอยคราบน้ำ (Watermarks: \\(\\text{H}_2\\text{SiO}_3\\)) ได้อย่างสมบูรณ์เมื่อเทียบกับการปั่นแห้งแบบหมุนเหวี่ยง? (2 คะแนน)`,
         rubric: [
           { id: "r1_1", text: "อธิบายผลกระทบของ Na⁺/K⁺ ต่อการเลื่อนของ Vth / TDDB และ Fe/Cu ต่อ SRH recombination / Junction leakage ชัดเจน (2 คะแนน)", pts: 2 },
           { id: "r1_2", text: "ระบุอัตราส่วนเคมี SC-1 (NH₄OH/H₂O₂/H₂O) และ SC-2 (HCl/H₂O₂/H₂O) พร้อมสมการเคมี Micro-undercutting และ Soluble Chloro-complexes ถูกต้อง (3 คะแนน)", pts: 3 },
@@ -4665,11 +4720,11 @@
           { id: "r1_4", text: "อธิบายปรากฏการณ์ Marangoni ด้วย Surface Tension Gradient (dσ/dx) ระหว่าง IPA กับน้ำ ดึงฟิล์มน้ำขึ้นโดยไม่ทิ้งหยดน้ำเดี่ยวๆ (2 คะแนน)", pts: 2 }
         ],
         modelAnswer: `
-          <div class="space-y-4 text-xs md:text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+          <div class="space-y-4 text-sm md:text-[15px] leading-relaxed md:leading-loose text-slate-800 dark:text-slate-200">
             <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50">
               <strong class="text-blue-900 dark:text-blue-300">1.1 ผลกระทบของสิ่งปนเปื้อนต่อสมบัติทางไฟฟ้า:</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>Mobile Ionic Contaminants (Na⁺, K⁺):</strong> ไอออนบวกเหล่านี้มีรัศมีไอออนขนาดเล็ก สามารถเคลื่อนที่แพร่ (Drift) ในเนื้อฉนวน Gate Oxide (SiO₂) ได้ภายใต้อิทธิพลของสนามไฟฟ้า ทำให้เกิดการเลื่อนของ Flatband Voltage (\(\Delta V_{FB} = -Q_m / C_{ox}\)) ส่งผลให้ <em>Threshold Voltage (\(V_{th}\))</em> เลื่อนไม่คงที่ และลดความทนทานต่อการพังทลายของชั้นออกไซด์ (Time-Dependent Dielectric Breakdown: TDDB)</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>Mobile Ionic Contaminants (Na⁺, K⁺):</strong> ไอออนบวกเหล่านี้มีรัศมีไอออนขนาดเล็ก สามารถเคลื่อนที่แพร่ (Drift) ในเนื้อฉนวน Gate Oxide (SiO₂) ได้ภายใต้อิทธิพลของสนามไฟฟ้า ทำให้เกิดการเลื่อนของ Flatband Voltage (\\(\\Delta V_{FB} = -Q_m / C_{ox}\\)) ส่งผลให้ <em>Threshold Voltage (\\(V_{th}\\))</em> เลื่อนไม่คงที่ และลดความทนทานต่อการพังทลายของชั้นออกไซด์ (Time-Dependent Dielectric Breakdown: TDDB)</li>
                 <li><strong>Heavy Metals (Fe, Cu):</strong> โลหะหนักจะแทรกตัวในโครงผลึกซิลิกอนและสร้างระดับพลังงานลึก (Deep-Level Traps) บริเวณกึ่งกลางแถบพลังงาน (Mid-gap) ทำหน้าที่เป็น <em>Shockley-Read-Hall (SRH) Recombination Centers</em> ส่งผลให้พาหะข้างน้อยมีอายุสั้นลง (Carrier Lifetime ลดฮวบ) และทำให้กระแสรั่วไหลที่รอยต่อ p-n junction (Junction Leakage Current) เพิ่มสูงขึ้นหลายเท่าตัว</li>
               </ul>
             </div>
@@ -4677,31 +4732,31 @@
             <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
               <strong class="text-slate-900 dark:text-white">1.2 สูตรส่วนผสมและปฏิกิริยาเคมีของ SC-1 และ SC-2:</strong>
               <div class="mt-2 space-y-2">
-                <p><strong>SC-1 (APM):</strong> \(\text{NH}_4\text{OH} : \text{H}_2\text{O}_2 : \text{H}_2\text{O} = 1:1:5\) ถึง \(1:2:10\) อุณหภูมิ \(70-80^\circ\text{C}\) (\(\text{pH} \approx 10-11\))</p>
+                <p><strong>SC-1 (APM):</strong> \\(\\text{NH}_4\\text{OH} : \\text{H}_2\\text{O}_2 : \\text{H}_2\\text{O} = 1:1:5\\) ถึง \\(1:2:10\\) อุณหภูมิ \\(70-80^\\circ\\text{C}\\) (\\(\\text{pH} \\approx 10-11\\))</p>
                 <p class="font-mono text-xs pl-4 bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800">
-                  \(\text{Si} + 2\text{H}_2\text{O}_2 \rightarrow \text{SiO}_2 + 2\text{H}_2\text{O}\) (ออกซิไดซ์ผิว)<br>
-                  \(\text{SiO}_2 + 2\text{NH}_4\text{OH} \rightarrow (\text{NH}_4)_2\text{SiO}_3 + \text{H}_2\text{O}\) (กัดเซาะออกไซด์อย่างช้าๆ 1-2 nm/min)
+                  \\(\\text{Si} + 2\\text{H}_2\\text{O}_2 \\rightarrow \\text{SiO}_2 + 2\\text{H}_2\\text{O}\\) (ออกซิไดซ์ผิว)<br>
+                  \\(\\text{SiO}_2 + 2\\text{NH}_4\\text{OH} \\rightarrow (\\text{NH}_4)_2\\text{SiO}_3 + \\text{H}_2\\text{O}\\) (กัดเซาะออกไซด์อย่างช้าๆ 1-2 nm/min)
                 </p>
-                <p class="mt-2"><strong>SC-2 (HPM):</strong> \(\text{HCl} : \text{H}_2\text{O}_2 : \text{H}_2\text{O} = 1:1:6\) อุณหภูมิ \(70-80^\circ\text{C}\) (\(\text{pH} < 2\))</p>
+                <p class="mt-2"><strong>SC-2 (HPM):</strong> \\(\\text{HCl} : \\text{H}_2\\text{O}_2 : \\text{H}_2\\text{O} = 1:1:6\\) อุณหภูมิ \\(70-80^\\circ\\text{C}\\) (\\(\\text{pH} < 2\\))</p>
                 <p class="font-mono text-xs pl-4 bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800">
-                  \(\text{Fe} + 3\text{HCl} + \frac{3}{2}\text{H}_2\text{O}_2 \rightarrow \text{FeCl}_3 + 3\text{H}_2\text{O}\) (หรือ \([\text{FeCl}_6]^{3-}\))<br>
-                  \(\text{Cu} + 2\text{HCl} + \text{H}_2\text{O}_2 \rightarrow \text{CuCl}_2 + 2\text{H}_2\text{O}\) (หรือ \([\text{CuCl}_4]^{2-}\))<br>
-                  <em>*สภาวะกรดจัด (\(\text{pH} < 2\)) ป้องกันการเกิดตะกอน Metal Hydroxide (\(\text{Fe(OH)}_3\downarrow\))</em>
+                  \\(\\text{Fe} + 3\\text{HCl} + \\frac{3}{2}\\text{H}_2\\text{O}_2 \\rightarrow \\text{FeCl}_3 + 3\\text{H}_2\\text{O}\\) (หรือ \\([\\text{FeCl}_6]^{3-}\\))<br>
+                  \\(\\text{Cu} + 2\\text{HCl} + \\text{H}_2\\text{O}_2 \\rightarrow \\text{CuCl}_2 + 2\\text{H}_2\\text{O}\\) (หรือ \\([\\text{CuCl}_4]^{2-}\\))<br>
+                  <em>*สภาวะกรดจัด (\\(\\text{pH} < 2\\)) ป้องกันการเกิดตะกอน Metal Hydroxide (\\(\\text{Fe(OH)}_3\\downarrow\\))</em>
                 </p>
               </div>
             </div>
 
             <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/50">
-              <strong class="text-purple-900 dark:text-purple-300">1.3 กลไกการกำจัดอนุภาคและบทบาทของ Zeta Potential (\(\zeta\)):</strong>
+              <strong class="text-purple-900 dark:text-purple-300">1.3 กลไกการกำจัดอนุภาคและบทบาทของ Zeta Potential (\\(\\zeta\\)):</strong>
               <p class="mt-1">
-                SC-1 ทำงานด้วย 2 กลไกผสานกัน: (1) <em>Micro-undercutting:</em> สารละลายกัดเซาะชั้นออกไซด์ใต้ฐานอนุภาคบางๆ ประมาณ 1-2 nm เพื่อตัดแรงยึดเกาะ van der Waals ทำให้หลุดออกจากผิว (2) <em>Zeta Potential Control:</em> ที่สภาวะด่าง (\(\text{pH} 10-11\)) ซึ่งอยู่ห่างจากจุด IEP ของซิลิกา (\(\text{IEP} \approx 2\)) ผิวเวเฟอร์ \(\text{SiO}_2\) และอนุภาคฝุ่นส่วนใหญ่จะมี <strong>Zeta Potential เป็นลบสูงมาก (\(\zeta < -40\) ถึง \(-60\text{ mV}\))</strong> ตามทฤษฎี DLVO ประจุลบที่เหมือนกันจะสร้างแรงผลักไฟฟ้าสถิต (Electrostatic Repulsion Barrier > 20 \(k_B T\)) ทำให้อนุภาคที่หลุดออกมาลอยแขวนลอยในของเหลวและถูกพัดพาชะล้างออกไปโดยไม่มีวันตกกลับมาเกาะติดบนผิวเวเฟอร์ซ้ำ (Zero Re-deposition)
+                SC-1 ทำงานด้วย 2 กลไกผสานกัน: (1) <em>Micro-undercutting:</em> สารละลายกัดเซาะชั้นออกไซด์ใต้ฐานอนุภาคบางๆ ประมาณ 1-2 nm เพื่อตัดแรงยึดเกาะ van der Waals ทำให้หลุดออกจากผิว (2) <em>Zeta Potential Control:</em> ที่สภาวะด่าง (\\(\\text{pH} 10-11\\)) ซึ่งอยู่ห่างจากจุด IEP ของซิลิกา (\\(\\text{IEP} \\approx 2\\)) ผิวเวเฟอร์ \\(\\text{SiO}_2\\) และอนุภาคฝุ่นส่วนใหญ่จะมี <strong>Zeta Potential เป็นลบสูงมาก (\\(\\zeta < -40\\) ถึง \\(-60\\text{ mV}\\))</strong> ตามทฤษฎี DLVO ประจุลบที่เหมือนกันจะสร้างแรงผลักไฟฟ้าสถิต (Electrostatic Repulsion Barrier > 20 \\(k_B T\\)) ทำให้อนุภาคที่หลุดออกมาลอยแขวนลอยในของเหลวและถูกพัดพาชะล้างออกไปโดยไม่มีวันตกกลับมาเกาะติดบนผิวเวเฟอร์ซ้ำ (Zero Re-deposition)
               </p>
             </div>
 
             <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50">
               <strong class="text-emerald-900 dark:text-emerald-300">1.4 เทคนิค Marangoni Drying vs Spin Drying:</strong>
               <p class="mt-1">
-                การปั่นแห้งแบบหมุนเหวี่ยง (Spin drying) มักทิ้ง "หยดน้ำเดี่ยวๆ" ตกค้างตามพื้นผิว ซึ่งออกซิเจนในอากาศจะเร่งให้ซิลิกอนในหยดน้ำละลายเกิดกรดซิลิซิก (\(\text{H}_2\text{SiO}_3\)) เมื่อหยดน้ำระเหยจะตกผลึกเป็นคราบ Watermarks ฝังแน่นทำลายชิป ในทางตรงกันข้าม <strong>Marangoni Drying</strong> ใช้ไอระเหยของ IPA สัมผัสกับขอบฟิล์มน้ำ ทำให้เกิดความแตกต่างของแรงตึงผิว (<em>Surface Tension Gradient: \(d\sigma/dx\)</em>) ระหว่างน้ำด้านล่าง (\(\sigma \approx 72\text{ mN/m}\)) กับผิวด้านบนที่สัมผัส IPA (\(\sigma \approx 22\text{ mN/m}\)) เกิดแรงดึงฟิล์มน้ำขึ้นสู่ด้านบนอย่างสม่ำเสมอ ฟิล์มน้ำจึงถูกดึงร่นออกจากผิวเวเฟอร์อย่างเกลี้ยงเกลาโดยไม่แตกตัวเป็นหยดน้ำเดี่ยว จึงกำจัดปัญหารอยคราบน้ำได้อย่างสมบูรณ์แบบ
+                การปั่นแห้งแบบหมุนเหวี่ยง (Spin drying) มักทิ้ง "หยดน้ำเดี่ยวๆ" ตกค้างตามพื้นผิว ซึ่งออกซิเจนในอากาศจะเร่งให้ซิลิกอนในหยดน้ำละลายเกิดกรดซิลิซิก (\\(\\text{H}_2\\text{SiO}_3\\)) เมื่อหยดน้ำระเหยจะตกผลึกเป็นคราบ Watermarks ฝังแน่นทำลายชิป ในทางตรงกันข้าม <strong>Marangoni Drying</strong> ใช้ไอระเหยของ IPA สัมผัสกับขอบฟิล์มน้ำ ทำให้เกิดความแตกต่างของแรงตึงผิว (<em>Surface Tension Gradient: \\(d\\sigma/dx\\)</em>) ระหว่างน้ำด้านล่าง (\\(\\sigma \\approx 72\\text{ mN/m}\\)) กับผิวด้านบนที่สัมผัส IPA (\\(\\sigma \\approx 22\\text{ mN/m}\\)) เกิดแรงดึงฟิล์มน้ำขึ้นสู่ด้านบนอย่างสม่ำเสมอ ฟิล์มน้ำจึงถูกดึงร่นออกจากผิวเวเฟอร์อย่างเกลี้ยงเกลาโดยไม่แตกตัวเป็นหยดน้ำเดี่ยว จึงกำจัดปัญหารอยคราบน้ำได้อย่างสมบูรณ์แบบ
               </p>
             </div>
           </div>
@@ -4721,15 +4776,15 @@
           { id: "r2_3", text: "อธิบายการ Passivate dangling bonds (Si· + H· → Si-H), การลด Dit จาก 10¹² สู่ <10¹⁰ cm⁻²eV⁻¹, และเกณฑ์ความปลอดภัย LEL (3 คะแนน)", pts: 3 }
         ],
         modelAnswer: `
-          <div class="space-y-4 text-xs md:text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+          <div class="space-y-4 text-sm md:text-[15px] leading-relaxed md:leading-loose text-slate-800 dark:text-slate-200">
             <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50">
               <strong class="text-blue-900 dark:text-blue-300">2.1 กฎความดันไอของผลพลอยได้ (Volatility of Etch By-products):</strong>
               <p class="mt-1">
                 หัวใจสำคัญของการกัดกร่อนแบบแห้ง (Dry Etching) คือ ผลพลอยได้ที่เกิดจากปฏิกิริยาเคมีระหว่างก๊าซกับฟิล์มจะต้องมีความดันไอสูง (Volatile) เพื่อให้สามารถระเหยออกจากผิวหน้าและถูกปั๊มสุญญากาศดูดทิ้งได้:
               </p>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>อะลูมิเนียม (Al):</strong> หากใช้ก๊าซฟลูออรีน (\(\text{CF}_4, \text{SF}_6\)) ผลพลอยได้คือ \(\text{AlF}_3\) มีจุดหลอมเหลว/เดือดสูงมากถึง <strong>1,291°C</strong> เป็นของแข็งที่ไม่ระเหยและจะเคลือบขวางการกัดทันที ดังนั้นจึงต้องใช้ก๊าซคลอรีน (\(\text{Cl}_2 / \text{BCl}_3\)) เพราะผลพลอยได้คือ \(\text{AlCl}_3\) มีจุดระเหิดต่ำเพียง <strong>180°C</strong> ซึ่งภายใต้สุญญากาศของแชมเบอร์จะระเหยออกไปได้อย่างรวดเร็ว โดย \(\text{BCl}_3\) ทำหน้าที่กำจัดชั้นออกไซด์ธรรมชาติ \(\text{Al}_2\text{O}_3\) และดักจับความชื้น</li>
-                <li><strong>ทองแดง (Cu):</strong> สารประกอบเฮไลด์ของทองแดง เช่น \(\text{CuCl}\) มีพันธะที่แข็งแรงมาก มีจุดเดือดสูงเกิน <strong>1,000°C</strong> ที่อุณหภูมิปกติของการผลิต (< 200°C) \(\text{CuCl}\) แทบไม่มีความดันไอเลย การจะทำให้ระเหยต้องให้ความร้อนเวเฟอร์เกิน 250-300°C ซึ่งจะทำลายโฟโต้รีซิสต์และฉนวน Low-k ด้วยเหตุนี้ อุตสาหกรรมจึงไม่สามารถกัดแห้งทองแดงได้ และจำเป็นต้องเปลี่ยนไปใช้กระบวนการ <em>Cu Damascene</em> ร่วมกับการขัดเรียบด้วย <em>CMP</em> แทน</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>อะลูมิเนียม (Al):</strong> หากใช้ก๊าซฟลูออรีน (\\(\\text{CF}_4, \\text{SF}_6\\)) ผลพลอยได้คือ \\(\\text{AlF}_3\\) มีจุดหลอมเหลว/เดือดสูงมากถึง <strong>1,291°C</strong> เป็นของแข็งที่ไม่ระเหยและจะเคลือบขวางการกัดทันที ดังนั้นจึงต้องใช้ก๊าซคลอรีน (\\(\\text{Cl}_2 / \\text{BCl}_3\\)) เพราะผลพลอยได้คือ \\(\\text{AlCl}_3\\) มีจุดระเหิดต่ำเพียง <strong>180°C</strong> ซึ่งภายใต้สุญญากาศของแชมเบอร์จะระเหยออกไปได้อย่างรวดเร็ว โดย \\(\\text{BCl}_3\\) ทำหน้าที่กำจัดชั้นออกไซด์ธรรมชาติ \\(\\text{Al}_2\\text{O}_3\\) และดักจับความชื้น</li>
+                <li><strong>ทองแดง (Cu):</strong> สารประกอบเฮไลด์ของทองแดง เช่น \\(\\text{CuCl}\\) มีพันธะที่แข็งแรงมาก มีจุดเดือดสูงเกิน <strong>1,000°C</strong> ที่อุณหภูมิปกติของการผลิต (< 200°C) \\(\\text{CuCl}\\) แทบไม่มีความดันไอเลย การจะทำให้ระเหยต้องให้ความร้อนเวเฟอร์เกิน 250-300°C ซึ่งจะทำลายโฟโต้รีซิสต์และฉนวน Low-k ด้วยเหตุนี้ อุตสาหกรรมจึงไม่สามารถกัดแห้งทองแดงได้ และจำเป็นต้องเปลี่ยนไปใช้กระบวนการ <em>Cu Damascene</em> ร่วมกับการขัดเรียบด้วย <em>CMP</em> แทน</li>
               </ul>
             </div>
 
@@ -4739,9 +4794,9 @@
                 กระบวนการ Bosch DRIE เป็นการสลับวงจรความถี่สูง (Time-multiplexed alternating etch/passivation) นับร้อยรอบ:
               </p>
               <ol class="list-decimal ml-5 mt-1 space-y-1">
-                <li><strong>Etch Cycle (2-5 วินาที):</strong> ปล่อยก๊าซ \(\text{SF}_6\) สร้างฟรีเรดิคัล \(\text{F}\cdot\) กัดกร่อนซิลิกอนทางเคมีอย่างรวดเร็ว (อัตราการกัดสูง > 5-10 µm/min) แบบ Isotropic</li>
-                <li><strong>Passivation Cycle (1-3 วินาที):</strong> ปล่อยก๊าซ \(\text{C}_4\text{F}_8\) เกิดการแตกตัวให้ \(\text{CF}_2\cdot\) เรดิคัล สะสมเป็นฟิล์มฟลูออโรคาร์บอนพอลิเมอร์คล้ายเทฟลอน (Teflon-like \(-(\text{CF}_2)_n-\)) เคลือบทั่วพื้นผิวและผนังร่อง</li>
-                <li><strong>การควบคุมทิศทาง:</strong> เมื่อวนกลับเข้าสู่ Etch Cycle ไอออนบวกที่มีพลังงานจลน์สูงจะพุ่งชนในแนวดิ่ง ทำลายฟิล์มพอลิเมอร์ที่ก้นร่องจนเปิดผิวซิลิกอนให้ถูก \(\text{F}\cdot\) กัดต่อ แต่ฟิล์มพอลิเมอร์ที่ผนังด้านข้าง (Sidewalls) ไม่ถูกไอออนชน จึงทำหน้าที่เป็นเกราะป้องกันการกัดเซาะด้านข้าง ทำให้ได้ร่องลึกแนวดิ่งที่มีค่า Aspect Ratio สูงมาก (> 50:1)</li>
+                <li><strong>Etch Cycle (2-5 วินาที):</strong> ปล่อยก๊าซ \\(\\text{SF}_6\\) สร้างฟรีเรดิคัล \\(\\text{F}\\cdot\\) กัดกร่อนซิลิกอนทางเคมีอย่างรวดเร็ว (อัตราการกัดสูง > 5-10 µm/min) แบบ Isotropic</li>
+                <li><strong>Passivation Cycle (1-3 วินาที):</strong> ปล่อยก๊าซ \\(\\text{C}_4\\text{F}_8\\) เกิดการแตกตัวให้ \\(\\text{CF}_2\\cdot\\) เรดิคัล สะสมเป็นฟิล์มฟลูออโรคาร์บอนพอลิเมอร์คล้ายเทฟลอน (Teflon-like \\(-(\\text{CF}_2)_n-\\)) เคลือบทั่วพื้นผิวและผนังร่อง</li>
+                <li><strong>การควบคุมทิศทาง:</strong> เมื่อวนกลับเข้าสู่ Etch Cycle ไอออนบวกที่มีพลังงานจลน์สูงจะพุ่งชนในแนวดิ่ง ทำลายฟิล์มพอลิเมอร์ที่ก้นร่องจนเปิดผิวซิลิกอนให้ถูก \\(\\text{F}\\cdot\\) กัดต่อ แต่ฟิล์มพอลิเมอร์ที่ผนังด้านข้าง (Sidewalls) ไม่ถูกไอออนชน จึงทำหน้าที่เป็นเกราะป้องกันการกัดเซาะด้านข้าง ทำให้ได้ร่องลึกแนวดิ่งที่มีค่า Aspect Ratio สูงมาก (> 50:1)</li>
                 <li><strong>สาเหตุของ Scalloping:</strong> การสลับวงจรกัดแบบ Isotropic ซ้ำๆ ในแต่ละรอบ จะทิ้งรอยเว้าทรงกลมซ้อนกันต่อเนื่องเป็นคลื่นหยักระดับไมครอนบนผนังร่อง เรียกว่า <em>Scalloping</em> ซึ่งต้องควบคุมรอบเวลาให้สั้นเพื่อลดความหยาบของผนัง</li>
               </ol>
             </div>
@@ -4749,13 +4804,13 @@
             <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50">
               <strong class="text-emerald-900 dark:text-emerald-300">2.3 บทบาทของ Forming Gas (95% N₂ + 5% H₂):</strong>
               <p class="mt-1">
-                ในขั้นตอน Post-Metallization Anneal (PMA ที่ 400-450°C): อะตอมของไฮโดรเจน (\(\text{H}\cdot\)) มีขนาดเล็ก สามารถแพร่ทะลุชั้นฟิล์มโลหะและฉนวนเข้าไปยังผิวรอยต่อ \(\text{Si/SiO}_2\) เพื่อทำปฏิกิริยา Passivation กับพันธะซิลิกอนที่ขาดลอย (Dangling Bonds: \(\text{Si}\cdot\)) ดังปฏิกิริยา:
+                ในขั้นตอน Post-Metallization Anneal (PMA ที่ 400-450°C): อะตอมของไฮโดรเจน (\\(\\text{H}\\cdot\\)) มีขนาดเล็ก สามารถแพร่ทะลุชั้นฟิล์มโลหะและฉนวนเข้าไปยังผิวรอยต่อ \\(\\text{Si/SiO}_2\\) เพื่อทำปฏิกิริยา Passivation กับพันธะซิลิกอนที่ขาดลอย (Dangling Bonds: \\(\\text{Si}\\cdot\\)) ดังปฏิกิริยา:
               </p>
               <p class="font-mono text-xs pl-4 bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800 my-1">
-                \(\text{Si}\cdot \text{ (Dangling bond)} + \text{H}\cdot \rightarrow \text{Si-H (Stable passivated covalent bond)}\)
+                \\(\\text{Si}\\cdot \\text{ (Dangling bond)} + \\text{H}\\cdot \\rightarrow \\text{Si-H (Stable passivated covalent bond)}\\)
               </p>
               <p class="mt-1">
-                ปฏิกิริยานี้ช่วยลดค่าความหนาแน่นของสถานะรอยต่อ (Interface Trap Density: \(D_{it}\)) ลงมหาศาล จากเดิม \(10^{12}\) ลงมาเหลือต่ำกว่า \(10^{10}\text{ cm}^{-2}\text{eV}^{-1}\) ส่งผลให้สัญญาณรบกวน (1/f noise) ลดลง และควบคุมแรงดันเกตได้อย่างแม่นยำ ส่วนสาเหตุที่ต้องจำกัดสัดส่วน \(\text{H}_2\) ไว้ที่ไม่เกิน 5% เนื่องจากขีดจำกัดล่างของการติดไฟระเบิด (Lower Explosive Limit: LEL) ของไฮโดรเจนในอากาศอยู่ที่ 4-5% การควบคุมไว้ที่ 5% ทำให้ Forming Gas จัดอยู่ในหมวดหมู่ <strong>Non-flammable gas</strong> ตามมาตรฐานความปลอดภัยโรงงาน Fab สามารถใช้งานได้โดยไม่ต้องมีระบบป้องกันการระเบิดชนิดพิเศษ
+                ปฏิกิริยานี้ช่วยลดค่าความหนาแน่นของสถานะรอยต่อ (Interface Trap Density: \\(D_{it}\\)) ลงมหาศาล จากเดิม \\(10^{12}\\) ลงมาเหลือต่ำกว่า \\(10^{10}\\text{ cm}^{-2}\\text{eV}^{-1}\\) ส่งผลให้สัญญาณรบกวน (1/f noise) ลดลง และควบคุมแรงดันเกตได้อย่างแม่นยำ ส่วนสาเหตุที่ต้องจำกัดสัดส่วน \\(\\text{H}_2\\) ไว้ที่ไม่เกิน 5% เนื่องจากขีดจำกัดล่างของการติดไฟระเบิด (Lower Explosive Limit: LEL) ของไฮโดรเจนในอากาศอยู่ที่ 4-5% การควบคุมไว้ที่ 5% ทำให้ Forming Gas จัดอยู่ในหมวดหมู่ <strong>Non-flammable gas</strong> ตามมาตรฐานความปลอดภัยโรงงาน Fab สามารถใช้งานได้โดยไม่ต้องมีระบบป้องกันการระเบิดชนิดพิเศษ
               </p>
             </div>
           </div>
@@ -4768,7 +4823,7 @@
         prompt: `<strong>คำถามอัตนัยข้อที่ 3 (10 คะแนน):</strong><br>
         3.1 อธิบายกลไกทางเคมีของระบบโฟโต้รีซิสต์แบบขยายสัญญาณเคมี (Chemically Amplified Resist: CAR) ในขั้นตอน Post-Exposure Bake (PEB) โดยระบุบทบาทของ PAG, ตัวเร่งปฏิกิริยากรด H⁺, และสารหน่วง Base Quencher (3 คะแนน)<br>
         3.2 เหตุใดน้ำยาดีเวลลอปเปอร์มาตรฐานสากลต้องเป็น <strong>2.38 wt% TMAH (Metal-Ion-Free)</strong> และห้ามใช้ NaOH หรือ KOH โดยเด็ดขาด? (2 คะแนน)<br>
-        3.3 อ้างอิงสมการ Rayleigh (\(R = k_1 \frac{\lambda}{NA}\) และ \(DOF = k_2 \frac{\lambda}{NA^2}\)) จงอธิบายว่าเทคโนโลยี <strong>Immersion Lithography (193 nm in UPW)</strong> และ <strong>EUV Lithography (13.5 nm)</strong> ช่วยเพิ่มความละเอียดของชิปได้อย่างไร (3 คะแนน)<br>
+        3.3 อ้างอิงสมการ Rayleigh (\\(R = k_1 \\frac{\\lambda}{NA}\\) และ \\(DOF = k_2 \\frac{\\lambda}{NA^2}\\)) จงอธิบายว่าเทคโนโลยี <strong>Immersion Lithography (193 nm in UPW)</strong> และ <strong>EUV Lithography (13.5 nm)</strong> ช่วยเพิ่มความละเอียดของชิปได้อย่างไร (3 คะแนน)<br>
         3.4 ในแชมเบอร์ EUV เหตุใดจึงจำเป็นต้องปล่อยก๊าซ <strong>H₂ Buffer Gas</strong> และเทคโนโลยี <strong>Dry Resist (Metal Oxide Resists: MOR)</strong> เข้ามาแก้ปัญหาใดของพอลิเมอร์รีซิสต์แบบเดิม? (2 คะแนน)`,
         rubric: [
           { id: "r3_1", text: "อธิบาย PAG สร้าง H⁺, ปฏิกิริยา Deprotection แบบ Catalytic Chain (1 H⁺ ตัด 100-500 หมู่), และ Base Quencher ดักจับกรดป้องกัน Acid Blur (3 คะแนน)", pts: 3 },
@@ -4777,36 +4832,36 @@
           { id: "r3_4", text: "อธิบาย H₂ ทำความสะอาด Sn debris เกิดก๊าซ SnH₄↑ และ Metal Oxide Resist (MOR) ป้องกัน Pattern Collapse / บวมน้ำในระดับ sub-10 nm (2 คะแนน)", pts: 2 }
         ],
         modelAnswer: `
-          <div class="space-y-4 text-xs md:text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+          <div class="space-y-4 text-sm md:text-[15px] leading-relaxed md:leading-loose text-slate-800 dark:text-slate-200">
             <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50">
               <strong class="text-blue-900 dark:text-blue-300">3.1 กลไกเคมีของ Chemically Amplified Resist (CAR):</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>Photoacid Generator (PAG):</strong> เมื่อถูกโฟตอนแสง UV/EUV สารเกลือ Onium (เช่น Triphenylsulfonium nonaflate) จะดูดกลืนพลังงานและเกิดการแตกตัวปล่อยกรดแก่โมเลกุลเล็ก (\(\text{H}^+\text{X}^-\)) ออกมาในบริเวณที่ได้รับแสง</li>
-                <li><strong>Catalytic Deprotection Cascade ในขั้นตอน PEB (100-130°C):</strong> อุณหภูมิความร้อนจะกระตุ้นให้กรด \(\text{H}^+\) ทำหน้าที่เป็น <em>ตัวเร่งปฏิกิริยา (Catalyst)</em> เข้าไปตัดพันธะของหมู่ปกป้อง (Acid-labile protecting groups เช่น t-BOC หรือ tertiary ester) ออกจากสายโซ่พอลิเมอร์ เปลี่ยนสภาพพอลิเมอร์ที่ไม่ละลายน้ำให้กลายเป็นหมู่กรดคาร์บอกซิลิก (\(-\text{COOH}\)) หรือฟีนอล (\(-\text{OH}\)) ซึ่งละลายได้ดีเยี่ยมในเบสดีเวลลอปเปอร์ ที่สำคัญคือ ในระหว่างปฏิกิริยาตัดพันธะ กรด \(\text{H}^+\) จะถูกสร้างคืนกลับมาซ้ำ ทำให้กรดเพียง 1 โมเลกุลสามารถตัดหมู่ปกป้องได้ต่อเนื่องถึง <strong>100 - 500 ครั้ง (Amplification Factor)</strong> ทำให้ CAR มีความไวแสงสูงมาก</li>
-                <li><strong>Base Quencher:</strong> สารด่างอินทรีย์ (เช่น Amines) ถูกเติมลงไปเพื่อดักจับและสะเทินกรด \(\text{H}^+\) ที่แพร่กระจายเลยขอบเขตบริเวณที่ถูกฉายแสงออกไป ป้องกันปัญหา <em>Acid Blur</em> ทำให้ความเข้มข้นของกรดที่ขอบลวดลายมีความชันสูงมาก ควบคุมขนาดวิกฤต (Critical Dimension: CD) ได้อย่างแม่นยำ</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>Photoacid Generator (PAG):</strong> เมื่อถูกโฟตอนแสง UV/EUV สารเกลือ Onium (เช่น Triphenylsulfonium nonaflate) จะดูดกลืนพลังงานและเกิดการแตกตัวปล่อยกรดแก่โมเลกุลเล็ก (\\(\\text{H}^+\\text{X}^-\\)) ออกมาในบริเวณที่ได้รับแสง</li>
+                <li><strong>Catalytic Deprotection Cascade ในขั้นตอน PEB (100-130°C):</strong> อุณหภูมิความร้อนจะกระตุ้นให้กรด \\(\\text{H}^+\\) ทำหน้าที่เป็น <em>ตัวเร่งปฏิกิริยา (Catalyst)</em> เข้าไปตัดพันธะของหมู่ปกป้อง (Acid-labile protecting groups เช่น t-BOC หรือ tertiary ester) ออกจากสายโซ่พอลิเมอร์ เปลี่ยนสภาพพอลิเมอร์ที่ไม่ละลายน้ำให้กลายเป็นหมู่กรดคาร์บอกซิลิก (\\(-\\text{COOH}\\)) หรือฟีนอล (\\(-\\text{OH}\\)) ซึ่งละลายได้ดีเยี่ยมในเบสดีเวลลอปเปอร์ ที่สำคัญคือ ในระหว่างปฏิกิริยาตัดพันธะ กรด \\(\\text{H}^+\\) จะถูกสร้างคืนกลับมาซ้ำ ทำให้กรดเพียง 1 โมเลกุลสามารถตัดหมู่ปกป้องได้ต่อเนื่องถึง <strong>100 - 500 ครั้ง (Amplification Factor)</strong> ทำให้ CAR มีความไวแสงสูงมาก</li>
+                <li><strong>Base Quencher:</strong> สารด่างอินทรีย์ (เช่น Amines) ถูกเติมลงไปเพื่อดักจับและสะเทินกรด \\(\\text{H}^+\\) ที่แพร่กระจายเลยขอบเขตบริเวณที่ถูกฉายแสงออกไป ป้องกันปัญหา <em>Acid Blur</em> ทำให้ความเข้มข้นของกรดที่ขอบลวดลายมีความชันสูงมาก ควบคุมขนาดวิกฤต (Critical Dimension: CD) ได้อย่างแม่นยำ</li>
               </ul>
             </div>
 
             <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
               <strong class="text-slate-900 dark:text-white">3.2 ทำไมต้องใช้ 2.38 wt% TMAH (Metal-Ion-Free: MIF)?:</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>Metal-Ion-Free (MIF):</strong> สารละลายเบสโลหะอนินทรีย์ เช่น \(\text{NaOH}\) หรือ \(\text{KOH}\) มีโมบายไอออน \(\text{Na}^+\) และ \(\text{K}^+\) ซึ่งหากสัมผัสกับเวเฟอร์จะแพร่ซึมเข้าไปใน Gate Oxide ทำให้เกิด \(V_{th}\) shift และทำลาย Gate Oxide Integrity (GOI) จึงต้องใช้ <em>Tetramethylammonium Hydroxide (TMAH: \([(\text{CH}_3)_4\text{N}]^+\text{OH}^-\))</em> ซึ่งเป็นเบสอินทรีย์ที่ปราศจากไอออนโลหะอย่างสิ้นเชิง</li>
-                <li><strong>ความเข้มข้นมาตรฐาน 2.38 wt% (~0.261 N):</strong> เป็นจุดสมดุลทางเคมีที่ให้อัตราส่วนความเปรียบต่างการละลาย (Dissolution Contrast, \(\gamma\)) สูงสุด โดยละลายเฉพาะส่วนที่ถูกแสงอย่างรวดเร็ว และแทบไม่มีการละลายเนื้อรีซิสต์ในส่วนที่ไม่โดนแสงเลย (Zero Dark Loss) หากเข้มข้นกว่านี้จะกัดกินส่วนที่ไม่โดนแสง หากเจือจางกว่านี้จะล้างออกไม่หมด</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>Metal-Ion-Free (MIF):</strong> สารละลายเบสโลหะอนินทรีย์ เช่น \\(\\text{NaOH}\\) หรือ \\(\\text{KOH}\\) มีโมบายไอออน \\(\\text{Na}^+\\) และ \\(\\text{K}^+\\) ซึ่งหากสัมผัสกับเวเฟอร์จะแพร่ซึมเข้าไปใน Gate Oxide ทำให้เกิด \\(V_{th}\\) shift และทำลาย Gate Oxide Integrity (GOI) จึงต้องใช้ <em>Tetramethylammonium Hydroxide (TMAH: \\([(\\text{CH}_3)_4\\text{N}]^+\\text{OH}^-\\))</em> ซึ่งเป็นเบสอินทรีย์ที่ปราศจากไอออนโลหะอย่างสิ้นเชิง</li>
+                <li><strong>ความเข้มข้นมาตรฐาน 2.38 wt% (~0.261 N):</strong> เป็นจุดสมดุลทางเคมีที่ให้อัตราส่วนความเปรียบต่างการละลาย (Dissolution Contrast, \\(\\gamma\\)) สูงสุด โดยละลายเฉพาะส่วนที่ถูกแสงอย่างรวดเร็ว และแทบไม่มีการละลายเนื้อรีซิสต์ในส่วนที่ไม่โดนแสงเลย (Zero Dark Loss) หากเข้มข้นกว่านี้จะกัดกินส่วนที่ไม่โดนแสง หากเจือจางกว่านี้จะล้างออกไม่หมด</li>
               </ul>
             </div>
 
             <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/50">
               <strong class="text-purple-900 dark:text-purple-300">3.3 การเพิ่มความละเอียดตามสมการของเรย์ลี (Rayleigh Scaling):</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>Immersion Lithography (ArFi):</strong> อาศัยการแทรกน้ำบริสุทธิ์ยิ่งยวด (\(\text{UPW}, n = 1.44\)) คั่นระหว่างเลนส์กับเวเฟอร์ ทำให้ตัวเลขช่องเปิดรับแสงประสิทธิผลเพิ่มขึ้นเป็น \(NA = n \cdot \sin\theta = 1.44 \cdot \sin\theta\) ซึ่งสามารถทำค่า \(NA\) ได้สูงถึง <strong>1.35</strong> (เกินกว่าขีดจำกัดในอากาศ \(NA=1.0\)) ส่งผลให้ความละเอียด \(R = k_1 \frac{\lambda}{NA}\) ลดลงเหลือระดับ 38 nm โดยไม่ต้องเปลี่ยนแหล่งกำเนิดแสงเลเซอร์ 193 nm</li>
-                <li><strong>EUV Lithography (13.5 nm):</strong> เป็นการก้าวกระโดดโดยการลดความยาวคลื่นแสง (\(\lambda\)) ลงถึง <strong>14 เท่า</strong> (จาก 193 nm ลงสู่ 13.5 nm) การลด \(\lambda\) ช่วยให้ได้ค่าความละเอียด \(R\) ในระดับต่ำกว่า 13 nm ในขั้นตอนการฉายแสงเดียว (Single Exposure) โดยที่ระยะชัดลึก (\(DOF = k_2 \frac{\lambda}{NA^2}\)) ไม่ลดฮวบจนหมดเหมือนการฝืนเพิ่ม \(NA\) ในระบบ 193 nm</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>Immersion Lithography (ArFi):</strong> อาศัยการแทรกน้ำบริสุทธิ์ยิ่งยวด (\\(\\text{UPW}, n = 1.44\\)) คั่นระหว่างเลนส์กับเวเฟอร์ ทำให้ตัวเลขช่องเปิดรับแสงประสิทธิผลเพิ่มขึ้นเป็น \\(NA = n \\cdot \\sin\\theta = 1.44 \\cdot \\sin\\theta\\) ซึ่งสามารถทำค่า \\(NA\\) ได้สูงถึง <strong>1.35</strong> (เกินกว่าขีดจำกัดในอากาศ \\(NA=1.0\\)) ส่งผลให้ความละเอียด \\(R = k_1 \\frac{\\lambda}{NA}\\) ลดลงเหลือระดับ 38 nm โดยไม่ต้องเปลี่ยนแหล่งกำเนิดแสงเลเซอร์ 193 nm</li>
+                <li><strong>EUV Lithography (13.5 nm):</strong> เป็นการก้าวกระโดดโดยการลดความยาวคลื่นแสง (\\(\\lambda\\)) ลงถึง <strong>14 เท่า</strong> (จาก 193 nm ลงสู่ 13.5 nm) การลด \\(\\lambda\\) ช่วยให้ได้ค่าความละเอียด \\(R\\) ในระดับต่ำกว่า 13 nm ในขั้นตอนการฉายแสงเดียว (Single Exposure) โดยที่ระยะชัดลึก (\\(DOF = k_2 \\frac{\\lambda}{NA^2}\\)) ไม่ลดฮวบจนหมดเหมือนการฝืนเพิ่ม \\(NA\\) ในระบบ 193 nm</li>
               </ul>
             </div>
 
             <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50">
               <strong class="text-emerald-900 dark:text-emerald-300">3.4 ก๊าซ H₂ Buffer และ Dry Resist (MOR):</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>ก๊าซ H₂ Buffer/Purge ในแชมเบอร์ EUV:</strong> เศษละอองดีบุก (Sn Debris) จากพลาสม่า LPP จะกระเด็นไปเกาะกระจกสะท้อน Mo/Si Collector Mirror การไหลผ่านของก๊าซ \(\text{H}_2\) จะถูกแสง EUV กระตุ้นให้เกิด Hydrogen Radicals (\(\text{H}\cdot\)) ซึ่งจะทำปฏิกิริยากับดีบุก: \(\text{Sn(s)} + 4\text{H}\cdot \rightarrow \text{SnH}_4\text{(g)}\) เกิดเป็นก๊าซสแตนเนนที่ระเหยง่าย ถูกปั๊มสุญญากาศดูดทิ้ง ช่วยทำความสะอาดกระจกแบบ In-situ ป้องกันกระจกเสื่อมสภาพ</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>ก๊าซ H₂ Buffer/Purge ในแชมเบอร์ EUV:</strong> เศษละอองดีบุก (Sn Debris) จากพลาสม่า LPP จะกระเด็นไปเกาะกระจกสะท้อน Mo/Si Collector Mirror การไหลผ่านของก๊าซ \\(\\text{H}_2\\) จะถูกแสง EUV กระตุ้นให้เกิด Hydrogen Radicals (\\(\\text{H}\\cdot\\)) ซึ่งจะทำปฏิกิริยากับดีบุก: \\(\\text{Sn(s)} + 4\\text{H}\\cdot \\rightarrow \\text{SnH}_4\\text{(g)}\\) เกิดเป็นก๊าซสแตนเนนที่ระเหยง่าย ถูกปั๊มสุญญากาศดูดทิ้ง ช่วยทำความสะอาดกระจกแบบ In-situ ป้องกันกระจกเสื่อมสภาพ</li>
                 <li><strong>Dry Resist / Metal Oxide Resists (MOR):</strong> รีซิสต์พอลิเมอร์อินทรีย์ CAR แบบเดิม เมื่อสร้างลวดลายขนาดเล็กต่ำกว่า 10 nm ลวดลายจะมีอัตราส่วนความสูงต่อความกว้างสูงมาก แรงตึงผิวของน้ำยาดีเวลลอปเปอร์ขณะแห้งจะดึงให้ลวดลายพังทลายล้มลงมาติดกัน (<em>Pattern Collapse</em>) นอกจากนี้สายโซ่พอลิเมอร์ยังมีขนาดใหญ่และเกิดการบวมตัว (Swelling) เทคโนโลยี Metal Oxide Resist (สารประกอบ Tin-oxide core cluster) พัฒนาขึ้นโดยการเคลือบและพัฒนาลวดลายผ่านสถานะไอระเหย (Dry CVD / Plasma Develop) ทำให้ไม่มีแรงตึงผิวของของเหลว และมีขนาดคลัสเตอร์ระดับอะตอม (< 1-2 nm) จึงกำจัดปัญหา Pattern Collapse และ Acid Blur สร้างเส้นลวดลายได้คมชัดระดับต่ำกว่า 10 nm</li>
               </ul>
             </div>
@@ -4818,10 +4873,10 @@
         topic: "4. Chemical Mechanical Polishing (CMP)",
         title: "โจทย์ข้อที่ 4: การพิสูจน์สมการจลนศาสตร์ Preston, เคมี Ceria STI, และบทบาทของ Zeta Potential ใน Post-CMP",
         prompt: `<strong>คำถามอัตนัยข้อที่ 4 (10 คะแนน):</strong><br>
-        4.1 จากสมการของเพรสตัน (Preston's Equation: \(RR = K_p \cdot P \cdot V\)) จงพิสูจน์ทางเวกเตอร์จลนศาสตร์ว่า เหตุใดการปรับให้ความเร็วเชิงมุมของแผ่นขัดเท่ากับหัวจับเวเฟอร์ (\(\omega_p = \omega_w = \omega\)) จึงทำให้ขนาดความเร็วสัมพัทธ์ (\(|\vec{V}_{rel}|\)) มีค่าคงที่เท่ากันทุกจุดทั่วทั้งแผ่นเวเฟอร์ (3 คะแนน)<br>
-        4.2 ในกระบวนการขัดร่อง STI น้ำยาขัดที่มีอนุภาค <strong>Ceria (CeO₂)</strong> ให้ค่าสภาพเลือกขัด (Selectivity) ระหว่าง \(\text{SiO}_2\) ต่อ \(\text{Si}_3\text{N}_4\) สูงถึง 50:1 ถึง 100:1 ได้เนื่องจากกลไกทางเคมี <strong>Chemical Tooth</strong> อย่างไร? (2 คะแนน)<br>
-        4.3 ในน้ำยาขัดทองแดง (Cu CMP Slurry) จงระบุบทบาทและกลไกของสาร 3 ชนิดต่อไปนี้: (ก) \(\text{H}_2\text{O}_2\), (ข) กรดไกลซีน (Glycine), และ (ค) สารยับยั้ง BTA พร้อมอธิบายว่าช่วยป้องกันปัญหา <strong>Dishing</strong> ได้อย่างไร (3 คะแนน)<br>
-        4.4 นิยามความหมายของ <strong>Zeta Potential (\(\zeta\))</strong> และจุด <strong>Isoelectric Point (IEP)</strong> พร้อมอธิบายว่าในขั้นตอน Post-CMP Brush Cleaning ด้วยสารละลายเจือจาง \(\text{NH}_4\text{OH}\) (pH 10-10.5) ค่าศักย์ซีต้าช่วยป้องกันไม่ให้อนุภาคซิลิกาเกาะติดซ้ำได้อย่างไร? (2 คะแนน)`,
+        4.1 จากสมการของเพรสตัน (Preston's Equation: \\(RR = K_p \\cdot P \\cdot V\\)) จงพิสูจน์ทางเวกเตอร์จลนศาสตร์ว่า เหตุใดการปรับให้ความเร็วเชิงมุมของแผ่นขัดเท่ากับหัวจับเวเฟอร์ (\\(\\omega_p = \\omega_w = \\omega\\)) จึงทำให้ขนาดความเร็วสัมพัทธ์ (\\(|\\vec{V}_{rel}|\\)) มีค่าคงที่เท่ากันทุกจุดทั่วทั้งแผ่นเวเฟอร์ (3 คะแนน)<br>
+        4.2 ในกระบวนการขัดร่อง STI น้ำยาขัดที่มีอนุภาค <strong>Ceria (CeO₂)</strong> ให้ค่าสภาพเลือกขัด (Selectivity) ระหว่าง \\(\\text{SiO}_2\\) ต่อ \\(\\text{Si}_3\\text{N}_4\\) สูงถึง 50:1 ถึง 100:1 ได้เนื่องจากกลไกทางเคมี <strong>Chemical Tooth</strong> อย่างไร? (2 คะแนน)<br>
+        4.3 ในน้ำยาขัดทองแดง (Cu CMP Slurry) จงระบุบทบาทและกลไกของสาร 3 ชนิดต่อไปนี้: (ก) \\(\\text{H}_2\\text{O}_2\\), (ข) กรดไกลซีน (Glycine), และ (ค) สารยับยั้ง BTA พร้อมอธิบายว่าช่วยป้องกันปัญหา <strong>Dishing</strong> ได้อย่างไร (3 คะแนน)<br>
+        4.4 นิยามความหมายของ <strong>Zeta Potential (\\(\\zeta\\))</strong> และจุด <strong>Isoelectric Point (IEP)</strong> พร้อมอธิบายว่าในขั้นตอน Post-CMP Brush Cleaning ด้วยสารละลายเจือจาง \\(\\text{NH}_4\\text{OH}\\) (pH 10-10.5) ค่าศักย์ซีต้าช่วยป้องกันไม่ให้อนุภาคซิลิกาเกาะติดซ้ำได้อย่างไร? (2 คะแนน)`,
         rubric: [
           { id: "r4_1", text: "แสดงการพิสูจน์เวกเตอร์ V_rel = (ω_p × r_p) - (ω_w × r_w) และเมื่อ ω_p = ω_w = ω ได้ |V_rel| = ω Rc อิสระจาก r_w (3 คะแนน)", pts: 3 },
           { id: "r4_2", text: "อธิบายกลไก Chemical Tooth: พันธะ Ce-OH + Si-OH ⇌ Ce-O-Si ดึง SiO₂ หลุด แต่ไม่จับกับ Si-N จึงหยุดที่ไนไตรด์ (2 คะแนน)", pts: 2 },
@@ -4829,63 +4884,63 @@
           { id: "r4_4", text: "นิยาม Zeta ที่ Slipping plane และ IEP (ζ=0), อธิบายที่ pH 10 ทั้งเวเฟอร์และอนุภาคมี ζ < -40 mV ผลักกันตาม DLVO (2 คะแนน)", pts: 2 }
         ],
         modelAnswer: `
-          <div class="space-y-4 text-xs md:text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+          <div class="space-y-4 text-sm md:text-[15px] leading-relaxed md:leading-loose text-slate-800 dark:text-slate-200">
             <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50">
               <strong class="text-blue-900 dark:text-blue-300">4.1 การพิสูจน์ทางเวกเตอร์จลนศาสตร์ (Kinematic Proof):</strong>
               <p class="mt-1">
-                กำหนดให้จุดกำเนิดพิกัดอยู่ที่จุดศูนย์กลางของแผ่นขัด (Platen Center: \(O_p\)) และจุดศูนย์กลางของหัวจับเวเฟอร์ (Carrier Center: \(O_w\)) อยู่ห่างออกไปเป็นเวกเตอร์ระยะทาง \(\vec{R}_c\) และจุดใดๆ บนเวเฟอร์ระบุด้วยเวกเตอร์พิกัดสัมพัทธ์ \(\vec{r}_w\) จากศูนย์กลางเวเฟอร์:
+                กำหนดให้จุดกำเนิดพิกัดอยู่ที่จุดศูนย์กลางของแผ่นขัด (Platen Center: \\(O_p\\)) และจุดศูนย์กลางของหัวจับเวเฟอร์ (Carrier Center: \\(O_w\\)) อยู่ห่างออกไปเป็นเวกเตอร์ระยะทาง \\(\\vec{R}_c\\) และจุดใดๆ บนเวเฟอร์ระบุด้วยเวกเตอร์พิกัดสัมพัทธ์ \\(\\vec{r}_w\\) จากศูนย์กลางเวเฟอร์:
               </p>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li>เวกเตอร์ตำแหน่งของจุดนั้นเทียบกับจุดศูนย์กลางแผ่นขัดคือ: \(\vec{r}_p = \vec{R}_c + \vec{r}_w\)</li>
-                <li>ความเร็วเชิงเส้นของแผ่นขัด ณ จุดนั้น: \(\vec{V}_p = \vec{\omega}_p \times \vec{r}_p = \vec{\omega}_p \times (\vec{R}_c + \vec{r}_w)\)</li>
-                <li>ความเร็วเชิงเส้นของการหมุนของเวเฟอร์ ณ จุดนั้น: \(\vec{V}_w = \vec{\omega}_p \times \vec{R}_c + \vec{\omega}_w \times \vec{r}_w\) (เมื่อมองในกรอบอ้างอิงนิ่ง)</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li>เวกเตอร์ตำแหน่งของจุดนั้นเทียบกับจุดศูนย์กลางแผ่นขัดคือ: \\(\\vec{r}_p = \\vec{R}_c + \\vec{r}_w\\)</li>
+                <li>ความเร็วเชิงเส้นของแผ่นขัด ณ จุดนั้น: \\(\\vec{V}_p = \\vec{\\omega}_p \\times \\vec{r}_p = \\vec{\\omega}_p \\times (\\vec{R}_c + \\vec{r}_w)\\)</li>
+                <li>ความเร็วเชิงเส้นของการหมุนของเวเฟอร์ ณ จุดนั้น: \\(\\vec{V}_w = \\vec{\\omega}_p \\times \\vec{R}_c + \\vec{\\omega}_w \\times \\vec{r}_w\\) (เมื่อมองในกรอบอ้างอิงนิ่ง)</li>
                 <li>เวกเตอร์ความเร็วสัมพัทธ์ระหว่างแผ่นขัดกับเวเฟอร์คือ:
-                  $$\vec{V}_{rel} = \vec{V}_p - \vec{V}_w = [\vec{\omega}_p \times (\vec{R}_c + \vec{r}_w)] - [\vec{\omega}_p \times \vec{R}_c + \vec{\omega}_w \times \vec{r}_w] = (\vec{\omega}_p - \vec{\omega}_w) \times \vec{r}_w + (\vec{\omega}_p \times \vec{R}_c)$$
+                  $$\\vec{V}_{rel} = \\vec{V}_p - \\vec{V}_w = [\\vec{\\omega}_p \\times (\\vec{R}_c + \\vec{r}_w)] - [\\vec{\\omega}_p \\times \\vec{R}_c + \\vec{\\omega}_w \\times \\vec{r}_w] = (\\vec{\\omega}_p - \\vec{\\omega}_w) \\times \\vec{r}_w + (\\vec{\\omega}_p \\times \\vec{R}_c)$$
                 </li>
-                <li><strong>เมื่อวิศวกรปรับตั้งให้ \(\vec{\omega}_p = \vec{\omega}_w = \vec{\omega}\) (หมุนทิศเดียวกันและความเร็วเชิงมุมเท่ากัน):</strong>
-                  พจน์แรก \((\vec{\omega}_p - \vec{\omega}_w) \times \vec{r}_w = 0\) จะหายไป ทำให้สมการเวกเตอร์ลดรูปเหลือเพียง:
-                  $$\vec{V}_{rel} = \vec{\omega} \times \vec{R}_c \implies |\vec{V}_{rel}| = \omega \cdot R_c$$
+                <li><strong>เมื่อวิศวกรปรับตั้งให้ \\(\\vec{\\omega}_p = \\vec{\\omega}_w = \\vec{\\omega}\\) (หมุนทิศเดียวกันและความเร็วเชิงมุมเท่ากัน):</strong>
+                  พจน์แรก \\((\\vec{\\omega}_p - \\vec{\\omega}_w) \\times \\vec{r}_w = 0\\) จะหายไป ทำให้สมการเวกเตอร์ลดรูปเหลือเพียง:
+                  $$\\vec{V}_{rel} = \\vec{\\omega} \\times \\vec{R}_c \\implies |\\vec{V}_{rel}| = \\omega \\cdot R_c$$
                 </li>
               </ul>
               <p class="mt-1 font-semibold text-blue-900 dark:text-blue-300">
-                สรุป: ขนาดของความเร็วสัมพัทธ์ \(|\vec{V}_{rel}| = \omega R_c\) มีค่าคงที่แน่นอนและไม่ขึ้นกับพิกัดตำแหน่ง \(\vec{r}_w\) เลย! นั่นหมายความว่า ทุกจุดบนเวเฟอร์ตั้งแต่จุดศูนย์กลางไปจนถึงขอบนอกสุดจะมีความเร็วสัมพัทธ์เท่ากันเป๊ะ ส่งผลให้อัตราการขัดเอาเนื้อฟิล์มออกตามกฎของเพรสตันมีความสม่ำเสมอทั่วทั้งแผ่น ลดค่า Within-Wafer Non-Uniformity (WIWNU) ให้ต่ำกว่า 2-3%
+                สรุป: ขนาดของความเร็วสัมพัทธ์ \\(|\\vec{V}_{rel}| = \\omega R_c\\) มีค่าคงที่แน่นอนและไม่ขึ้นกับพิกัดตำแหน่ง \\(\\vec{r}_w\\) เลย! นั่นหมายความว่า ทุกจุดบนเวเฟอร์ตั้งแต่จุดศูนย์กลางไปจนถึงขอบนอกสุดจะมีความเร็วสัมพัทธ์เท่ากันเป๊ะ ส่งผลให้อัตราการขัดเอาเนื้อฟิล์มออกตามกฎของเพรสตันมีความสม่ำเสมอทั่วทั้งแผ่น ลดค่า Within-Wafer Non-Uniformity (WIWNU) ให้ต่ำกว่า 2-3%
               </p>
             </div>
 
             <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50">
               <strong class="text-amber-900 dark:text-amber-300">4.2 กลไก Chemical Tooth ของ Ceria Slurry สำหรับ STI:</strong>
               <p class="mt-1">
-                ในการขัดร่อง Shallow Trench Isolation (STI) อนุภาคซีเรีย (\(\text{CeO}_2\)) ในน้ำจะมีหมู่ไฮดรอกซิลที่ผิวคือ \(\text{Ce-OH}\) ซึ่งสามารถทำปฏิกิริยาควบแน่น (Condensation reaction) โดยตรงกับหมู่ไซลานอล (\(\text{Si-OH}\)) บนผิวฟิล์มแก้ว \(\text{SiO}_2\):
+                ในการขัดร่อง Shallow Trench Isolation (STI) อนุภาคซีเรีย (\\(\\text{CeO}_2\\)) ในน้ำจะมีหมู่ไฮดรอกซิลที่ผิวคือ \\(\\text{Ce-OH}\\) ซึ่งสามารถทำปฏิกิริยาควบแน่น (Condensation reaction) โดยตรงกับหมู่ไซลานอล (\\(\\text{Si-OH}\\)) บนผิวฟิล์มแก้ว \\(\\text{SiO}_2\\):
               </p>
               <p class="font-mono text-xs pl-4 bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800 my-1">
-                \(\text{Ce-OH} + \text{Si-OH} \rightleftharpoons \text{Ce-O-Si} + \text{H}_2\text{O}\)
+                \\(\\text{Ce-OH} + \\text{Si-OH} \\rightleftharpoons \\text{Ce-O-Si} + \\text{H}_2\\text{O}\\)
               </p>
               <p class="mt-1">
-                การสร้างพันธะเคมีโดยตรง \(\text{Ce-O-Si}\) นี้เปรียบเสมือน 'ฟันเคมี' (Chemical Tooth) ที่ยึดเกาะแน่นหนา เมื่ออนุภาคซีเรียเคลื่อนที่ตามแผ่นขัด มันจะฉีกกระชากโครงสร้าง \(\text{SiO}_2\) หลุดออกได้อย่างรวดเร็ว ในทางตรงกันข้าม ซีเรียไม่สามารถสร้างพันธะเคมีลักษณะนี้กับพันธะ \(\text{Si-N}\) ของฟิล์มซิลิกอนไนไตรด์ (\(\text{Si}_3\text{N}_4\)) ได้ อัตราการขัดจึงลดฮวบลงทันทีเมื่อขัดถึงชั้นไนไตรด์ ทำให้เกิดกระบวนการหยุดการขัดด้วยตนเอง (Self-stopping) ที่ให้ค่าสภาพเลือกขัดสูงถึง 50:1 ถึง 100:1
+                การสร้างพันธะเคมีโดยตรง \\(\\text{Ce-O-Si}\\) นี้เปรียบเสมือน 'ฟันเคมี' (Chemical Tooth) ที่ยึดเกาะแน่นหนา เมื่ออนุภาคซีเรียเคลื่อนที่ตามแผ่นขัด มันจะฉีกกระชากโครงสร้าง \\(\\text{SiO}_2\\) หลุดออกได้อย่างรวดเร็ว ในทางตรงกันข้าม ซีเรียไม่สามารถสร้างพันธะเคมีลักษณะนี้กับพันธะ \\(\\text{Si-N}\\) ของฟิล์มซิลิกอนไนไตรด์ (\\(\\text{Si}_3\\text{N}_4\\)) ได้ อัตราการขัดจึงลดฮวบลงทันทีเมื่อขัดถึงชั้นไนไตรด์ ทำให้เกิดกระบวนการหยุดการขัดด้วยตนเอง (Self-stopping) ที่ให้ค่าสภาพเลือกขัดสูงถึง 50:1 ถึง 100:1
               </p>
             </div>
 
             <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50">
               <strong class="text-emerald-900 dark:text-emerald-300">4.3 องค์ประกอบทางเคมีของน้ำยาขัดทองแดง (Cu CMP) และการป้องกัน Dishing:</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>(ก) ตัวออกซิไดซ์ (\(\text{H}_2\text{O}_2\), 1-3 wt%):</strong> ออกซิไดซ์โลหะทองแดงให้เป็นออกไซด์/ไฮดรอกไซด์บางๆ (\(\text{Cu} \rightarrow \text{Cu}_2\text{O} / \text{CuO} / \text{Cu(OH)}_2\)) ซึ่งมีความแข็งน้อยกว่าและขัดลอกออกได้ง่าย</li>
-                <li><strong>(ข) สารก่อเชิงซ้อน (Glycine: \(\text{H}_2\text{NCH}_2\text{COOH}\)):</strong> ทำหน้าที่เป็น Chelating Agent ส่งคู่อิเล็กตรอนเข้าจับกับไอออนทองแดง (\(\text{Cu}^{2+}\)) เกิดเป็นสารเชิงซ้อนที่ละลายน้ำได้ดีเยี่ยมคือ \([\text{Cu(Glycine)}_2]\) ช่วยดึงไอออนทองแดงออกจากผิวหน้าและเพิ่มอัตราการขัด (Removal Rate)</li>
-                <li><strong>(ค) สารยับยั้งการกัดกร่อน (Benzotriazole: BTA):</strong> โมเลกุล BTA จะทำปฏิกิริยากับไอออนทองแดงเกิดเป็นฟิล์มพอลิเมอร์เชิงซ้อนที่เหนียวแน่นและไม่ละลายน้ำ (\([\text{Cu-BTA}]_n\)) เคลือบคลุมผิวทองแดงไว้</li>
-                <li><strong>กลไกป้องกัน Dishing:</strong> ในบริเวณร่องตัวนำทองแดงที่อยู่ลึกต่ำ (Recessed area) แรงกดทางกลจากแผ่นขัดจะเข้าไม่ถึง ฟิล์ม \([\text{Cu-BTA}]_n\) จะทำหน้าที่เป็นเกราะกำบังสารละลาย \(\text{H}_2\text{O}_2\) และไกลซีน ไม่ให้เข้าไปกัดเซาะทองแดงในร่อง จึงป้องกันการเกิดหลุมเว้าแหว่ง (Dishing) ได้อย่างสมบูรณ์ ส่วนในบริเวณสันนูน (High peak) แรงกดทางกลจากแผ่นขัดจะขูดลอกฟิล์ม BTA ออก เปิดเนื้อทองแดงให้สารเคมีทำปฏิกิริยาขัดเรียบได้อย่างรวดเร็ว</li>
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>(ก) ตัวออกซิไดซ์ (\\(\\text{H}_2\\text{O}_2\\), 1-3 wt%):</strong> ออกซิไดซ์โลหะทองแดงให้เป็นออกไซด์/ไฮดรอกไซด์บางๆ (\\(\\text{Cu} \\rightarrow \\text{Cu}_2\\text{O} / \\text{CuO} / \\text{Cu(OH)}_2\\)) ซึ่งมีความแข็งน้อยกว่าและขัดลอกออกได้ง่าย</li>
+                <li><strong>(ข) สารก่อเชิงซ้อน (Glycine: \\(\\text{H}_2\\text{NCH}_2\\text{COOH}\\)):</strong> ทำหน้าที่เป็น Chelating Agent ส่งคู่อิเล็กตรอนเข้าจับกับไอออนทองแดง (\\(\\text{Cu}^{2+}\\)) เกิดเป็นสารเชิงซ้อนที่ละลายน้ำได้ดีเยี่ยมคือ \\([\\text{Cu(Glycine)}_2]\\) ช่วยดึงไอออนทองแดงออกจากผิวหน้าและเพิ่มอัตราการขัด (Removal Rate)</li>
+                <li><strong>(ค) สารยับยั้งการกัดกร่อน (Benzotriazole: BTA):</strong> โมเลกุล BTA จะทำปฏิกิริยากับไอออนทองแดงเกิดเป็นฟิล์มพอลิเมอร์เชิงซ้อนที่เหนียวแน่นและไม่ละลายน้ำ (\\([\\text{Cu-BTA}]_n\\)) เคลือบคลุมผิวทองแดงไว้</li>
+                <li><strong>กลไกป้องกัน Dishing:</strong> ในบริเวณร่องตัวนำทองแดงที่อยู่ลึกต่ำ (Recessed area) แรงกดทางกลจากแผ่นขัดจะเข้าไม่ถึง ฟิล์ม \\([\\text{Cu-BTA}]_n\\) จะทำหน้าที่เป็นเกราะกำบังสารละลาย \\(\\text{H}_2\\text{O}_2\\) และไกลซีน ไม่ให้เข้าไปกัดเซาะทองแดงในร่อง จึงป้องกันการเกิดหลุมเว้าแหว่ง (Dishing) ได้อย่างสมบูรณ์ ส่วนในบริเวณสันนูน (High peak) แรงกดทางกลจากแผ่นขัดจะขูดลอกฟิล์ม BTA ออก เปิดเนื้อทองแดงให้สารเคมีทำปฏิกิริยาขัดเรียบได้อย่างรวดเร็ว</li>
               </ul>
             </div>
 
             <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/50">
               <strong class="text-purple-900 dark:text-purple-300">4.4 Zeta Potential, IEP, และกลไก Post-CMP Brush Cleaning:</strong>
-              <ul class="list-disc ml-5 mt-1 space-y-1">
-                <li><strong>Zeta Potential (\(\zeta\)):</strong> คือค่าศักย์ไฟฟ้า ณ ระนาบการเลื่อนไถล (Slipping Plane หรือ Shear Plane) ของชั้นคู่ประจุไฟฟ้า (Electrical Double Layer: EDL) รอบอนุภาคที่แขวนลอยในของเหลว บ่งบอกถึงเสถียรภาพของระบบคอลลอยด์ โดยหาก \(|\zeta| \ge 30\text{ mV}\) จะถือว่าคอลลอยด์มีความเสถียร อนุภาคไม่จับตัวกัน</li>
-                <li><strong>Isoelectric Point (IEP):</strong> คือค่า pH ของสารละลายที่ทำให้ประจุสุทธิที่ระนาบเลื่อนไถลของอนุภาคเป็นศูนย์ (\(\zeta = 0\text{ mV}\)) ส่งผลให้แนวกั้นพลังงานผลักไฟฟ้าสถิต DLVO พังทลายลง เกิดการเกาะกลุ่มของอนุภาคอย่างรุนแรง</li>
-                <li><strong>กลไกในขั้นตอน Post-CMP PVA Brush Clean:</strong> เมื่อล้างด้วยสารละลายแอมโมเนียเจือจาง (\(\text{NH}_4\text{OH}\), pH 10-10.5) ซึ่งอยู่ห่างจากจุด IEP ของซิลิกา (\(\text{IEP} \approx 2\)) อย่างมาก:
+              <ul class="list-disc ml-5 mt-2 space-y-2.5">
+                <li><strong>Zeta Potential (\\(\\zeta\\)):</strong> คือค่าศักย์ไฟฟ้า ณ ระนาบการเลื่อนไถล (Slipping Plane หรือ Shear Plane) ของชั้นคู่ประจุไฟฟ้า (Electrical Double Layer: EDL) รอบอนุภาคที่แขวนลอยในของเหลว บ่งบอกถึงเสถียรภาพของระบบคอลลอยด์ โดยหาก \\(|\\zeta| \\ge 30\\text{ mV}\\) จะถือว่าคอลลอยด์มีความเสถียร อนุภาคไม่จับตัวกัน</li>
+                <li><strong>Isoelectric Point (IEP):</strong> คือค่า pH ของสารละลายที่ทำให้ประจุสุทธิที่ระนาบเลื่อนไถลของอนุภาคเป็นศูนย์ (\\(\\zeta = 0\\text{ mV}\\)) ส่งผลให้แนวกั้นพลังงานผลักไฟฟ้าสถิต DLVO พังทลายลง เกิดการเกาะกลุ่มของอนุภาคอย่างรุนแรง</li>
+                <li><strong>กลไกในขั้นตอน Post-CMP PVA Brush Clean:</strong> เมื่อล้างด้วยสารละลายแอมโมเนียเจือจาง (\\(\\text{NH}_4\\text{OH}\\), pH 10-10.5) ซึ่งอยู่ห่างจากจุด IEP ของซิลิกา (\\(\\text{IEP} \\approx 2\\)) อย่างมาก:
                   <ul class="list-square ml-5 mt-1">
-                    <li>ผิวหน้าเวเฟอร์ซิลิกอนไดออกไซด์จะมีค่า: \(\zeta_{wafer} \approx -50\text{ mV}\)</li>
-                    <li>อนุภาคขัดซิลิกาแขวนลอยจะมีค่า: \(\zeta_{particle} \approx -45\text{ mV}\)</li>
+                    <li>ผิวหน้าเวเฟอร์ซิลิกอนไดออกไซด์จะมีค่า: \\(\\zeta_{wafer} \\approx -50\\text{ mV}\\)</li>
+                    <li>อนุภาคขัดซิลิกาแขวนลอยจะมีค่า: \\(\\zeta_{particle} \\approx -45\\text{ mV}\\)</li>
                   </ul>
-                  เนื่องจากทั้งผิวเวเฟอร์และอนุภาคมีประจุลบที่หนาแน่นเหมือนกัน จึงเกิด <strong>แรงผลักทางไฟฟ้าสถิต (Electrostatic Repulsion Barrier > 20 \(k_B T\))</strong> ที่รุนแรงมากตามทฤษฎี DLVO อนุภาคขัดที่ถูกขนแปรง PVA ขัดหลุดออกมาจึงถูกแรงผลักดีดตัวออกจากผิวเวเฟอร์และถูกชะล้างออกไปกับกระแสน้ำ โดยไม่มีวันตกกลับมาเกาะติดบนผิวเวเฟอร์ซ้ำอีกเด็ดขาด (Zero Particle Re-adhesion)
+                  เนื่องจากทั้งผิวเวเฟอร์และอนุภาคมีประจุลบที่หนาแน่นเหมือนกัน จึงเกิด <strong>แรงผลักทางไฟฟ้าสถิต (Electrostatic Repulsion Barrier > 20 \\(k_B T\\))</strong> ที่รุนแรงมากตามทฤษฎี DLVO อนุภาคขัดที่ถูกขนแปรง PVA ขัดหลุดออกมาจึงถูกแรงผลักดีดตัวออกจากผิวเวเฟอร์และถูกชะล้างออกไปกับกระแสน้ำ โดยไม่มีวันตกกลับมาเกาะติดบนผิวเวเฟอร์ซ้ำอีกเด็ดขาด (Zero Particle Re-adhesion)
                 </li>
               </ul>
             </div>
@@ -4984,7 +5039,12 @@
       `;
 
       if (window.renderMathInElement) {
-        window.renderMathInElement(cardEl, { delimiters: [{left: "$$", right: "$$", display: true}, {left: "\(", right: "\)", display: false}] });
+        renderKaTeX(cardEl, { delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false });
       }
     }
 
