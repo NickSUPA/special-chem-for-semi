@@ -250,21 +250,21 @@
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-6xl w-full max-h-[94vh] flex flex-col shadow-2xl overflow-hidden relative">
       
       <!-- Modal Header -->
-      <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/90 dark:bg-slate-800/90">
+      <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-100/90 dark:bg-slate-900">
         <div class="flex items-center gap-2.5">
           <span id="modal-lecture-badge" class="px-2.5 py-1 text-xs font-black rounded-lg bg-blue-600 text-white shadow-xs"></span>
-          <span id="modal-slide-num" class="text-xs font-bold text-slate-600 dark:text-slate-300 font-mono"></span>
-          <span id="modal-category-badge" class="px-2.5 py-0.5 text-[11px] rounded-md bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold"></span>
+          <span id="modal-slide-num" class="text-xs font-bold text-slate-700 dark:text-slate-300 font-mono"></span>
+          <span id="modal-category-badge" class="px-2.5 py-0.5 text-[11px] rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold border border-slate-300 dark:border-slate-700"></span>
         </div>
         
         <div class="flex items-center gap-2">
           <!-- Bookmark Button -->
-          <button id="modal-bookmark-btn" onclick="toggleBookmarkCurrentModal()" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-600 dark:text-slate-300 text-xs font-bold flex items-center gap-1" title="บันทึกสไลด์นี้">
+          <button id="modal-bookmark-btn" onclick="toggleBookmarkCurrentModal()" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-1 shadow-2xs" title="บันทึกสไลด์นี้">
             <span id="modal-bookmark-star">⭐</span>
             <span class="hidden sm:inline">บุ๊กมาร์ก</span>
           </button>
           <!-- Close Button -->
-          <button onclick="closeModal()" class="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition text-base leading-none px-2.5 py-1.5 font-bold">
+          <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-600 text-slate-500 hover:border-red-300 transition flex items-center justify-center text-sm font-bold shadow-2xs">
             ✕
           </button>
         </div>
@@ -277,14 +277,15 @@
         <div class="lg:col-span-5 flex flex-col gap-4">
           <div class="sticky top-0 flex flex-col gap-3">
             <div class="relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-md">
-              <img id="modal-image" src="" alt="Slide Image" class="w-full h-auto object-contain transition duration-200 cursor-zoom-in hover:brightness-105" onclick="openLightbox(this.src)">
-              <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md text-white text-[10px] font-semibold opacity-85 group-hover:opacity-100 transition flex items-center gap-1 shadow-sm">
-                <span>🔍 คลิกดูภาพขยายใหญ่ (HD)</span>
-              </div>
+              <img id="modal-image" src="" alt="Slide Image" class="w-full h-auto object-contain transition duration-200 cursor-zoom-in hover:scale-[1.01]" onclick="openLightbox(this.src)">
             </div>
+            
+            <button onclick="openLightbox(document.getElementById('modal-image').src)" class="w-full py-2 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <span>🔍 คลิกดูภาพสไลด์ขนาดใหญ่เต็มจอ (HD Lightbox)</span>
+            </button>
 
             <!-- Slide English Title -->
-            <div class="px-1">
+            <div class="px-1 mt-1">
               <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">ชื่อหัวข้อสไลด์ต้นฉบับ (Original Slide Title)</div>
               <div id="modal-title-en" class="text-xs font-bold text-slate-700 dark:text-slate-300 font-mono mt-0.5 leading-snug"></div>
             </div>
@@ -313,10 +314,10 @@
           <div class="rounded-2xl p-4 md:p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
             <div class="flex items-center justify-between pb-2.5 mb-3.5 border-b border-slate-100 dark:border-slate-800">
               <div class="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                <span>🔬 คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown)</span>
+                <span class="text-base">🔬</span>
+                <span>คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown)</span>
               </div>
-              <span class="text-[10px] font-bold text-slate-400 uppercase">TMEC Process Notes</span>
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">TMEC Notes</span>
             </div>
             
             <!-- Dynamic HTML Container for Formatted Explanation -->
@@ -324,9 +325,10 @@
           </div>
 
           <!-- Key Takeaways & Exam Checklist -->
-          <div class="rounded-2xl p-4 md:p-5 bg-slate-50/80 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5 mb-3">
-              <span>🎯 จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Exam Takeaways)</span>
+          <div class="rounded-2xl p-4 md:p-5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/70 shadow-xs">
+            <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+              <span class="text-base">🎯</span>
+              <span>จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Exam Takeaways)</span>
             </h4>
             <div id="modal-key-points" class="space-y-2.5"></div>
           </div>
@@ -351,16 +353,18 @@
       </div>
 
       <!-- Modal Footer (Navigation Controls) -->
-      <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-850 flex items-center justify-between">
-        <button onclick="navigateModal(-1)" id="btn-modal-prev" class="px-3.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition flex items-center gap-1 text-slate-700 dark:text-slate-200 shadow-2xs">
+      <div class="px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-100/90 dark:bg-slate-900 flex items-center justify-between">
+        <button onclick="navigateModal(-1)" id="btn-modal-prev" 
+          class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 text-xs md:text-sm font-bold transition flex items-center gap-1.5 border border-slate-300 dark:border-slate-700 shadow-sm cursor-pointer">
           <span>◀ สไลด์ก่อนหน้า</span>
         </button>
 
-        <div class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
-          <span id="modal-current-index" class="text-blue-600 dark:text-blue-400">1</span> / <span id="modal-total-filtered">302</span>
+        <div class="text-xs md:text-sm font-mono font-bold text-slate-500 dark:text-slate-400">
+          สไลด์ที่ <span id="modal-current-index" class="text-blue-600 dark:text-blue-400 font-black">1</span> / <span id="modal-total-filtered">302</span>
         </div>
 
-        <button onclick="navigateModal(1)" id="btn-modal-next" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm">
+        <button onclick="navigateModal(1)" id="btn-modal-next" 
+          class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-sm font-bold transition flex items-center gap-1.5 shadow-md cursor-pointer">
           <span>สไลด์ถัดไป ▶</span>
         </button>
       </div>
@@ -612,11 +616,10 @@
         // e.g. "• **1. Title:** Body" or "• **Title:** Body" or "1. Title: Body"
         const bulletMatch = p.match(/^(?:[•📌\-*]|\d+\.)\s*(?:\*\*(.*?)\*\*|([^:]+):)\s*(.*)/s);
         if (bulletMatch) {
-          const title = (bulletMatch[1] || bulletMatch[2] || '').trim();
+          const rawTitle = (bulletMatch[1] || bulletMatch[2] || '').trim();
           const body = (bulletMatch[3] || '').trim();
           
-          // Check if title has a number
-          const numMatch = title.match(/^(\d+|[กขค-ฮa-zA-Z])/);
+          const numMatch = rawTitle.match(/^(\d+|[กขค-ฮa-zA-Z])/);
           let badgeHTML = '';
           if (numMatch) {
             badgeHTML = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-blue-600 text-white text-xs font-black shadow-xs flex-shrink-0">${numMatch[1]}</span>`;
@@ -624,13 +627,13 @@
             badgeHTML = `<span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 text-xs font-black flex-shrink-0">▪</span>`;
           }
           
-          const cleanTitle = title.replace(/^(\d+|[กขค-ฮa-zA-Z])[\.\)]\s*/, '');
+          const cleanTitle = rawTitle.replace(/^(\d+|[กขค-ฮa-zA-Z])[\.\)]\s*/, '');
           
           return `
-            <div class="my-3 p-3.5 md:p-4 rounded-xl bg-slate-50/80 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:border-blue-400 dark:hover:border-blue-500 transition">
+            <div class="my-3 p-3.5 md:p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:border-blue-400 dark:hover:border-blue-500 transition">
               <div class="flex items-center gap-2 mb-2 font-bold text-sm md:text-base text-blue-900 dark:text-blue-200">
                 ${badgeHTML}
-                <span>${highlightMarkdown(cleanTitle || title)}</span>
+                <span>${highlightMarkdown(cleanTitle || rawTitle)}</span>
               </div>
               <div class="text-slate-700 dark:text-slate-200 text-xs md:text-sm leading-[1.85] pl-1 font-thai">
                 ${highlightMarkdown(body)}
@@ -641,7 +644,7 @@
         
         // Standard introductory or conclusion paragraph
         return `
-          <p class="mb-3 text-slate-800 dark:text-slate-200 text-xs md:text-sm leading-[1.85] font-thai">
+          <p class="mb-3.5 text-slate-800 dark:text-slate-200 text-sm md:text-[14.5px] leading-[1.85] font-thai">
             ${highlightMarkdown(p)}
           </p>
         `;
@@ -784,8 +787,8 @@
               <!-- Formatted Explanation Breakdown -->
               <div class="rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
                 <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-3 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                  <span>🔬 คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown):</span>
+                  <span class="text-base">🔬</span>
+                  <span>คำอธิบายเนื้อหาอย่างละเอียด (In-Depth Technical Breakdown):</span>
                 </h4>
                 <div class="thai-text-body space-y-2">
                   ${formatExplanationToHTML(slide.explanationTh)}
@@ -793,15 +796,16 @@
               </div>
 
               <!-- Checklist Takeaways -->
-              <div class="rounded-2xl p-5 bg-slate-50/80 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
-                <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 mb-3">
-                  🎯 จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Takeaways):
+              <div class="rounded-2xl p-5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/70 shadow-xs">
+                <h4 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+                  <span class="text-base">🎯</span>
+                  <span>จุดสำคัญที่ต้องจำสำหรับการสอบ (Key Takeaways):</span>
                 </h4>
                 <div class="space-y-2.5">
                   ${slide.keyPoints.map(kp => `
-                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-                      <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-                      <span class="text-xs md:text-sm text-slate-700 dark:text-slate-200 leading-[1.8] font-thai">${kp}</span>
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:border-emerald-400 dark:hover:border-emerald-500 transition">
+                      <span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5 shadow-xs">✓</span>
+                      <span class="text-xs md:text-[14.5px] text-slate-800 dark:text-slate-100 leading-[1.8] font-thai">${kp}</span>
                     </div>
                   `).join('')}
                 </div>
@@ -868,10 +872,10 @@
       kpList.innerHTML = '';
       slide.keyPoints.forEach(kp => {
         const item = document.createElement('div');
-        item.className = 'flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-2xs';
+        item.className = 'flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:border-emerald-400 dark:hover:border-emerald-500 transition';
         item.innerHTML = `
-          <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5">✓</span>
-          <span class="text-xs md:text-sm text-slate-700 dark:text-slate-200 leading-[1.8] font-thai">${kp}</span>
+          <span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5 shadow-xs">✓</span>
+          <span class="text-xs md:text-[14.5px] text-slate-800 dark:text-slate-100 leading-[1.8] font-thai">${kp}</span>
         `;
         kpList.appendChild(item);
       });

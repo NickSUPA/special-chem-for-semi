@@ -1,6 +1,6 @@
 """
 assemble_all_slides.py
-Merges L4, L5, and L6 datasets, applies beautiful Thai typography formatting, and outputs slides_data.js
+Merges L4, L5, and L6 datasets, applies safe Thai formatting, and outputs slides_data.js
 """
 import json
 import os
@@ -9,23 +9,25 @@ from build_l4 import generate_l4_dataset
 from build_l5 import generate_l5_dataset
 from build_l6 import generate_l6_dataset
 
-def format_thai_text(text):
+def safe_format_thai_text(text):
     if not text:
         return ""
     text = text.strip()
     
-    # 1. Normalize whitespace
-    text = re.sub(r'[ \t]+', ' ', text)
+    # Normalize multiple inline spaces but preserve natural newlines
+    lines = [re.sub(r'[ \t]+', ' ', line).strip() for line in text.split('\n')]
+    text = '\n'.join(lines)
     
-    # 2. Check for numbered points (e.g., " 1. ", " 2. ", " 3. ")
-    match_num = re.search(r'(?::?\s+|^)1\.\s+', text)
-    if match_num:
-        intro_part = text[:match_num.start()].strip()
+    # Check for numbered points: MUST have at least '1. ' and '2. '
+    if re.search(r'(?::?\s+|^)1\.\s+', text) and re.search(r'\s+2\.\s+', text):
+        match_first = re.search(r'(?::?\s+|^)1\.\s+', text)
+        intro_part = text[:match_first.start()].strip()
         intro_part = re.sub(r'[:\s]+$', '', intro_part)
         if intro_part and not intro_part.endswith(':'):
             intro_part += ":"
             
-        rest_part = text[match_num.start():].strip()
+        rest_part = text[match_first.start():].strip()
+        # Split on numbered markers like '1. ', '2. ', '3. '
         items = re.split(r'(?:\s+|^)(\d+)\.\s+', rest_part)
         
         formatted_items = []
@@ -33,7 +35,7 @@ def format_thai_text(text):
             num = items[i]
             content = items[i+1].strip()
             
-            # Check if there is a title before colon
+            # Check for colon like 'Title: Body'
             colon_match = re.search(r'^([^:]{2,55}):\s*(.*)', content, re.DOTALL)
             if colon_match:
                 title = colon_match.group(1).strip()
@@ -48,25 +50,6 @@ def format_thai_text(text):
         out += "\n\n".join(formatted_items)
         return out
         
-    # 3. Check for sub-points like (ก), (ข)
-    if re.search(r'\([กขค-ฮa-zA-Z0-9]\)', text):
-        items = re.split(r'(\([กขค-ฮa-zA-Z0-9]\))', text)
-        if len(items) > 2:
-            intro = items[0].strip()
-            out_items = []
-            for i in range(1, len(items), 2):
-                tag = items[i]
-                cnt = items[i+1].strip()
-                out_items.append(f"• **{tag}** {cnt}")
-            res = (intro + "\n\n" if intro else "") + "\n\n".join(out_items)
-            return res
-
-    # 4. Long text without breaks
-    if '\n' not in text and len(text) > 200:
-        sentences = re.split(r'([.!?]\s+|(?<=[ก-ฮa-zA-Z0-9])\s+(?=[1-9]\.|\bโดยที่|\bประกอบด้วย|\bในทางตรงกันข้าม|\bเป้าหมายคือ|\bข้อควรระวัง))', text)
-        if len(sentences) > 2:
-            return "\n\n".join(s.strip() for s in sentences if len(s.strip()) > 1)
-
     return text
 
 print("Assembling all slides from L4, L5, L6...")
@@ -77,9 +60,9 @@ l6 = generate_l6_dataset()
 all_slides = l4 + l5 + l6
 print(f"Total assembled slides: {len(all_slides)} (L4: {len(l4)}, L5: {len(l5)}, L6: {len(l6)})")
 
-# Format Thai explanations for readability
+# Safely format Thai explanations
 for s in all_slides:
-    s['explanationTh'] = format_thai_text(s.get('explanationTh', ''))
+    s['explanationTh'] = safe_format_thai_text(s.get('explanationTh', ''))
 
 # Validation check
 assert len(all_slides) == 302, f"Expected 302 slides, got {len(all_slides)}"
