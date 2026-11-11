@@ -138,6 +138,11 @@
           <span id="bookmark-count" class="px-1.5 py-0.2 bg-amber-500 text-white text-[10px] rounded-full">0</span>
         </button>
 
+        <!-- Exam Summary Link -->
+        <a href="exam_summary.html" title="สรุปเก็งข้อสอบเจาะลึกจาก 302 สไลด์" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <span>🎯 เก็งข้อสอบ (302 หน้า)</span>
+        </a>
+
         <!-- Back to Portal Button -->
         <a href="index.html" class="hidden md:flex px-3.5 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/80 text-xs font-bold transition items-center gap-1.5 shadow-sm">
           <span>🏠 กลับสู่หน้าหลัก Exam Portal</span>
@@ -426,6 +431,12 @@
       updateBookmarkBadge();
       populateCategoryDropdown();
       applyFiltersAndRender();
+
+      // Deep-link to a specific slide when ?slide=<ID> is passed in the URL
+      const targetSlideId = new URLSearchParams(window.location.search).get('slide');
+      if (targetSlideId && typeof openModalBySlideId === 'function') {
+        openModalBySlideId(targetSlideId.trim());
+      }
 
       // Keyboard event listeners
       document.addEventListener('keydown', (e) => {

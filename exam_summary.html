@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎯 สรุปเก็งข้อสอบจากสไลด์ 302 หน้า (L4 • L5 • L6) | Semiconductor Specialty Chemicals</title>
+
+  <!-- Google Fonts: Prompt & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            thai: ['Prompt', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Full 302-Slide Database -->
+  <script src="slides_data.js"></script>
+
+  <style>
+    body {
+      font-family: 'Prompt', 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: 0.012em;
+    }
+    .thai-body {
+      font-family: 'Prompt', sans-serif;
+      line-height: 1.85;
+      letter-spacing: 0.014em;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+    }
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: rgba(148, 163, 184, 0.1); border-radius: 8px; }
+    ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.35); border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.6); }
+
+    @media print {
+      header, .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .print-break { break-inside: avoid; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="bg-slate-100/80 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col antialiased transition-colors duration-200">
+
+  <!-- ================= TOP STICKY HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 md:px-8 py-3 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-amber-500 to-orange-500 flex items-center justify-center text-white font-black text-xl shadow-md">
+            🎯
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded bg-rose-100 text-rose-800 dark:bg-rose-900/60 dark:text-rose-300">
+                EXAM BLUEPRINT • 302 SLIDES ANALYZED
+              </span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Dr. Nithi Atthi (TMEC Fab Manager)</span>
+            </div>
+            <h1 class="text-sm md:text-base font-black text-slate-900 dark:text-white">
+              สรุปเก็งข้อสอบและจุดเน้นออกสอบจากสไลด์ 302 หน้า (L4 • L5 • L6)
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
+        <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <span>🖨️ พิมพ์ / Save PDF</span>
+        </button>
+        <a href="slides.html" class="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 text-xs font-bold transition flex items-center gap-1.5">
+          <span>📖 คลังสไลด์ 302 หน้า</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <span>🏠 Exam Portal</span>
+        </a>
+        <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="สลับโหมดมืด/สว่าง">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="max-w-7xl mx-auto w-full px-4 md:px-8 py-6 space-y-8 flex-1">
+
+    <!-- HERO BANNER -->
+    <section class="rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white p-6 md:p-8 shadow-xl border border-blue-800/40 relative overflow-hidden">
+      <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="max-w-3xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold">
+            <span>⚡ วิเคราะห์กลั่นกรองครบ 100% จากทั้ง 302 สไลด์ (222 สมการ • 302 Exam Tips)</span>
+          </div>
+          <h2 class="text-xl md:text-3xl font-black tracking-tight leading-snug">
+            โพยสรุปเก็งข้อสอบฉบับสมบูรณ์: 15 หัวข้อออกชัวร์ • 7 ตารางเปรียบเทียบ • 20 ตัวเลขทองคำ
+          </h2>
+          <p class="text-xs md:text-sm text-blue-100/90 leading-relaxed font-thai">
+            สังเคราะห์ตรงจากฐานข้อมูลจริงของสไลด์ Lecture 4 (133 หน้า), Lecture 5 (105 หน้า) และ Lecture 6 (64 หน้า) โดยโฟกัสเฉพาะประเด็นที่ ดร. นิติ เอี่ยมถิ เน้นย้ำซ้ำหลายสไลด์ <strong>จุดเปรียบเทียบที่ข้อสอบชอบหลอก</strong> กฎความปลอดภัยหน้างาน Fab และสมการหลักที่ต้องใช้คำนวณ — <em>คลิกเลขสไลด์สีน้ำเงินบนหัวข้อใดก็ได้เพื่อเปิดภาพสไลด์ต้นฉบับทันที</em>
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 flex-shrink-0">
+          <a href="#topics-section" class="p-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition text-center">
+            <div class="text-2xl font-black text-amber-300">15</div>
+            <div class="text-[11px] font-bold text-blue-100">หัวข้อเก็งออกสอบ</div>
+          </a>
+          <a href="#tables-section" class="p-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition text-center">
+            <div class="text-2xl font-black text-emerald-300">7</div>
+            <div class="text-[11px] font-bold text-blue-100">ตารางเทียบจุดตัด</div>
+          </a>
+          <a href="#numbers-section" class="p-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition text-center">
+            <div class="text-2xl font-black text-cyan-300">20</div>
+            <div class="text-[11px] font-bold text-blue-100">ตัวเลขทองคำห้ามลืม</div>
+          </a>
+          <a href="#explorer-section" class="p-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition text-center">
+            <div class="text-2xl font-black text-rose-300">302</div>
+            <div class="text-[11px] font-bold text-blue-100">คลัง Exam Tips สด</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER & QUICK NAV TOOLBAR -->
+    <section class="no-print sticky top-[61px] z-30 glass-card rounded-2xl p-3 md:p-4 shadow-md space-y-3">
+      <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+        <!-- Lecture & Section Filter Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0">
+          <button onclick="setTopicFilter('ALL')" id="flt-all" class="flt-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-sm whitespace-nowrap transition">
+            🌟 ทั้งหมด (15 หมวด)
+          </button>
+          <button onclick="setTopicFilter('L4')" id="flt-l4" class="flt-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 whitespace-nowrap transition">
+            🧼 L4: Fab, UPW & Gases (6)
+          </button>
+          <button onclick="setTopicFilter('L5')" id="flt-l5" class="flt-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 whitespace-nowrap transition">
+            🔬 L5: Lithography (5)
+          </button>
+          <button onclick="setTopicFilter('L6')" id="flt-l6" class="flt-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 whitespace-nowrap transition">
+            ⚙️ L6: CMP & Cleaning (4)
+          </button>
+          <button onclick="setTopicFilter('TIER_S')" id="flt-tier_s" class="flt-btn px-3 py-1.5 rounded-xl text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 whitespace-nowrap transition">
+            🔥 เฉพาะ Tier S (95%+)
+          </button>
+        </div>
+
+        <!-- Search & Jump -->
+        <div class="flex items-center gap-2">
+          <div class="relative flex-1 lg:w-72">
+            <input type="text" id="topic-search" oninput="renderExamTopics()" placeholder="🔍 กรองหัวข้อ เช่น UPW, TMAH, Preston, C/F..."
+              class="w-full px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+          </div>
+          <a href="#tables-section" class="px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold whitespace-nowrap hover:bg-emerald-100 transition">
+            📊 ตารางเทียบ
+          </a>
+          <a href="#numbers-section" class="px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 text-xs font-bold whitespace-nowrap hover:bg-amber-100 transition">
+            🔢 ตัวเลข
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 1: 15 MASTER EXAM TOPICS ================= -->
+    <section id="topics-section" class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg md:text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+            <span>🔥 15 หัวข้อหลักที่คาดว่าจะออกสอบ (วิเคราะห์จาก 302 หน้า)</span>
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">เรียงตามบทเรียน L4 → L5 → L6 พร้อมจุดหลอกและแนวคำถามทดสอบความเข้าใจ</p>
+        </div>
+        <span id="topic-visible-count" class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs font-bold">
+          แสดง 15 / 15 หมวด
+        </span>
+      </div>
+
+      <div id="topics-container" class="space-y-5"></div>
+    </section>
+
+    <!-- ================= SECTION 2: 7 MASTER COMPARISON TABLES ================= -->
+    <section id="tables-section" class="space-y-5 pt-4">
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-6">
+        <h2 class="text-lg md:text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+          <span>📊 7 ตารางเปรียบเทียบจุดตัดคะแนน (ที่ข้อสอบออกจับคู่บ่อยที่สุด)</span>
+        </h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">สรุปรวมสารเคมี ก๊าซ วัสดุ และกระบวนการที่มักถูกนำมาออกเปรียบเทียบกันในข้อสอบปรนัยและอัตนัย</p>
+      </div>
+      <div id="tables-container" class="grid grid-cols-1 gap-6"></div>
+    </section>
+
+    <!-- ================= SECTION 3: 20 CRITICAL NUMBERS & FORMULAS ================= -->
+    <section id="numbers-section" class="space-y-5 pt-4">
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-6">
+        <h2 class="text-lg md:text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+          <span>🧮 20 ตัวเลขทองคำ & สมการหลักที่ห้ามจำผิดหน้าห้องสอบ</span>
+        </h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">สเปกตัวเลขมาตรฐานอุตสาหกรรมเซมิคอนดักเตอร์และสมการคำนวณที่ถูกอ้างอิงซ้ำตลอด 302 สไลด์</p>
+      </div>
+      <div id="numbers-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
+    </section>
+
+    <!-- ================= SECTION 4: LIVE 302-SLIDE EXAM TIP EXPLORER ================= -->
+    <section id="explorer-section" class="space-y-4 pt-4 no-print">
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-6">
+        <h2 class="text-lg md:text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+          <span>🎯 คลัง Exam Tips & สูตรสมการจากทั้ง 302 สไลด์ (ดึงสดจากฐานข้อมูล)</span>
+        </h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">ค้นหาจุดเน้นข้อสอบหรือสมการเฉพาะเจาะจงจากสไลด์ทุกหน้า L4 (133) + L5 (105) + L6 (64) และกดเปิดสไลด์ต้นฉบับได้ทันที</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <select id="exp-lec-filter" onchange="renderExplorer()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold">
+            <option value="ALL">ทุกบทเรียน (302 สไลด์)</option>
+            <option value="L4">L4: Chemicals & Gases (133)</option>
+            <option value="L5">L5: Lithography (105)</option>
+            <option value="L6">L6: CMP & Cleaning (64)</option>
+          </select>
+          <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold text-emerald-800 dark:text-emerald-300 cursor-pointer">
+            <input type="checkbox" id="exp-formula-only" onchange="renderExplorer()" class="rounded text-emerald-600">
+            <span>⚗️ เฉพาะสไลด์ที่มีสูตร/สมการ (222 หน้า)</span>
+          </label>
+        </div>
+        <div class="flex items-center gap-2 flex-1 md:max-w-md">
+          <input type="text" id="exp-search" oninput="renderExplorer()" placeholder="🔍 ค้นหาใน Exam Tip / สูตร เช่น Hemolysis, Ceria, BTA..."
+            class="w-full px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <span id="exp-count" class="text-xs font-bold text-slate-500 whitespace-nowrap">0 รายการ</span>
+        </div>
+      </div>
+
+      <div id="explorer-container" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
+      <div class="text-center pt-2">
+        <button id="exp-load-more" onclick="loadMoreExplorer()" class="hidden px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm transition">
+          แสดงเพิ่มเติม (+30 สไลด์)
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-5 px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+    สรุปเก็งข้อสอบวิเคราะห์จากฐานข้อมูล 302 สไลด์ฉบับสมบูรณ์ • TMEC Specialty Chemicals & Gases • พัฒนาเพื่อการทบทวนก่อนสอบปลายภาค
+  </footer>
+
+  <!-- ================= DATA & RENDER ENGINE ================= -->
+  <script>
+    // 1. MASTER EXAM PREDICTION DATA (15 HIGH-PROBABILITY TOPICS ACROSS 302 SLIDES)
+    const EXAM_TOPICS = [
+      {
+        id: 'T01',
+        lecture: 'L4',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'สถาปัตยกรรม Fab 4 ชั้น, ระบบอากาศ MAU vs RCU และการแยกท่อไอเสีย (Exhaust Segregation)',
+        titleEn: 'Fab 4-Level Architecture, Positive Pressure HVAC & Exhaust Segregation',
+        slides: ['L4-P006', 'L4-P008', 'L4-P010', 'L4-P011', 'L4-P013', 'L4-P014', 'L4-P128'],
+        points: [
+          { label: 'โครงสร้าง Fab 4 ชั้น (บน→ล่าง)', text: '<strong>Plenum</strong> (จ่ายลมผ่าน HEPA/ULPA) → <strong>Main Cleanroom</strong> (เครื่อง Process Tools & OHT) → <strong>Clean Sub-fab</strong> (ตั้ง Vacuum Pump, Chiller, <strong>POU Scrubber</strong> เพื่อลดระยะ Hook-up) → <strong>Utility Sub-fab</strong> (ท่อเคมี/UPW/ไฟฟ้า/CUB).' },
+          { label: 'สมดุลความดันคลีนรูม', text: '$$Q_{\\text{MAU}} = Q_{\\text{Exhaust}} + Q_{\\text{Exfiltration}}$$ ปริมาณอากาศเติม ($Q_{\\text{MAU}}$) ต้องมากกว่า $Q_{\\text{Exhaust}}$ เสมอ เพื่อรักษา <strong>Positive Pressure ($+10$ ถึง $+15\\text{ Pa}$)</strong> กันฝุ่นภายนอกไหลย้อนเข้า Cleanroom.' },
+          { label: 'MAU vs RCU/FFU', text: '<strong>MAU</strong> (Make-up Air Unit) ดึงอากาศนอก 100% เพื่อคุมความชื้น (Dew point), ชดเชย Exhaust และสร้าง Positive Pressure; ส่วน <strong>RCU / FFU</strong> หมุนเวียนอากาศภายในผ่าน <strong>HEPA</strong> ($\\ge 99.97\\%$ @ $0.3\\,\\mu\\text{m}$) หรือ <strong>ULPA</strong> เพื่อคุมอนุภาค.' },
+          { label: 'ท่อไอเสีย 4 สายแยกขาด', text: '<code>AEX</code> (Acid → Wet Scrubber) • <code>SEX/VEX</code> (Solvent/VOC → Thermal Oxidizer) • <code>PEX</code> (Pyrophoric/Toxic → <strong>POU Abatement</strong> หน้าเครื่อง) • <code>GEX</code> (General Heat).' }
+        ],
+        trap: 'ห้ามต่อท่อ Acid Exhaust (<code>HCl</code>, <code>HF</code>) ปนกับ Alkaline Exhaust (<code>NH₃</code>) เด็ดขาด เพราะจะทำปฏิกิริยาตกตะกอนเป็นเกลือแอมโมเนียมคลอไรด์ <code>NH₃(g) + HCl(g) → NH₄Cl(s)</code> อุดตันท่อระบายอากาศ! และห้ามต่อ Solvent เข้าสาย Acid/Oxidizer เพราะเสี่ยงระเบิด',
+        qa: {
+          q: 'ทำไม Vacuum Pump และ POU Scrubber จึงนิยมติดตั้งที่ชั้น Clean Sub-fab และต้องรักษา $Q_{\\text{MAU}} > Q_{\\text{Exhaust}}$ เสมอ?',
+          a: 'ติดตั้งที่ Clean Sub-fab เพื่อลดระยะท่อ Hook-up จากใต้เครื่องจักร ลดโอกาสการควบแน่น/อุดตันในท่อไอเสียพิษและดูแลซ่อมบำรุงได้โดยไม่รบกวน Cleanroom ส่วนการให้ $Q_{\\text{MAU}} > Q_{\\text{Exhaust}}$ มีไว้เพื่อสร้างแรงดันบวก (Positive Differential Pressure +10 ถึง +15 Pa) ผลักอากาศออกตามรอยรั่ว ป้องกันฝุ่นภายนอกไหลย้อนเข้าห้องสะอาด'
+        }
+      },
+      {
+        id: 'T02',
+        lecture: 'L4',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'น้ำบริสุทธิ์ยิ่งยวด (UPW) และเทคโนโลยี Functional Dissolved-Gas DIW',
+        titleEn: 'Ultrapure Water (UPW) Specs, Polishing Loop & Functional Gases in DIW',
+        slides: ['L4-P020', 'L4-P021', 'L4-P022', 'L4-P024', 'L4-P025', 'L4-P027', 'L4-P028', 'L4-P036'],
+        points: [
+          { label: 'สเปกทองคำของ UPW ที่ 25°C', text: '$$\\rho = 18.2\\text{--}18.3\\text{ M}\\Omega\\cdot\\text{cm} \\iff \\sigma = 0.055\\ \\mu\\text{S/cm}$$ เกิดจากการแตกตัวของน้ำเอง ($[\\text{H}^+][\\text{OH}^-] = 1.0 \\times 10^{-14}\\text{ M}^2$) ต้องคุม TOC $< 1\\text{--}5\\text{ ppb}$, อนุภาค, แบคทีเรีย และออกซิเจนละลาย (DO). (<strong>UPW ≠ DIW</strong> เพราะ UPW เข้มงวดกว่าเรื่อง DO, TOC, Particle)' },
+          { label: 'ยูนิตใน Polishing Loop', text: '<strong>UV 185 nm</strong> (ย่อยสลายสารอินทรีย์/TOC) → <strong>Mixed Bed Polisher</strong> → <strong>Degasifier</strong> (กำจัด Dissolved $\\text{O}_2$ ป้องกัน Native Oxide) → <strong>Ultrafilter (UF)</strong> (ดักอนุภาค sub-micron ก่อนเข้าจุดใช้งาน POU).' },
+          { label: 'ก๊าซละลาย 4 สูตรสำคัญ', text: '• <strong>CO₂-DIW</strong> ($\\text{CO}_2 + \\text{H}_2\\text{O} \\rightleftharpoons \\text{H}^+ + \\text{HCO}_3^-$): เพิ่มค่าการนำไฟฟ้าใช้ใน Backend/Dicing/Spin Rinse เพื่อ<strong>ป้องกัน ESD Damage</strong><br>• <strong>O₃-DIW (DIO₃)</strong>: Strong Oxidizer ($E^0 = +2.07\\text{ V}$) ลอก Photoresist แทน Piranha (SPM)<br>• <strong>H₂-DIW</strong>: Reducing agent ใช้ร่วมกับ <strong>Megasonic</strong> ไล่อนุภาคเล็ก<br>• <strong>N₂-Deaerated DIW</strong>: ไล่ $\\text{O}_2$ กัน Native Oxide หลังจุ่ม HF.' }
+        ],
+        trap: 'ห้ามใช้น้ำ Pure UPW ($18.2\\text{ M}\\Omega\\cdot\\text{cm}$) เพียวๆ ในขั้นตอน <strong>Wafer Dicing (Backend)</strong> หรือ Single-wafer Spin Rinse เด็ดขาด! เพราะความต้านทานสูงมากทำให้เป็นฉนวนเกิดประจุไฟฟ้าสถิตเสียดสี (Triboelectric Charge) ช็อตวงจร (ESD) พัง ต้องเติม $\\text{CO}_2$ ให้เกิดไอออน $\\text{H}^+ / \\text{HCO}_3^-$ สลายประจุเสมอ',
+        qa: {
+          q: 'เหตุใดน้ำ UPW มี Resistivity $18.2\\text{ M}\\Omega\\cdot\\text{cm}$ จึงต้องเติมก๊าซ $\\text{CO}_2$ ในขั้นตอนตัดเวเฟอร์ (Dicing) แต่ต้องกำจัด $\\text{O}_2$ ด้วย $\\text{N}_2$ ในขั้นตอนล้างผิวซิลิคอน (Final Rinse)?',
+          a: '1) เติม $\\text{CO}_2$ เพื่อแตกตัวให้ไอออน $\\text{H}^+$ และ $\\text{HCO}_3^-$ ลดความต้านทานไฟฟ้าของน้ำ ป้องกันการสะสมไฟฟ้าสถิต (ESD) ขณะฉีดน้ำตัดเวเฟอร์ 2) กำจัด $\\text{O}_2$ ออกด้วย $\\text{N}_2$ Deaeration เพื่อไม่ให้ผิวซิลิคอนที่เพิ่งกัด Native Oxide ด้วย HF เกิดชั้นออกไซด์บางๆ ซ้ำขึ้นมาใหม่ (Native-oxide regrowth)'
+        }
+      },
+      {
+        id: 'T03',
+        lecture: 'L4',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: '6 กลุ่มหน้าที่ก๊าซ & เปรียบเทียบ Si Precursors (SiH₄ vs DCS vs TCS vs TEOS) และ ALD High-k',
+        titleEn: '6 Gas Families, CVD/Epi Precursors & ALD High-k (TMA, TDMAH, TEMAH)',
+        slides: ['L4-P015', 'L4-P031', 'L4-P039', 'L4-P048', 'L4-P050', 'L4-P053', 'L4-P055', 'L4-P057', 'L4-P058', 'L4-P067'],
+        points: [
+          { label: 'ก๊าซ 6 กลุ่มหน้าที่', text: '<strong>Add</strong> (Source เช่น $\\text{SiH}_4$), <strong>React</strong> ($\\text{O}_2, \\text{NH}_3$), <strong>Remove</strong> (Etch เช่น $\\text{CF}_4, \\text{Cl}_2$), <strong>Dope</strong> ($\\text{PH}_3, \\text{B}_2\\text{H}_6$), <strong>Process Support</strong> (Carrier นำพา vs Purge ขับไล่), <strong>Equipment Support</strong> (<code>Ar</code> พลาสมา, <code>He</code> Backside Cooling ระบายความร้อนในสุญญากาศ, <code>NF₃</code> Remote Plasma Chamber Clean).' },
+          { label: 'เปรียบเทียบ Si Precursors 4 ตัว', text: '• <strong>SiH₄</strong> (Gas $-112^\\circ\\text{C}$, <strong>Pyrophoric</strong>): Poly-Si & LTO (ถ้าใช้ $\\text{N}_2\\text{O}$ พลาสมาได้ Step coverage ดีกว่า $\\text{O}_2$)<br>• <strong>DCS (SiH₂Cl₂)</strong> ($8^\\circ\\text{C}$): LPCVD $\\text{Si}_3\\text{N}_4$ ($3\\text{SiH}_2\\text{Cl}_2 + 4\\text{NH}_3 \\to \\text{Si}_3\\text{N}_4 + 6\\text{HCl} + 6\\text{H}_2$)<br>• <strong>TCS (SiHCl₃)</strong> ($32^\\circ\\text{C}$): <strong>Epitaxial Si</strong> ($\\text{SiHCl}_3 + \\text{H}_2 \\to \\text{Si} + 3\\text{HCl}$ โดย $\\text{H}_2$ เป็น Reactant + เติม HCl คุม Selective growth)<br>• <strong>TEOS</strong> ($168^\\circ\\text{C}$ Liquid, ไม่ Pyrophoric): $\\text{O}_3$-TEOS SACVD ทำ <strong>STI Gap-fill</strong> Conformal ยอดเยี่ยม แต่ต้อง Heat Trace.' },
+          { label: 'LPCVD vs PECVD & ALD', text: '<strong>LPCVD</strong> ใช้ความร้อนสูง (ใช้ $\\text{NH}_3$ เพราะ $\\text{N}_2$ พันธะ $\\text{N}\\equiv\\text{N}$ แข็งเกิน) ส่วน <strong>PECVD</strong> ใช้พลาสมาที่ $<400^\\circ\\text{C}$ เพื่อลงฟิล์มหลังเดินสายโลหะ BEOL. <strong>ALD</strong> วน 4 จังหวะ (Precursor Pulse → Purge → Reactant Pulse → Purge) ใช้ <code>TMA</code> ทำ $\\text{Al}_2\\text{O}_3$ และ <code>TDMAH/TEMAH</code> ทำ $\\text{HfO}_2$ (HKMG).' }
+        ],
+        trap: '• <strong>TMA / TMAl</strong> เป็นสาร <strong>Pyrophoric + Water-reactive</strong> รุนแรง ห้ามใช้น้ำดับไฟเด็ดขาด (ต้องใช้ Class D / Dry Powder)!<br>• ท่อส่งสารระเหยต่ำ (TEOS, TDMAH, TEMAH) ต้องคุม <strong>$T_{\\text{line}} > T_{\\text{bubbler}}$</strong> กัน Condensation แต่ต้องต่ำกว่า $T_{\\text{decomp}}$ กันสลายตัวอุดตันวาล์ว<br>• <strong>Forming Gas</strong> ($\\text{N}_2/\\text{H}_2$ หรือ $\\text{Ar}/\\text{H}_2$) ต้องคุม $\\text{H}_2 < 4\\%$ (LFL) ใช้ทำ Reduce + Passivate Dangling Bonds ($\\equiv\\text{Si}\\cdot + \\text{H} \\to \\equiv\\text{Si-H}$).',
+        qa: {
+          q: 'ทำไมการทำ Silicon Nitride ($\\text{Si}_3\\text{N}_4$) แบบ Thermal LPCVD จึงไม่สามารถใช้ก๊าซ $\\text{N}_2$ แทน $\\text{NH}_3$ ได้ และทำไม $\\text{O}_3$-TEOS จึงเหมาะกับร่องแคบลึก (STI) มากกว่า $\\text{SiH}_4$?',
+          a: '1) โมเลกุล $\\text{N}_2$ มีพันธะสาม ($\\text{N}\\equiv\\text{N}$) ที่แข็งแรงมากเกินกว่าพลังงานความร้อนใน LPCVD จะแตกตัวได้ จึงต้องใช้ $\\text{NH}_3$ (หรือเปลี่ยนเป็น PECVD เพื่อใช้พลาสมาแตก $\\text{N}_2$) 2) $\\text{O}_3$-TEOS มีคุณสมบัติ Surface-sensitive และ Self-planarizing flow ทำให้เติมเต็มร่องลึก (Gap-fill) ได้โดยไม่เกิดรูโพรง (Void) และปลอดภัยกว่า $\\text{SiH}_4$ ที่ติดไฟเองในอากาศ'
+        }
+      },
+      {
+        id: 'T04',
+        lecture: 'L4',
+        tier: 'TIER_A',
+        tierLabel: '⭐ ออกบ่อยมาก (85%+)',
+        titleTh: 'ก๊าซ Dopant พิษร้ายแรง: AsH₃, PH₃, B₂H₆ และ BF₃ (n-type vs p-type & ความปลอดภัย)',
+        titleEn: 'Toxic & Pyrophoric Dopant Gases: Arsine, Phosphine, Diborane vs BF₃',
+        slides: ['L4-P079', 'L4-P080', 'L4-P081', 'L4-P082', 'L4-P084', 'L4-P086', 'L4-P087', 'L4-P089'],
+        points: [
+          { label: 'จำแนกชนิดสารเจือ (Dopant)', text: '• <strong>n-type (หมู่ V):</strong> <code>AsH₃</code> (Arsine — อะตอม As ใหญ่ ลด Channeling/TED ทำ <strong>Ultra-Shallow Junction</strong> ได้ดี) และ <code>PH₃</code> (Phosphine)<br>• <strong>p-type (หมู่ III):</strong> <code>B₂H₆</code> (Diborane) และ <code>BF₃</code> (Boron Trifluoride — นิยมยิงเป็นไอออน $\\text{BF}_2^+$ ใน Ion Implanter ลด Energy Contamination).' },
+          { label: 'ระดับอันตรายเฉียบพลัน', text: '• <strong>AsH₃</strong>: พิษสูงสุด! <strong>TLV-TWA 0.005 ppm</strong>, IDLH 3 ppm ทำให้เม็ดเลือดแดงแตกเฉียบพลัน (<strong>Massive Hemolysis</strong>) ทำลายไต<br>• <strong>B₂H₆</strong>: Pyrophoric สูงสุด (ลุกไฟเอง + พิษสูง) สลายตัวได้เองที่อุณหภูมิห้อง ต้องเก็บแบบเจือจางในที่เย็น<br>• <strong>PH₃</strong>: ทั้ง Highly Toxic + Pyrophoric.' },
+          { label: 'BF₃ ต่างจากตัวอื่นอย่างไร', text: '<strong>BF₃ ไม่ติดไฟ (Non-flammable)</strong> และไม่ Pyrophoric จึงนิยมใช้ใน Ion Implanter แต่<strong>ไวต่อความชื้นสูงมาก</strong> หากเจอไอน้ำจะเกิดปฏิกิริยาไฮโดรไลซิสกลายเป็นกรดกัดกร่อน <strong>HF / HBF₄</strong> ทันที!' }
+        ],
+        trap: 'ข้อสอบชอบหลอกถามว่า <strong>"ก๊าซ Dopant ตัวใดที่ไม่ติดไฟ (Non-flammable)?"</strong> คำตอบคือ <strong>BF₃</strong>! (แต่ห้ามโดนน้ำเพราะเกิดกรด $\\text{HF}$ กัดกร่อนท่อและวาล์ว) และถ้าถามว่าก๊าซใดทำลายเม็ดเลือดแดง (Hemolysis) ที่ 0.005 ppm คำตอบคือ <strong>AsH₃</strong>',
+        qa: {
+          q: 'เปรียบเทียบข้อดีและความเสี่ยงด้านความปลอดภัยระหว่างการใช้ $\\text{B}_2\\text{H}_6$ กับ $\\text{BF}_3$ สำหรับสร้างชั้นสารกึ่งตัวนำชนิด p-type',
+          a: '$\\text{B}_2\\text{H}_6$ เป็นก๊าซทั้ง Pyrophoric และ Toxic สูงมาก จึงเสี่ยงไฟไหม้และพิษพร้อมกัน ส่วน $\\text{BF}_3$ ไม่ติดไฟ (Non-flammable) ปลอดภัยด้านอัคคีภัยในเครื่อง Ion Implanter แต่เมื่อสัมผัสความชื้นจะไฮโดรไลซิสเป็นกรด $\\text{HF}$ กัดกร่อนรุนแรง จึงต้อง Purge ด้วย $\\text{N}_2$ แห้งสนิท'
+        }
+      },
+      {
+        id: 'T05',
+        lecture: 'L4',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'เคมี Plasma Etching: กลไก F vs Cl vs Br, Volatility ของ By-product และกฎ C/F Ratio',
+        titleEn: 'Plasma Etch Chemistry Selection, Volatility Logic & C/F Ratio Polymer Control',
+        slides: ['L4-P093', 'L4-P095', 'L4-P096', 'L4-P097', 'L4-P098', 'L4-P099', 'L4-P103', 'L4-P105', 'L4-P106', 'L4-P108', 'L4-P113'],
+        points: [
+          { label: 'หัวใจคือ Volatility ของ By-product', text: '• กัด <strong>Si / SiO₂ / W</strong> → ใช้ <strong>F-chemistry</strong> ได้ $\\text{SiF}_4\\uparrow$, $\\text{WF}_6\\uparrow$ ระเหยง่าย<br>• กัด <strong>Al</strong> → ต้องใช้ <strong>Cl₂ + BCl₃</strong> ได้ $\\text{AlCl}_3\\uparrow$ (โดย <code>BCl₃</code> ทำหน้าที่เป็น <strong>Oxygen Scavenger</strong> เจาะทะลุชั้น Native $\\text{Al}_2\\text{O}_3$)<br>• กัด <strong>Poly-Si Gate</strong> → ใช้ <strong>HBr + Cl₂ + O₂</strong> ($\\text{O}_2$ สร้างชั้นพาสซีฟ $\\text{SiO}_x\\text{Br}_y$ กันกัดข้าง เพื่อคุม CD แม่นสุด!).' },
+          { label: 'กฎ C/F Ratio ของก๊าซ Fluorocarbon', text: '$$\\text{F/C Ratio: } \\text{CF}_4 (4) > \\text{C}_2\\text{F}_6 (3) > \\text{C}_4\\text{F}_8 (2) > \\text{C}_4\\text{F}_6 (1.5)$$ ยิ่งสัดส่วน <strong>C/F สูง</strong> (เช่น $\\text{C}_4\\text{F}_6, \\text{C}_4\\text{F}_8$) หรือเติม H ($\\text{CHF}_3, \\text{CH}_2\\text{F}_2$) → เกิดฟิล์มพอลิเมอร์ $\\text{CF}_x$ เคลือบผนังและผิว Si → เพิ่ม <strong>Anisotropy</strong> และ <strong>$\\text{SiO}_2:\\text{Si}$ Selectivity</strong>! แต่ถ้า C/F สูงเกินไปจะเกิด <strong>Etch Stop</strong>.' },
+          { label: 'Ion-Assisted RIE & Bosch TSV', text: '<strong>F</strong> = กัดเร็ว/Isotropic; <strong>Cl</strong> = Metal/III-V; <strong>Br</strong> = High Anisotropy/CD Control; เติม <strong>Ar⁺</strong> เพื่อ Physical Bombardment ช่วยขจัด By-product จุดเดือดสูง; ส่วน <strong>TSV DRIE (Bosch)</strong> สลับ <code>SF₆</code> (Etch) กับ <code>C₄F₈</code> (Passivation).' }
+        ],
+        trap: '• <strong>ทำไมห้ามใช้ก๊าซฟลูออรีน (F) กัดอะลูมิเนียม (Al)?</strong> เพราะเกิด <code>AlF₃</code> ที่มีจุดเดือดสูงมาก (ไม่ระเหย) ตกค้างอุดตัน ต้องใช้ Cl-based เท่านั้น!<br>• การเติม $\\text{O}_2$ ลงในพลาสมาฟลูออโรคาร์บอนจะดึง C ออกเป็น $\\text{CO}/\\text{CO}_2$ ทำให้ <strong>C/F ลดลง</strong> (กัดเร็วขึ้น แต่เสีย Anisotropy)<br>• ลอก PR บนชั้นโลหะเปลือย <strong>ห้ามใช้ O₂ Plasma ล้วน</strong> เพราะโลหะจะเกิด Oxidation ให้ใช้ <code>H₂/N₂</code> แทน',
+        qa: {
+          q: 'อธิบายเหตุผลที่การกัด $\\text{SiO}_2$ ให้เลือกหยุดบน Si ได้ดีต้องใช้ $\\text{C}_4\\text{F}_8$ หรือ $\\text{C}_4\\text{F}_6$ แทน $\\text{SF}_6$ และอธิบายหน้าที่ของ $\\text{BCl}_3$ ในการกัดอะลูมิเนียม',
+          a: '1) $\\text{C}_4\\text{F}_8$ และ $\\text{C}_4\\text{F}_6$ มีอัตราส่วน C/F สูง จึงสร้างฟิล์ม Fluorocarbon polymer เคลือบปกป้องผิว Si และผนังข้าง ในขณะที่ $\\text{O}$ จาก $\\text{SiO}_2$ ช่วยทำปฏิกิริยากำจัดคาร์บอนออกได้ จึงได้ Selectivity $\\text{SiO}_2:\\text{Si}$ สูงมาก (ต่างจาก $\\text{SF}_6$ ที่ปลดปล่อย $\\text{F}^*$ ล้วนๆ กัดแบบ Isotropic) 2) $\\text{BCl}_3$ มีหน้าที่ทำปฏิกิริยากำจัดชั้น Native Oxide ($\\text{Al}_2\\text{O}_3$) บนผิวหน้าอะลูมิเนียมก่อนที่ $\\text{Cl}_2$ จะเข้ากัดเนื้อโลหะ'
+        }
+      },
+      {
+        id: 'T06',
+        lecture: 'L4',
+        tier: 'TIER_A',
+        tierLabel: '⭐ ออกบ่อยมาก (85%+)',
+        titleTh: 'ฮาร์ดแวร์ท่อส่ง 316L EP, ถังก๊าซเหลว (Load Cell), หน่วยวัด MFC และ Scrubbers 4 ชนิด',
+        titleEn: 'UHP Tubing (EP vs BA), Liquefied Gas Weighing, sccm/slm & 4 Scrubber Types',
+        slides: ['L4-P117', 'L4-P118', 'L4-P120', 'L4-P122', 'L4-P123', 'L4-P124', 'L4-P125', 'L4-P127', 'L4-P129', 'L4-P130'],
+        points: [
+          { label: 'ท่อส่งและข้อต่อมาตรฐาน UHP', text: 'ใช้สเตนเลส <strong>SUS 316L VIM-VAR Electropolished (EP)</strong> สำหรับ Specialty Gas (เหนือกว่าท่อ BA เพราะผิวเรียบ $R_a$ ต่ำ ลด $\\text{H}_2\\text{O}$ adsorption และการกัดกร่อน) เชื่อมด้วย <strong>Orbital GTAW Welding</strong> และข้อต่อ <strong>Metal Face-Seal (VCR)</strong> (ห้ามใช้ข้อต่อเกลียว!).' },
+          { label: 'วัดปริมาณถังก๊าซ & หน่วย MFC', text: '• ก๊าซอัดความดัน ($\\text{N}_2, \\text{Ar}$) ดูจาก Pressure Gauge แต่<strong>ก๊าซเหลว ($\\text{NH}_3, \\text{Cl}_2, \\text{WF}_6$) ต้องใช้ Load Cell ชั่งน้ำหนักเท่านั้น!</strong><br>• หน่วยไหล: $$1\\text{ slm} = 1,000\\text{ sccm}$$ (MFC ใช้ <code>sccm</code>, Purge ใช้ <code>slm</code>, Facility ใช้ <code>Nm³/h</code>; ระวัง <code>sccm</code> เป็นมาตรฐานเทียบมวล ไม่ใช่ <code>ccm</code>).' },
+          { label: 'Scrubber บำบัดไอเสีย 4 ชนิด', text: '• <strong>Burn-Wet:</strong> ก๊าซ Pyrophoric/Hydride ($\\text{SiH}_4, \\text{B}_2\\text{H}_6$)<br>• <strong>Plasma-Wet:</strong> ก๊าซ PFCs เสถียรสูง ($\\text{CF}_4, \\text{SF}_6$)<br>• <strong>Wet Scrubber:</strong> ก๊าซกรด/เบสละลายน้ำ ($\\text{HCl}, \\text{HF}, \\text{NH}_3$)<br>• <strong>Dry Scrubber:</strong> ก๊าซพิษกลุ่ม Doping ปริมาณน้อย ($\\text{AsH}_3, \\text{PH}_3$).' }
+        ],
+        trap: '• <strong>ห้ามใช้ Pressure Gauge วัดปริมาณก๊าซเหลวที่เหลือในถัง</strong> เพราะตราบใดที่ยังมีเฟสของเหลวอยู่ ความดันไอจะคงที่ตลอดจนกว่าของเหลวหยดสุดท้ายจะระเหยหมด!<br>• ก๊าซเฉื่อยอย่าง <strong>N₂</strong> แม้ไม่เป็นพิษและไม่ติดไฟ แต่เป็น <strong>Asphyxiant</strong> (แย่ง $\\text{O}_2$) ในห้อง Sub-fab ต้องติด O₂ Deficiency Monitor เสมอ<br>• ท่อ <strong>O₂</strong> ต้องทำ Oxygen Cleaning 100% ขจัดคราบน้ำมัน/ไฮโดรคาร์บอน',
+        qa: {
+          q: 'ทำไมโรงงาน Fab จึงต้องใช้ท่อ SUS 316L EP แทนท่อ BA สำหรับก๊าซกัดกร่อน และเหตุใดเกจวัดความดันจึงใช้วัดปริมาณคงเหลือของก๊าซ $\\text{NH}_3$ หรือ $\\text{Cl}_2$ ในถังไม่ได้?',
+          a: '1) ท่อ Electropolished (EP) มีความหยาบผิวน้อยกว่าและมีชั้นโครเมียมออกไซด์เข้มข้นกว่าท่อ BA จึงกักเก็บความชื้น ($\\text{H}_2\\text{O}$) น้อยกว่ามาก ป้องกันความชื้นทำปฏิกิริยากับ $\\text{HCl}/\\text{Cl}_2$ กลายเป็นกรดกัดทะลุท่อและสร้างอนุภาค 2) $\\text{NH}_3$ และ $\\text{Cl}_2$ ถูกบรรจุแบบ Liquefied Gas ความดันในถังจะเท่ากับความดันไอสมดุลซึ่งคงที่เสมอตราบใดที่ยังมีของเหลวอยู่ จึงต้องใช้ Load Cell ชั่งน้ำหนักแทน'
+        }
+      },
+      {
+        id: 'T07',
+        lecture: 'L5',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'สมการ Rayleigh (R vs DOF), กฎแสงสีเหลือง (Yellow Light) และ 4 ขั้นตอน Bake',
+        titleEn: 'Rayleigh Resolution vs DOF, Yellow Room Specs & Thermal Baking Steps',
+        slides: ['L5-P008', 'L5-P010', 'L5-P012', 'L5-P013', 'L5-P014', 'L5-P050', 'L5-P058', 'L5-P068', 'L5-P069', 'L5-P079', 'L5-P081', 'L5-P087'],
+        points: [
+          { label: 'สมการแม่บท Rayleigh', text: '$$R = k_1 \\frac{\\lambda}{\\text{NA}} \\quad \\text{และ} \\quad \\text{DOF} = k_2 \\frac{\\lambda}{\\text{NA}^2}$$ การลด $\\lambda$ (436→365→248→193→<strong>13.5 nm EUV</strong>) หรือเพิ่ม $\\text{NA}$ ทำให้เส้นเล็กลง ($R$ ดีขึ้น) แต่ต้องแลกกับ <strong>DOF ที่แคบลงกำลังสอง</strong> ($\\propto 1/\\text{NA}^2$)! ทำให้ต้องใช้ฟิล์ม PR บางลง + ใช้ CMP ปรับผิวเวเฟอร์ให้แบนที่สุด.' },
+          { label: 'ห้องแสงสีเหลือง (SEMI C24)', text: 'ห้อง Lithography ต้องใช้แสงสีเหลืองที่มี $\\lambda > 500\\text{ nm}$ (Peak $560\\text{--}590\\text{ nm}$) ความสว่าง $\\le 200\\text{ lux}$ เพื่อตัดแสง UV ไม่ให้กระตุ้นสารไวแสง (PAC/PAG) เกิด <strong>Premature Exposure</strong>.' },
+          { label: 'ความต่างของการอบ 4 รอบ', text: '1) <strong>Dehydration Bake</strong> ($150\\text{--}200^\\circ\\text{C}$): ไล่ Physisorbed $\\text{H}_2\\text{O}$ ก่อนลง HMDS<br>2) <strong>Pre-bake / Soft Bake (PAB)</strong>: *ก่อนฉายแสง* ไล่ Solvent (Underbake→บวม/T-top; Overbake→PAC เสื่อม)<br>3) <strong>PEB</strong>: *หลังฉายแสง ก่อน Develop* — ใน CAR เพื่อกระตุ้นปฏิกิริยา Deprotection ของ $\\text{H}^+$ ส่วน Non-CAR เพื่อเกลี่ย <strong>Standing Waves</strong> ($L = 2\\sqrt{Dt}$)<br>4) <strong>Hardbake</strong> ($100\\text{--}140^\\circ\\text{C}$): *หลัง Develop* เพิ่มความแข็งทน Etch.' }
+        ],
+        trap: '• <strong>ห้ามทำ Hardbake ในกระบวนการ Metal Lift-off เด็ดขาด!</strong> เพราะจะทำให้เรซิสต์ไหลตัว (Reflow) ทำลายขอบ Undercut และแข็งตัวจนลอกไม่ออก<br>• ห้ามนำเวเฟอร์ที่เพิ่งออกจาก Hotplate เข้าขั้นตอน Coater หรือ Stepper โดยไม่ผ่าน <strong>Chill Plate ($23^\\circ\\text{C}$)</strong> เพราะความร้อนจะทำให้ค่า CD เพี้ยนทันที<br>• ทำไมยกเลิก 157 nm แล้วข้ามไป <strong>13.5 nm EUV</strong>? เพราะปัญหาเลนส์ $\\text{CaF}_2$ และ EUV ต้องใช้กระจกสะท้อน <strong>Mo/Si</strong> ใน<strong>สุญญากาศ</strong>เท่านั้น',
+        qa: {
+          q: 'จงอธิบายความแตกต่างของหน้าที่ระหว่าง Soft Bake, Post-Exposure Bake (PEB) และ Hardbake พร้อมระบุว่าเหตุใดการเพิ่มค่า NA จึงสร้างปัญหาต่อ Photoresist',
+          a: 'Soft Bake (ก่อน Expose) ใช้ไล่ตัวทำละลายเพื่อคุมความหนาฟิล์ม; PEB (หลัง Expose ก่อน Develop) ใช้ลด Standing Waves และเร่งปฏิกิริยากรดขยายสัญญาณใน CAR; Hardbake (หลัง Develop) ใช้เพิ่มความทนทานต่อกรดและพลาสมา ส่วนการเพิ่ม NA ทำให้ความละเอียดสูงขึ้น ($R \\propto 1/\\text{NA}$) แต่ระยะชัดลึกหดแคบลงกำลังสอง ($\\text{DOF} \\propto 1/\\text{NA}^2$) จึงบังคับให้ต้องใช้ฟิล์ม Photoresist ที่บางลงและต้องอาศัย CMP ปรับผิวให้เรียบ'
+        }
+      },
+      {
+        id: 'T08',
+        lecture: 'L5',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'HMDS Priming, Spin vs Spray Coating, EBR/BSR และตัวทำละลาย PGMEA',
+        titleEn: 'HMDS Surface Chemistry, Meyerhofer Spin Kinetics & EBR/BSR with PGMEA',
+        slides: ['L5-P016', 'L5-P017', 'L5-P018', 'L5-P019', 'L5-P048', 'L5-P051', 'L5-P054', 'L5-P055', 'L5-P056', 'L5-P057'],
+        points: [
+          { label: 'ปฏิกิริยา HMDS Vapor Prime', text: '$$2\\equiv\\text{Si-OH} + [(\\text{CH}_3)_3\\text{Si}]_2\\text{NH} \\longrightarrow 2\\equiv\\text{Si-O-Si}(\\text{CH}_3)_3 + \\text{NH}_3\\uparrow$$ สร้าง Monolayer เปลี่ยนผิวจาก <strong>Hydrophilic</strong> (มีหมู่ $-\\text{OH}$ ดูดน้ำ) ให้เป็น <strong>Hydrophobic</strong> → ทำให้ <strong>มุมสัมผัสหยดน้ำเพิ่มขึ้น</strong> และ <strong>พลังงานพื้นผิวลดลง</strong> ยึดเกาะกับเรซิสต์อินทรีย์ได้ดี ป้องกัน PR Lifting/Peeling.' },
+          { label: 'สมการ Spin Coating (Meyerhofer)', text: '$$t \\propto \\frac{\\mu^{1/3}}{\\omega^{1/2}} \\quad (\\text{ความเร็วรอบ } \\omega \\uparrow \\implies \\text{ฟิล์มบางลง})$$ Spin Coating ได้ความสม่ำเสมอ (Uniformity) เต็ม 5 ดาวบนแผ่นเรียบ แต่ Conformality แย่ (1 ดาว) — งาน 3D/TSV ร่องลึกต้องใช้ <strong>Spray Coating</strong> หรือ EPD.' },
+          { label: 'EBR & BSR ด้วย PGMEA', text: '<strong>PGMEA</strong> ($\\text{C}_6\\text{H}_{12}\\text{O}_3$) เป็นตัวทำละลายมาตรฐาน Golden Standard สำหรับทั้งผสม PR และทำ Edge Bead Removal (EBR) / Backside Rinse (BSR) เพื่อกัน PR เลอะ Hotplate และ Vacuum Chuck จนเกิด Defocus.' }
+        ],
+        trap: '• ต้องทำ <strong>Dehydration Bake ก่อนทำ HMDS เสมอ</strong>! หากมีน้ำเกาะบนผิว HMDS จะไฮโดรไลซ์กับน้ำกลายเป็นอนุภาคแทนที่จะจับกับ $\\text{Si-OH}$<br>• <strong>ต้องทำ EBR/BSR ก่อน Soft Bake เสมอ</strong> เพราะถ้าอบจนฟิล์มแห้งแล้วจะล้างขอบออกไม่ได้<br>• <strong>ห้ามใช้ Acetone หรือ IPA ทำ EBR</strong> ในสายการผลิตจริง (Acetone ระเหยเร็วเกิดสะเก็ดอนุภาค, IPA ละลายไม่ดีพอ)',
+        qa: {
+          q: 'HMDS เปลี่ยนแปลงสมบัติพื้นผิวเวเฟอร์อย่างไร (ระบุค่า Contact Angle และ Surface Energy) และเหตุใดจึงต้องทำ Backside Rinse (BSR) ก่อนเข้า Soft Bake?',
+          a: 'HMDS ทำปฏิกิริยากับหมู่ Silanol ($\\text{Si-OH}$) เปลี่ยนผิวเป็น $\\text{Si-O-Si}(\\text{CH}_3)_3$ ทำให้ผิวเปลี่ยนจาก Hydrophilic เป็น Hydrophobic (<strong>Contact Angle เพิ่มขึ้น, Surface Energy ลดลง</strong>) ส่วน BSR ต้องทำก่อน Soft Bake เพราะหาก PR ที่เลอะด้านหลังแห้งติดแน่นจะทำให้เวเฟอร์วางบน Exposure Chuck ไม่เรียบ เกิด Defocus และปนเปื้อนอนุภาคทั้ง Lot'
+        }
+      },
+      {
+        id: 'T09',
+        lecture: 'L5',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'Photoresist (CAR, MOR, EUV), Lift-off (Image Reversal vs LOR), TARC vs BARC และ PI vs PBO',
+        titleEn: 'CAR & EUV MOR, Metal Lift-off Architecture, Anti-Reflective Coatings & Permanent Dielectrics',
+        slides: ['L5-P022', 'L5-P025', 'L5-P026', 'L5-P028', 'L5-P030', 'L5-P031', 'L5-P033', 'L5-P034', 'L5-P037', 'L5-P041', 'L5-P042', 'L5-P043', 'L5-P046'],
+        points: [
+          { label: 'CAR, EUV & Metal Oxide Resist', text: '• <strong>CAR:</strong> ใช้ PAG สร้างกรด ($\\text{H}^+$) ตอนฉายแสง และขยายสัญญาณทำ Deprotection ในขั้น <strong>PEB</strong> (ปัญหาหลัก: Acid blur, T-topping, <strong>RLS Trade-off</strong>)<br>• <strong>EUV (13.5 nm):</strong> ต้องควบคุม Aspect Ratio $H/W \\lesssim 2.0\\text{--}2.5$ เพื่อกัน Pattern Collapse จาก Capillary Force ($P = \\frac{2\\gamma\\cos\\theta}{d}$) แก้ด้วย <strong>Dry Development</strong> ($\\gamma=0$) และ <strong>MOR (Metal Oxide Resist)</strong> ที่สร้างฟิล์มโลหะออกไซด์ทน Etch สูง.' },
+          { label: 'Metal Lift-off (Undercut Profile)', text: 'ต้องใช้ <strong>Undercut / Re-entrant profile</strong> ($t_{\\text{PR}} \\ge 3 \\times t_{\\text{film}}$, ห้ามเคลือบแบบ Conformal):<br>1) <strong>Image Reversal (AZ 5214E):</strong> Expose → Reversal Bake (คุมอุณหภูมิเป๊ะ $\\sim 115\\text{--}125^\\circ\\text{C}$) → <strong>Flood Exposure</strong> → Develop<br>2) <strong>Bi-layer LOR (PMGI):</strong> ไม่ไวแสง แต่ละลายใน Developer เร็วกว่า PR ชั้นบน คุม Undercut ด้วยเวลา.' },
+          { label: 'TARC vs BARC', text: '• <strong>TARC</strong> อยู่ *บน* PR ($n_{\\text{TARC}} \\approx \\sqrt{n_{\\text{PR}}}$): แก้ Swing Curve ที่ผิวบน แต่แก้ Notching ไม่ได้ ล้างออกด้วยน้ำ/Developer<br>• <strong>BARC</strong> อยู่ *ใต้* PR: แก้ <strong>Standing Waves & Reflective Notching</strong> จากผิวโลหะด้านล่าง ต้องกัดเปิดช่องด้วย <strong>Plasma Etch (BARC Open)</strong>!' },
+          { label: 'PI vs PBO (ชั้นฉนวนถาวร)', text: 'เป็น Permanent Dielectric Layer ทั้งคู่; <strong>PBO ชนะ PI</strong> ตรง <strong>Curing Temp ต่ำกว่า</strong> ($200\\text{--}250^\\circ\\text{C}$ vs $>350^\\circ\\text{C}$), <strong>ค่า $k$ ต่ำกว่า</strong> ($2.7\\text{--}3.2$ vs $3\\text{--}3.5$), และ <strong>ดูดความชื้นต่ำกว่า</strong> (กัน Popcorn Failure ใน Advanced Packaging).' }
+        ],
+        trap: 'ข้อสอบชอบถาม 3 จุดหลอก:<br>1) <strong>TARC vs BARC ล้างต่างกันอย่างไร?</strong> TARC ล้างออกได้พร้อม Developer/DIW ส่วน <strong>BARC ต้องใช้ Dry Plasma Etch</strong><br>2) <strong>ลำดับ Image Reversal:</strong> Reversal Bake เกิดก่อน Flood Exposure เสมอ!<br>3) <strong>PI/PBO</strong> ไม่ใช่ Sacrificial Mask ที่ลอกทิ้ง แต่เป็น Permanent Layer บนชิป',
+        qa: {
+          q: 'เหตุใด TARC จึงไม่สามารถแก้ปัญหา Reflective Notching ได้เหมือน BARC และเพราะเหตุใด PBO จึงเป็นที่นิยมมากกว่า Polyimide (PI) ในงาน 3D Packaging ที่ไวต่อความร้อน?',
+          a: '1) TARC เคลือบอยู่ด้านบนของ Photoresist จึงลดการสะท้อนที่ผิวบน (Swing curve) เท่านั้น ไม่สามารถดูดซับแสงที่สะท้อนกระเจิงจากพื้นผิวขรุขระด้านล่างเหมือน BARC ที่อยู่ใต้ PR ได้ 2) PBO มีอุณหภูมิการบ่ม (Curing) ต่ำกว่า ($200\\text{--}250^\\circ\\text{C}$ เทียบกับ $>350^\\circ\\text{C}$ ของ PI) ลด Thermal Budget และ Wafer Warpage ทั้งยังมีค่า $k$ ต่ำและดูดความชื้นน้อยกว่า'
+        }
+      },
+      {
+        id: 'T10',
+        lecture: 'L5',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: '2.38 wt% TMAH (MIF), การวิเคราะห์ Defect (T-Topping/Footing) และกฎเหล็ก Rework/Flood Exposure',
+        titleEn: '2.38% TMAH Developer Rationale, Lithography Defects & Rework Gate Rules',
+        slides: ['L5-P063', 'L5-P065', 'L5-P075', 'L5-P083', 'L5-P085', 'L5-P086', 'L5-P089', 'L5-P092', 'L5-P094', 'L5-P097', 'L5-P100', 'L5-P101', 'L5-P102'],
+        points: [
+          { label: 'ทำไมต้อง 2.38 wt% TMAH (0.26 N)?', text: 'TMAH ($(\\text{CH}_3)_4\\text{NOH}$) เป็นน้ำยาชนิด <strong>MIF (Metal-Ion-Free)</strong> ที่ห้ามใช้ $\\text{NaOH}$ หรือ $\\text{KOH}$ แทนใน Front-end Fab เด็ดขาด เพราะ $\\text{Na}^+/\\text{K}^+$ เป็น <strong>Mobile Ionic Contamination</strong> ที่วิ่งเข้า Gate Oxide ทำให้แรงดัน $V_{th}$ เลื่อนและเกิด Breakdown! (พิษซึมผิวหนัง ต้องเตรียม Diphoterine).' },
+          { label: 'วิเคราะห์รากเหง้า Defect ลิโทกราฟี', text: '• <strong>T-Topping:</strong> ไอแอมโมเนีย/เอมีนในอากาศ (Airborne Base) ทำลายกรดบนผิว CAR หรือ PED นานเกิน<br>• <strong>Footing:</strong> Substrate poisoning (เช่น $\\text{SiN}, \\text{TiN}$) สะเทินกรดที่ฐาน PR<br>• <strong>Pattern Collapse:</strong> แรง Capillary Force ขณะ Rinse/Dry<br>• <strong>Scumming/Bridging:</strong> Underexposure หรือ Develop ไม่หมด<br>• <strong>LER vs LWR:</strong> $\\text{LWR} \\approx \\sqrt{2} \\cdot \\text{LER}$.' },
+          { label: 'กติกา Rework & Stripping Chemicals', text: '<strong>Litho Inspection เป็น Rework Gate สุดท้าย!</strong> ทำ Rework ได้เฉพาะ <em>ก่อน Etch หรือ Ion Implant</em> เท่านั้น:<br>• PR สด → ล้างด้วย <strong>PGMEA</strong> • หลัง Expose/PEB → <strong>NMP / DMSO</strong> (DMSO ใช้แทน NMP เพื่อเลี่ยงพิษระบบสืบพันธุ์)<br>• มีชั้นโลหะเปลือย → <strong>ห้ามใช้ Piranha (SPM)</strong> ใช้ Solvent Stripper แทน • <strong>Flood Exposure</strong> (ไม่มี Mask) เปลี่ยน Positive PR ให้ละลายใน TMAH แต่ใช้หลัง Implant/Plasma Etch ไม่ได้เพราะเกิด Crust.' }
+        ],
+        trap: '• <strong>Back-side Alignment (BSA)</strong> ใช้แสง <strong>IR ($>1100\\text{ nm}$)</strong> เพราะ Si Bandgap $= 1.12\\text{ eV}$ แสง IR จึงทะลุเวเฟอร์ซิลิคอนได้!<br>• ในเครื่อง Scanner หน้ากากวางแบบ <strong>Chrome DOWN</strong> (Maskshop จึงต้องเขียน Chrome UP แบบ Wrong Reading)<br>• กัดหน้ากาก Cr แบบแห้งใช้ $\\text{Cl}_2 + \\text{O}_2 \\to \\text{CrO}_2\\text{Cl}_2(g)$ ส่วน Developer ของ PMMA คือ MIBK/IPA และ ZEP คือ n-Amyl Acetate',
+        qa: {
+          q: 'ทำไม Front-end Fab จึงต้องใช้ TMAH 2.38 wt% แทน NaOH/KOH และหากพบปัญหา T-Topping บนหน้าตัด CAR เกิดจากสาเหตุใด?',
+          a: '1) NaOH และ KOH มีไอออนโลหะ $\\text{Na}^+, \\text{K}^+$ (Mobile Ionic Contaminants) ที่เคลื่อนที่เข้าไปทำลายความเสถียรของ Gate Oxide และทำให้ $V_{th}$ Drift จึงต้องใช้ TMAH ที่ปราศจากไอออนโลหะ (MIF) 2) อาการ T-Topping เกิดจากไอแอมโมเนีย/เบสในบรรยากาศคลีนรูมเข้าสะเทินกรด ($\\text{H}^+$) ที่บริเวณผิวบนของชั้น CAR ระหว่างช่วง Post-Exposure Delay (PED)'
+        }
+      },
+      {
+        id: 'T11',
+        lecture: 'L6',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'Dual Damascene, สมการ Preston และโครงสร้างเครื่อง CMP (Pad Glazing)',
+        titleEn: 'Cu Dual Damascene Architecture, Preston Equation & CMP Tool Mechanics',
+        slides: ['L6-P006', 'L6-P008', 'L6-P009', 'L6-P010', 'L6-P012', 'L6-P013', 'L6-P014', 'L6-P015', 'L6-P016'],
+        points: [
+          { label: 'ทำไม Cu ต้องทำ Dual Damascene?', text: 'ทองแดง (Cu) ไม่มีสารประกอบฮาไลด์ที่ระเหยง่ายที่อุณหภูมิต่ำ (Low volatility) จึงทำ Subtractive RIE แบบ Al ไม่ได้ ต้องขุดร่องฉนวนแล้วชุบ ECD Cu จากนั้นขัดส่วนเกินออกด้วย <strong>Cu CMP</strong> (โดยมี <strong>Ta/TaN</strong> เป็น Barrier กัน Cu แพร่; และวิธี <strong>Via First</strong> นิยมสุดเพราะเลี่ยง Litho บนหลุม).' },
+          { label: 'สมการ Preston & Non-Prestonian', text: '$$\\text{MRR} = K_p \\cdot P \\cdot V$$ โดย $K_p$ รวมผลของสารเคมี, Pad, และ Slurry (หน่วย $\\text{nm}/(\\text{min}\\cdot\\text{kPa}\\cdot\\text{m/s})$); เหตุที่การขัดจริงเป็น <strong>Non-Prestonian</strong> ที่ $P$ ต่ำมากหรือ $V$ สูงมากเกิดจาก <em>Hydrodynamic lubrication</em>, <em>Slurry starvation</em>, และความยืดหยุ่นแบบ Viscoelastic ของ Pad.' },
+          { label: 'เครื่อง CMP & Pad Conditioner', text: 'ประกอบด้วย Platen, Wafer Carrier + Retaining Ring, Slurry Arm, และ <strong>Pad Conditioner (หัวเพชร)</strong> เพื่อเปิดรูพรุนบนแผ่นขัดแก้ปัญหา <strong>Pad Glazing</strong> (หากไม่ขัดผิว Pad อัตรา Removal Rate จะดิ่งฮวบทันที!).' }
+        ],
+        trap: '• <strong>กฎเหล็กหลังขัด CMP: "Must Keep Wafer Wet!"</strong> ห้ามปล่อยเวเฟอร์แห้งก่อนเข้า Post-CMP Cleaning เด็ดขาด เพราะอนุภาค Slurry จะยึดเกาะแน่นจนเกิด Scratch ถาวร<br>• เหตุผลหลักที่ต้องมี CMP ในชิปยุคใหม่: เพราะเลนส์ High-NA มี <strong>DOF แคบมาก</strong> หากไม่ปรับระนาบผิว แสงจะโฟกัสไม่ได้และเกิด Topography Accumulation ข้ามชั้นโลหะ',
+        qa: {
+          q: 'ทำไมทองแดง (Cu) จึงต้องขึ้นรูปด้วยวิธี Dual Damascene + CMP แทนการทำ Dry Etch แบบอะลูมิเนียม และหน้าที่ของ Pad Conditioner คืออะไร?',
+          a: '1) สารประกอบของ Cu กับฮาโลเจนมีความดันไอต่ำมากและไม่ระเหยที่อุณหภูมิปกติ จึงกัดแบบ RIE ไม่ได้ ต้องชุบ Cu ลงในร่องฉนวนที่กัดไว้แล้วขัดส่วนเกินด้วย CMP 2) Pad Conditioner (จานเพชร) มีหน้าที่ปรับผิวหน้า Polishing Pad ไม่ให้เรียบลื่นตัน (Pad Glazing) เพื่อกักเก็บสเลอร์รี่และรักษาระดับ Removal Rate ให้สม่ำเสมอ'
+        }
+      },
+      {
+        id: 'T12',
+        lecture: 'L6',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'เคมี CMP Slurry: Cu (H₂O₂ + Glycine + BTA), W (Kaufman Model), STI (Ceria) และ |ζ| ≥ 30 mV',
+        titleEn: 'CMP Slurry Chemistry: Cu, W Kaufman Model, Ceria Chemical Tooth & Zeta Potential',
+        slides: ['L6-P017', 'L6-P018', 'L6-P019', 'L6-P021', 'L6-P023', 'L6-P026', 'L6-P032', 'L6-P034', 'L6-P039', 'L6-P040'],
+        points: [
+          { label: 'องค์ประกอบ Cu CMP Slurry (ออกสอบ 100%)', text: '1) <strong>H₂O₂ (Oxidizer):</strong> ออกซิไดซ์ผิว Cu เป็น $\\text{CuO}/\\text{Cu}_2\\text{O}$<br>2) <strong>Glycine / Citric Acid (Complexing Agent):</strong> จับไอออน $\\text{Cu}^{2+}$ ละลายออก ไม่ให้ตกตะกอนซ้ำ<br>3) <strong>BTA / TTA (Corrosion Inhibitor):</strong> สร้างฟิล์มพาสซีฟ <code>Cu-BTA</code> เคลือบในแอ่งต่ำป้องกัน <strong>Cu Dishing & Static Etching</strong>!' },
+          { label: 'W CMP (Kaufman Model)', text: 'ทำงานที่ pH กรด ($2\\text{--}5$) ใช้ $\\text{H}_2\\text{O}_2$ (+ $\\text{Fe}^{3+}$ catalyst) เปลี่ยน W เป็นชั้น <strong>WO₃</strong> ($\\text{W} + 3\\text{H}_2\\text{O}_2 \\to \\text{WO}_3 + 3\\text{H}_2\\text{O}$) แล้วให้ Abrasive ขัดเฉพาะยอดนูน ป้องกัน <strong>W Plug Recess / Keyhole</strong>.' },
+          { label: 'STI / Oxide CMP (Ceria Chemical Tooth)', text: 'ทำงานที่ pH ด่าง ($9\\text{--}11$) *ไม่ใส่ Oxidizer*; ใช้ <strong>Ceria ($\\text{CeO}_2$)</strong> อาศัยกลไก <strong>Chemical Tooth</strong> (พันธะ $\\text{Ce-O-Si}$ ดึงซิลิกอนหลุดง่ายกว่า $\\text{SiO}_2$ abrasion) ให้ค่า <strong>Selectivity $\\text{SiO}_2:\\text{Si}_3\\text{N}_4 > 30:1$ ถึง $100:1$</strong> หยุดเองที่ชั้น $\\text{Si}_3\\text{N}_4$ Polish Stop!' },
+          { label: 'Zeta Potential (|ζ| ≥ 30 mV)', text: 'ต้องควบคุมขนาดสัมบูรณ์ $|\\zeta| \\ge 30\\text{ mV}$ เพื่อแรงผลักไฟฟ้าสถิต ป้องกันอนุภาคขัดเกาะกลุ่มเป็นก้อนใหญ่ (Agglomeration / LPC) ซึ่งเป็นต้นเหตุของ <strong>Micro-scratches</strong>.' }
+        ],
+        trap: '• ถ้าใน Cu CMP <strong>ใส่ BTA น้อยไป</strong> (หรือ Glycine มากไป) → เกิด <strong>Cu Dishing & Pitting Corrosion</strong> รุนแรง; แต่ถ้า <strong>ใส่ BTA มากไป</strong> → Removal Rate ตกฮวบ ขัดไม่ออก!<br>• ห้ามใช้ <code>KOH</code> ใน Advanced Metal CMP เด็ดขาด เพื่อกัน $\\text{K}^+$ Mobile Ion Contamination ให้ใช้ <code>NH₄OH</code> หรือ <code>TMAH</code> แทน',
+        qa: {
+          q: 'จงระบุหน้าที่ของ $\\text{H}_2\\text{O}_2$, Glycine และ BTA ในน้ำยา Cu CMP Slurry และอธิบายเหตุผลที่ STI CMP เลือกใช้ Ceria ($\\text{CeO}_2$) แทน Silica',
+          a: 'ใน Cu CMP: $\\text{H}_2\\text{O}_2$ ทำหน้าที่ Oxidizer สร้างชั้นออกไซด์, Glycine เป็น Complexing agent จับไอออนทองแดงให้ละลายออก, และ BTA เป็น Corrosion inhibitor สร้างฟิล์มพาสซีฟป้องกันการกัดกร่อนเกินขนาด (Dishing) ในร่องต่ำ ส่วน STI CMP ใช้ $\\text{CeO}_2$ เพราะมีกลไก Chemical Tooth สร้างพันธะ $\\text{Ce-O-Si}$ จึงขัด $\\text{SiO}_2$ ได้เร็วมากและให้ค่า Selectivity ต่อ $\\text{Si}_3\\text{N}_4$ สูงถึง $>30:1$ ถึง $100:1$'
+        }
+      },
+      {
+        id: 'T13',
+        lecture: 'L6',
+        tier: 'TIER_S',
+        tierLabel: '🔥 ออกสอบชัวร์ (95%+)',
+        titleTh: 'ข้อบกพร่อง CMP (Dishing vs Erosion), ระบบตรวจจุดสิ้นสุด (EPD) และ Post-CMP Cleaning',
+        titleEn: 'Dishing vs Erosion, Eddy Current vs Optical EPD & Megasonic/Brush Cleaning',
+        slides: ['L6-P011', 'L6-P042', 'L6-P046', 'L6-P048', 'L6-P053', 'L6-P056', 'L6-P059', 'L6-P061'],
+        points: [
+          { label: 'Dishing vs Erosion (ออกสอบทุกปี)', text: '• <strong>Dishing:</strong> เนื้อโลหะ (เช่น Cu) เว้าบุ๋มลงไปเฉพาะในบริเวณ <strong>ลายเส้นกว้าง (Wide Metal Line)</strong> ทำให้ความต้านทานสายไฟเพิ่ม<br>• <strong>Erosion:</strong> ทั้งชั้นออกไซด์ (Dielectric) และโลหะถูกขัดบางลงพร้อมกันในบริเวณ <strong>อาเรย์ลายเส้นหนาแน่น (Dense Pattern Array)</strong>.<br>ใน Cu Damascene แบ่งขัด 2 สเต็ป: Step 1 (ขัด Cu หยุดที่ Ta/TaN) → Step 2 (Barrier CMP ขัด Ta/TaN).' },
+          { label: 'Endpoint Detection (EPD)', text: '• <strong>Cu CMP (โลหะทึบแสง):</strong> ใช้ <strong>Eddy Current Sensor</strong> (กระแสไหลวน) + Motor Current/Torque Spike<br>• <strong>Dielectric/Oxide CMP (โปร่งแสง):</strong> ใช้ <strong>Optical Interferometry</strong> ส่องผ่านหน้าต่างบน Pad.' },
+          { label: 'Post-CMP Cleaning & Megasonic', text: '• เติม <strong>NH₄OH (pH ~10–10.5)</strong> เพื่อเหนี่ยวนำให้ทั้งผิวเวเฟอร์ $\\text{SiO}_2$ และอนุภาคขัด $\\text{SiO}_2$ เป็นประจุลบทั้งคู่ → เกิด <strong>Negative-Negative Electrostatic Repulsion</strong> ไม่ดูดติดซ้ำ<br>• <strong>Megasonic</strong> ($0.5\\text{--}2\\text{ MHz}$, Non-cavitation, ปลอดภัยกับ Pattern เล็ก) vs <strong>Ultrasonic</strong> (ความถี่ต่ำ, Cavitation รุนแรงทำลายโครงสร้างชิป) ร่วมกับแปรง <strong>PVA Brush Scrubber</strong>.' }
+        ],
+        trap: '• แยกให้ออก: <strong>Dishing</strong> = เกิดใน *Wide isolated line* (เฉพาะโลหะเว้า), <strong>Erosion</strong> = เกิดใน *Dense pattern array* (ฉนวน+โลหะบางลงทั้งคู่)<br>• ถ้าโจทย์ถาม EPD สำหรับ Cu ที่ <em>ไม่ต้องเจาะหน้าต่าง Pad</em> → ตอบ <strong>Motor Torque / Eddy Current</strong><br>• ระวัง <strong>Galvanic Corrosion</strong> ใน Cu Post-CMP และ Ceria adhesion ใน STI (ต้องใช้เคมีที่เหมาะสมกำจัด)',
+        qa: {
+          q: 'ความแตกต่างระหว่าง Dishing และ Erosion คืออะไร และเหตุใด Post-CMP Cleaning จึงใช้ $\\text{NH}_4\\text{OH}$ ร่วมกับคลื่น Megasonic แทน Ultrasonic?',
+          a: 'Dishing คือการที่เนื้อโลหะเว้าลงเฉพาะในเส้นตัวนำขนาดกว้าง ส่วน Erosion คือการที่ทั้งชั้นฉนวนและโลหะถูกขัดบางลงพร้อมกันในพื้นที่ลายเส้นหนาแน่น ส่วน Post-CMP Cleaning ใช้ $\\text{NH}_4\\text{OH}$ เพื่อปรับให้ผิวเวเฟอร์และอนุภาคมีประจุลบเหมือนกันจนเกิดแรงผลักไฟฟ้าสถิต และใช้คลื่น Megasonic (0.5–2 MHz) เพราะทำงานแบบ Non-cavitation จึงไม่สร้างแรงระเบิดฟองอากาศทำลายลายวงจรขนาดเล็กเหมือน Ultrasonic'
+        }
+      },
+      {
+        id: 'T14',
+        lecture: 'L4',
+        tier: 'TIER_A',
+        tierLabel: '⭐ ออกบ่อยมาก (85%+)',
+        titleTh: 'ระบบหล่อเย็นใน Fab (PCW vs Chiller Fluids) และ Value Chain (Fabless / Foundry / IDM / TMEC)',
+        titleEn: 'Fab Cooling Hierarchy, Fluorinated Fluids & Semiconductor Business Models',
+        slides: ['L4-P016', 'L4-P017', 'L4-P018', 'L4-P019', 'L4-P132', 'L5-P006', 'L5-P104'],
+        points: [
+          { label: 'ลำดับชั้นระบบหล่อเย็น (ห้ามสลับ!)', text: '• <strong>CTW</strong> (Cooling Tower Water): ระบายความร้อนขั้นสุดท้ายที่ CUB<br>• <strong>CHW</strong> (Chilled Water): จ่ายให้ระบบปรับอากาศ HVAC/MAU/AHU<br>• <strong>PCW / DI Water</strong>: จ่ายระบายความร้อนเครื่อง Process Tools (จุดที่มี RF/ไฟฟ้าแรงสูงต้องใช้ DI Conductivity ต่ำกันไฟรั่ว)<br>• <strong>Fluorinated / HFE Fluids</strong> (เช่น Galden): เป็นฉนวนไฟฟ้า ทำงานต่ำกว่า $0^\\circ\\text{C}$ สำหรับ Wafer Chuck / Etch Chamber.' },
+          { label: 'Cleanroom Class: FEOL vs BEOL', text: 'Front-end (Wafer Fab) = <strong>Class 1–10 (ISO 3–4)</strong> ใช้สารเคมี Electronic Grade ระดับ ppb/ppt; Back-end (OSAT/Assembly) = <strong>Class 1,000–100,000</strong>.' },
+          { label: 'โมเดลธุรกิจในอุตสาหกรรมชิป', text: '• <strong>Fabless:</strong> ออกแบบอย่างเดียวไม่มีโรงงาน (เช่น Silicon Craft)<br>• <strong>Pure-play Foundry:</strong> รับจ้างผลิตเวเฟอร์อย่างเดียว (เช่น TSMC)<br>• <strong>IDM:</strong> ออกแบบ + ผลิต + ทดสอบครบวงจร (เช่น Intel)<br>• <strong>TMEC:</strong> โครงสร้างพื้นฐาน Fab คลีนรูมระดับชาติของไทย (CMOS/MEMS).' }
+        ],
+        trap: 'ห้ามนำน้ำ CTW หรือ CHW ต่อตรงเข้า Process Tool เด็ดขาด ต้องผ่านระบบปิดของ PCW/DI Water เสมอ และสำหรับ Cryopump ต้องใช้ Liquid $\\text{N}_2$ ($-196^\\circ\\text{C}$) โดยระวังภาวะขาดออกซิเจน (Asphyxiation)',
+        qa: {
+          q: 'หากต้องการควบคุมอุณหภูมิของ Wafer Chuck ในเครื่อง Plasma Etch ที่อุณหภูมิต่ำกว่า $0^\\circ\\text{C}$ และมีสนามไฟฟ้า RF สูง ควรใช้สารตัวกลางหล่อเย็นชนิดใด?',
+          a: 'ต้องใช้ Fluorinated / HFE Fluids (เช่น Galden) ผ่าน Local Chiller เพราะเป็นฉนวนไฟฟ้า (ไม่นำไฟฟ้าจาก RF) และมีจุดเยือกแข็งต่ำมาก สามารถควบคุมอุณหภูมิได้ต่ำกว่า $0^\\circ\\text{C}$ อย่างแม่นยำ'
+        }
+      },
+      {
+        id: 'T15',
+        lecture: 'L5',
+        tier: 'TIER_A',
+        tierLabel: '⭐ ออกบ่อยมาก (85%+)',
+        titleTh: 'สูตรหลักฟิสิกส์/วิศวกรรมกระบวนการผลิตและการตรวจสอบ (CD, Overlay, EPE, Defect Modes)',
+        titleEn: 'CMOS Cycle, Pattern Defects Metrology (D2D/C2C/D2DB) & EPE / Aspect Ratio',
+        slides: ['L5-P007', 'L5-P021', 'L5-P074', 'L5-P076', 'L5-P090', 'L5-P093', 'L5-P095', 'L5-P096'],
+        points: [
+          { label: 'สูตรลัดวัฏจักร CMOS', text: '<strong>"ล้าง → ปลูก → ถ่าย → กัด → ยิง → อบ"</strong> (Cleaning → Deposition → Lithography → Etching → Implantation → Anneal) ทำซ้ำ 30–50+ รอบ โดย CMP และ Metrology เป็นขั้นตอนแทรกแยกส่วน.' },
+          { label: 'งบประมาณความคลาดเคลื่อน (EPE & Overlay)', text: '$$\\text{EPE} = \\frac{\\text{CD Error}}{2} + \\text{Overlay Error} + \\text{OPC Error}$$ ค่า <strong>Overlay Budget</strong> ต้องต่ำกว่า $15\\text{--}20\\%$ ของ CD; และ <strong>Aspect Ratio</strong> $= H / W$ สูงเกิน $2.0\\text{--}2.5$ เสี่ยง Pattern Collapse.' },
+          { label: 'โหมดตรวจจับ Defect 3 แบบ', text: '• <strong>D2D (Die-to-Die):</strong> เทียบดายข้างเคียง (หาสุ่มทั่วไป)<br>• <strong>C2C (Cell-to-Cell):</strong> เทียบเซลล์ซ้ำใน Memory Array<br>• <strong>D2DB (Die-to-Database):</strong> เทียบกับไฟล์ CAD ต้นฉบับ (สำคัญสุดในการหา Mask Repeating Defects & Stochastic missing holes ใน EUV!).' }
+        ],
+        trap: 'จำความต่างระหว่าง <strong>Microloading</strong> (ความเร็วการกัดเปลี่ยนตาม *Pattern Density*) กับ <strong>RIE Lag</strong> (ร่องแคบ/Aspect Ratio สูงกัดช้ากว่าร่องกว้างเนื่องจาก Mass Transport)! และ <strong>CD-SEM</strong> วัด 2D ด้านบน ส่วน <strong>FIB/TEM</strong> เป็นวิธีทำลายชิ้นงาน (Destructive) เพื่อดูหน้าตัดจริง',
+        qa: {
+          q: 'ถ้าในแผ่นเวเฟอร์มีข้อบกพร่องแบบซ้ำกันทุก Die จากหน้ากาก (Mask Repeating Defect) การตรวจสอบแบบ Die-to-Die (D2D) จะตรวจพบหรือไม่ และควรใช้วิธีใด?',
+          a: 'D2D จะตรวจไม่พบเพราะเปรียบเทียบ Die ต่อ Die ที่เหมือนกันทุกประการ ต้องใช้วิธี Die-to-Database (D2DB) ที่เปรียบเทียบภาพจริงกับข้อมูลออกแบบ CAD ต้นฉบับจึงจะตรวจจับ Repeating Defect ได้'
+        }
+      }
+    ];
+
+    // 2. 7 MASTER COMPARISON TABLES
+    const COMPARISON_TABLES = [
+      {
+        title: '1. เปรียบเทียบ Si Precursors 4 ตัวหลัก (L4-P057)',
+        headers: ['สารเคมี', 'สถานะ / จุดเดือด', 'การใช้งานหลัก', 'ข้อควรระวังหน้างาน Fab'],
+        rows: [
+          ['<code>SiH₄</code> (Silane)', 'Gas / $-112^\\circ\\text{C}$', 'Poly-Si, LTO/PECVD $\\text{SiO}_2$', '<strong>Pyrophoric</strong> ลุกไหม้เองในอากาศ (ห้ามใกล้ Oxidizer, ระวัง Delayed Ignition)'],
+          ['<code>DCS</code> ($\\text{SiH}_2\\text{Cl}_2$)', 'Liquefied Gas / $8^\\circ\\text{C}$', 'LPCVD $\\text{Si}_3\\text{N}_4$ (+ $\\text{NH}_3$)', 'Corrosive/Flammable; เกิดเกลือ <strong>$\\text{NH}_4\\text{Cl}$</strong> อุดตันท่อไอเสีย (ต้อง Heat Trace)'],
+          ['<code>TCS</code> ($\\text{SiHCl}_3$)', 'Volatile Liquid / $32^\\circ\\text{C}$', '<strong>Epitaxial Si</strong> (+ $\\text{H}_2$)', '$\\text{H}_2$ เป็น Reactant ตรง; โดนความชื้นเกิดกรด $\\text{HCl}$ + อนุภาค $\\text{SiO}_2$'],
+          ['<code>TEOS</code> ($\\text{Si(OC}_2\\text{H}_5)_4$)', 'Liquid / $168^\\circ\\text{C}$', '$\\text{O}_3$-TEOS SACVD <strong>STI Gap-fill</strong>', '<strong>ไม่ Pyrophoric</strong> แต่ต้องใช้ Vaporizer + Heat Trace ($T_{\\text{line}} > T_{\\text{bubbler}}$); ระวังคาร์บอนปนเปื้อน']
+        ]
+      },
+      {
+        title: '2. เปรียบเทียบเคมี Plasma Etching (L4-P097 – L4-P105)',
+        headers: ['กลุ่มก๊าซ / ตัวอย่าง', 'วัสดุที่กัด', 'By-product / กลไกสำคัญ', 'จุดเด่น & ข้อห้าม'],
+        rows: [
+          ['<strong>F-based ไร้คาร์บอน</strong> ($\\text{SF}_6, \\text{NF}_3$)', 'Si, W, Chamber Clean', '$\\text{SiF}_4\\uparrow, \\text{WF}_6\\uparrow$ (ระเหยง่ายมาก)', 'กัดเร็วมากแบบ Isotropic — <strong>ห้ามใช้กัด Al</strong> (เกิด $\\text{AlF}_3$ จุดเดือดสูงไม่ระเหย!)'],
+          ['<strong>Fluorocarbon (High C/F)</strong> ($\\text{C}_4\\text{F}_8, \\text{C}_4\\text{F}_6$)', '$\\text{SiO}_2$ (หยุดบน Si)', 'สร้างฟิล์มพอลิเมอร์ $\\text{CF}_x$ ปกป้อง Si', 'Selectivity $\\text{SiO}_2:\\text{Si}$ สูง + Anisotropy สูง (Bosch TSV ใช้ $\\text{SF}_6/\\text{C}_4\\text{F}_8$)'],
+          ['<strong>Cl-based</strong> ($\\text{Cl}_2 + \\text{BCl}_3 + \\text{Ar}$)', 'Al, AlCu, III-V', '$\\text{AlCl}_3\\uparrow$, $\\text{BCl}_3$ จับ $\\text{O}_2$ จาก $\\text{Al}_2\\text{O}_3$', '$\\text{BCl}_3$ เจาะทะลุ Native Oxide และ Ar⁺ ช่วยยิงขจัด By-product'],
+          ['<strong>Br-based</strong> ($\\text{HBr} + \\text{Cl}_2 + \\text{O}_2$)', 'Poly-Si Gate', 'สร้าง Sidewall Passivation $\\text{SiO}_x\\text{Br}_y$', '<strong>Anisotropy & CD Control สูงที่สุด</strong> (ป้องกัน Undercut)']
+        ]
+      },
+      {
+        title: '3. ก๊าซละลายน้ำ UPW (Functional DIW) & Scrubbers 4 ประเภท (L4-P020, L4-P129)',
+        headers: ['ระบบ / สาร', 'ชนิดงานที่รองรับ', 'กลไกหลัก', 'เหตุผลวิกฤต'],
+        rows: [
+          ['<strong>CO₂-DIW</strong>', 'Backend Dicing / Rinse', 'แตกตัวให้ $\\text{H}^+ + \\text{HCO}_3^-$', 'ลดความต้านทาน $18.2\\text{ M}\\Omega\\cdot\\text{cm}$ <strong>ป้องกัน ESD</strong>'],
+          ['<strong>O₃-DIW (DIO₃)</strong>', 'Front-end Photoresist Strip', 'Redox Potential สูง $+2.07\\text{ V}$', 'กำจัด PR/Organic แทนกรด Piranha (SPM) ได้สะอาดและประหยัด'],
+          ['<strong>Burn-Wet Scrubber</strong>', '$\\text{SiH}_4, \\text{B}_2\\text{H}_6$', 'เผาไหม้ให้เป็นออกไซด์ + ชะล้างน้ำ', 'บำบัดก๊าซ Pyrophoric/Hydride ไม่ให้เกิดการระเบิดในท่อรวม'],
+          ['<strong>Plasma-Wet Scrubber</strong>', 'PFCs ($\\text{CF}_4, \\text{SF}_6, \\text{NF}_3$)', 'ใช้พลาสมาแตกพันธะ C–F + ล้าง $\\text{HF}$', 'PFCs เสถียรสูงมากและเป็นก๊าซเรือนกระจก เผาธรรมดาไม่แตก'],
+          ['<strong>Wet vs Dry Scrubber</strong>', 'Wet: $\\text{HCl/NH}_3$ • Dry: $\\text{AsH}_3/\\text{PH}_3$', 'Wet ละลายน้ำ • Dry ดูดซับเคมีแข็ง', 'ห้ามปนกรด-ด่างใน Wet; Dry ใช้กับก๊าซพิษความเข้มข้นต่ำ']
+        ]
+      },
+      {
+        title: '4. ก๊าซ Dopant (L4-P079 – L4-P089)',
+        headers: ['ก๊าซ', 'ชนิด Dopant', 'การติดไฟ (Flammability)', 'อันตรายเฉพาะ & ข้อสังเกต'],
+        rows: [
+          ['<code>AsH₃</code>', 'n-type (As, หมู่ V)', 'Flammable', '<strong>พิษสูงสุด!</strong> TLV-TWA 0.005 ppm, ทำลายเม็ดเลือดแดง (Hemolysis), ทำ USJ ดี'],
+          ['<code>PH₃</code>', 'n-type (P, หมู่ V)', '<strong>Pyrophoric</strong> / Flammable', 'Highly Toxic + ติดไฟเอง; ใช้คู่ $\\text{SiH}_4$ และ InP MOCVD'],
+          ['<code>B₂H₆</code>', 'p-type (B, หมู่ III)', '<strong>Pyrophoric สูงสุด</strong>', 'พิษ + ติดไฟเอง + สลายตัวที่อุณหภูมิห้อง (ต้องเก็บเจือจางและเย็น)'],
+          ['<code>BF₃</code>', 'p-type (B, หมู่ III)', '<strong>Non-flammable (ไม่ติดไฟ!)</strong>', 'เจอความชื้นเกิดกรด <strong>HF</strong> กัดกร่อนท่อ; ยิง $\\text{BF}_2^+$ ลด Energy Contamination']
+        ]
+      },
+      {
+        title: '5. Lithography: TARC vs BARC และ PI vs PBO (L5-P037 – L5-P046)',
+        headers: ['คู่เปรียบเทียบ', 'ตำแหน่ง / คุณสมบัติ', 'กลไกและข้อดี', 'วิธีกำจัด / การบ่ม'],
+        rows: [
+          ['<strong>TARC</strong> vs <strong>BARC</strong>', 'TARC: *บน* PR • BARC: *ใต้* PR', 'TARC ($n\\approx\\sqrt{n_{PR}}$) ลด Swing Effect เท่านั้น; <strong>BARC</strong> แก้ <strong>Standing Waves + Reflective Notching</strong>', 'TARC ล้างด้วยน้ำ/Developer; <strong>BARC ต้องกัดด้วย Plasma (BARC Open)</strong>'],
+          ['<strong>Image Reversal</strong> vs <strong>LOR</strong>', 'ทำ <strong>Undercut</strong> เพื่อ Lift-off', 'AZ 5214E ต้องคุม Reversal Bake แม่น $\\pm 1^\\circ\\text{C}$; <strong>LOR (PMGI)</strong> คุมด้วยเวลา Develop เท่านั้น', 'ทั้งคู่ต้องทำให้ $t_{PR} \\ge 3 \\times t_{film}$ และ<strong>ห้าม Hardbake</strong>'],
+          ['<strong>PBO</strong> vs <strong>PI</strong>', 'Permanent Dielectric Layer', '<strong>PBO</strong> ค่า $k$ ต่ำกว่า ($2.7\\text{--}3.2$) และ <strong>ดูดความชื้นต่ำกว่า</strong> (กัน Popcorn Failure)', '<strong>PBO บ่มอุณหภูมิต่ำกว่า</strong> ($200\\text{--}250^\\circ\\text{C}$ vs PI $>350^\\circ\\text{C}$)']
+        ]
+      },
+      {
+        title: '6. Photoresist Developers & Stripping Solvents (L5-P083 – L5-P102)',
+        headers: ['สารเคมี', 'ความเข้มข้น / สูตร', 'หน้าที่หลัก', 'กฎเหล็ก & ข้อห้าม'],
+        rows: [
+          ['<code>TMAH</code>', '$2.38\\text{ wt\\%}$ ($\\approx 0.26\\text{ N}$)', 'Standard <strong>MIF</strong> Positive PR Developer', 'ห้ามใช้ $\\text{NaOH/KOH}$ แทนใน Fab (กัน Mobile Ions $\\text{Na}^+, \\text{K}^+$); ระวังพิษซึมผิวหนัง'],
+          ['<code>PGMEA</code>', '$\\text{C}_6\\text{H}_{12}\\text{O}_3$', 'PR Solvent, EBR/BSR, ลอก PR สด', 'Golden Standard ของ EBR (ห้ามใช้ Acetone/IPA แทนใน HVM)'],
+          ['<code>DMSO / NMP</code>', 'Organic Strippers', 'ลอก PR หลัง Expose / Hard-bake', 'ใช้แทน <strong>Piranha (SPM)</strong> เมื่อเวเฟอร์มีชั้นโลหะเปลือย; DMSO ปลอดภัยกว่า NMP'],
+          ['<code>MIBK/IPA & n-AA</code>', 'E-beam Developers', 'MIBK/IPA สำหรับ PMMA • n-Amyl Acetate สำหรับ ZEP', 'ต้องจำคู่ให้แม่นสำหรับกระบวนการทำ Photomask ด้วย EBL']
+        ]
+      },
+      {
+        title: '7. CMP Slurry & Post-CMP Cleaning Matrix (L6-P017 – L6-P059)',
+        headers: ['กระบวนการ CMP', 'Abrasive & pH', 'Oxidizer / Key Additives', 'กลไก & EPD Sensor'],
+        rows: [
+          ['<strong>Cu CMP (BEOL)</strong>', '$\\text{SiO}_2 / \\text{Al}_2\\text{O}_3$ • กรดอ่อน ($3\\text{--}8$)', '$\\text{H}_2\\text{O}_2$ + <strong>Glycine</strong> (Complexant) + <strong>BTA</strong> (Inhibitor)', 'BTA กัน <strong>Dishing</strong> • ใช้ <strong>Eddy Current EPD</strong> (+ Torque)'],
+          ['<strong>W CMP (MOL Plug)</strong>', '$\\text{Al}_2\\text{O}_3 / \\text{SiO}_2$ • กรด ($2\\text{--}5$)', '$\\text{H}_2\\text{O}_2$ + $\\text{Fe}^{3+}$ catalyst', '<strong>Kaufman Model</strong> (สร้าง $\\text{WO}_3$ เปราะขัดเฉพาะยอด) กัน W Plug Recess'],
+          ['<strong>STI / Oxide CMP</strong>', '<strong>Ceria ($\\text{CeO}_2$)</strong> • ด่าง ($9\\text{--}11$)', '<strong>ไม่ใส่ Oxidizer</strong> + Anionic Surfactant', '<strong>Chemical Tooth</strong> ($\\text{Ce-O-Si}$) Selectivity $>30:1\\text{--}100:1$ หยุดที่ $\\text{Si}_3\\text{N}_4$ • <strong>Optical EPD</strong>'],
+          ['<strong>Post-CMP Clean</strong>', '<strong>NH₄OH</strong> (pH $10\\text{--}10.5$) + PVA Brush', '<strong>Megasonic ($0.5\\text{--}2\\text{ MHz}$)</strong> (ห้ามปล่อยแผ่นแห้ง!)', 'เหนี่ยวนำประจุลบคู่ (<strong>Neg-Neg Repulsion</strong>); Megasonic แบบ Non-cavitation ไม่พัง Pattern']
+        ]
+      }
+    ];
+
+    // 3. 20 CRITICAL NUMBERS & FORMULAS CHEAT SHEET
+    const CRITICAL_NUMBERS = [
+      { val: '18.2–18.3 MΩ·cm', sub: '0.055 µS/cm (@ 25°C)', desc: 'ค่า Resistivity & Conductivity มาตรฐานทองคำของ UPW', slide: 'L4-P022' },
+      { val: '+10 to +15 Pa', sub: 'Q_MAU > Q_Exhaust', desc: 'ความดันบวก (Positive ΔP) กันฝุ่นไหลย้อนเข้า Cleanroom', slide: 'L4-P010' },
+      { val: '≥ 99.97% @ 0.3µm', sub: 'HEPA vs ULPA', desc: 'ประสิทธิภาพกรองฝุ่นขั้นต่ำของแผ่นกรอง HEPA ในคลีนรูม', slide: 'L4-P013' },
+      { val: '1 slm = 1,000 sccm', sub: 'MFC ใช้ sccm', desc: 'หน่วยวัดอัตราไหลก๊าซมาตรฐาน (Standard vs Actual ccm)', slide: 'L4-P124' },
+      { val: '< 4% H₂ (LFL)', sub: 'เช่น 4.9% / <4% in N₂', desc: 'ขีดจำกัดความไวไฟของ Forming Gas สำหรับทำ Passivation', slide: 'L4-P076' },
+      { val: '0.005 ppm', sub: 'IDLH = 3 ppm', desc: 'ขีดจำกัด TLV-TWA ของก๊าซ AsH₃ (พิษทำลายเม็ดเลือดแดง)', slide: 'L4-P081' },
+      { val: '316L VIM-VAR EP', sub: 'Orbital GTAW + VCR', desc: 'เกรดท่อและข้อต่อมาตรฐานสูงสุดสำหรับ UHP Specialty Gas', slide: 'L4-P120' },
+      { val: '> 500 nm', sub: 'Peak 560–590 nm, ≤200 lux', desc: 'สเปกแสงสีเหลือง (SEMI C24) กัน Photoresist โดน UV ก่อนเวลา', slide: 'L5-P013' },
+      { val: '2.38 wt% TMAH', sub: '≈ 0.26 N (MIF)', desc: 'ความเข้มข้นมาตรฐานน้ำยา Developer ไร้ไอออนโลหะ', slide: 'L5-P085' },
+      { val: '13.5 nm (EUV)', sub: 'ArF 193 / KrF 248 / i 365', desc: 'ความยาวคลื่นแสงลิโทกราฟี (EUV ใช้กระจก Mo/Si ในสุญญากาศ)', slide: 'L5-P069' },
+      { val: 'R ∝ λ/NA', sub: 'DOF ∝ λ/NA²', desc: 'เพิ่ม NA ได้ความละเอียดดีขึ้น แต่ DOF แคบลงเป็นกำลังสอง!', slide: 'L5-P068' },
+      { val: 't ∝ μ¹/³ / ω¹/²', sub: '2,000–4,000 RPM', desc: 'สมการ Spin Coating: ยิ่งหมุนเร็ว ฟิล์มยิ่งบางลง', slide: 'L5-P053' },
+      { val: 't_PR ≥ 3 × t_film', sub: 'Undercut Profile', desc: 'อัตราส่วนความหนาขั้นต่ำสำหรับทำ Metal Lift-off ไม่ให้ติดขอบ', slide: 'L5-P032' },
+      { val: 'H/W ≤ 2.0–2.5', sub: 'Capillary P = 2γcosθ/d', desc: 'ขีดจำกัด Aspect Ratio ก่อนที่ลาย PR จะล้ม (Pattern Collapse)', slide: 'L5-P029' },
+      { val: '> 1,100 nm (IR)', sub: 'Eg(Si) = 1.12 eV', desc: 'ช่วงคลื่นอินฟราเรดที่ทะลุซิลิคอนได้สำหรับ Back-side Alignment', slide: 'L5-P075' },
+      { val: '200–250°C vs >350°C', sub: 'Curing Temperature', desc: 'อุณหภูมิการบ่ม PBO (ต่ำกว่า, k ต่ำ) เทียบกับ Polyimide (PI)', slide: 'L5-P047' },
+      { val: 'MRR = Kp · P · V', sub: 'Preston Equation', desc: 'อัตราการขัด CMP แปรผันตรงกับแรงกด P และความเร็วสัมพัทธ์ V', slide: 'L6-P015' },
+      { val: '|ζ| ≥ 30 mV', sub: 'Zeta Potential Threshold', desc: 'ศักย์ซีตาขั้นต่ำของ Slurry เพื่อกันอนุภาครวมก้อน (Micro-scratch)', slide: 'L6-P021' },
+      { val: '> 30:1 to 100:1', sub: 'Ceria (CeO₂) Slurry', desc: 'ค่า Selectivity การขัด SiO₂ เทียบกับ Si₃N₄ ในงาน STI CMP', slide: 'L6-P032' },
+      { val: '0.5–2 MHz', sub: 'Non-cavitation', desc: 'ความถี่คลื่น Megasonic ทำความสะอาด Post-CMP ไม่ทำลาย Pattern', slide: 'L6-P052' }
+    ];
+
+    // STATE
+    let currentFilter = 'ALL';
+    let explorerLimit = 30;
+
+    // INIT
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-icon').textContent = '☀️';
+      }
+
+      renderExamTopics();
+      renderComparisonTables();
+      renderCriticalNumbers();
+      renderExplorer();
+      runKaTeX(document.body);
+    });
+
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.theme = isDark ? 'dark' : 'light';
+      document.getElementById('theme-icon').textContent = isDark ? '☀️' : '🌙';
+    }
+
+    function runKaTeX(el) {
+      if (window.renderMathInElement) {
+        renderMathInElement(el, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function setTopicFilter(flt) {
+      currentFilter = flt;
+      document.querySelectorAll('.flt-btn').forEach(b => {
+        b.className = 'flt-btn px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 whitespace-nowrap transition';
+      });
+      const active = document.getElementById('flt-' + flt.toLowerCase());
+      if (active) {
+        active.className = 'flt-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-sm whitespace-nowrap transition';
+      }
+      renderExamTopics();
+    }
+
+    function renderExamTopics() {
+      const q = (document.getElementById('topic-search').value || '').trim().toLowerCase();
+      const filtered = EXAM_TOPICS.filter(t => {
+        if (currentFilter === 'L4' || currentFilter === 'L5' || currentFilter === 'L6') {
+          if (t.lecture !== currentFilter) return false;
+        } else if (currentFilter === 'TIER_S') {
+          if (t.tier !== 'TIER_S') return false;
+        }
+        if (q) {
+          const hay = (t.titleTh + ' ' + t.titleEn + ' ' + t.trap + ' ' + t.points.map(p => p.label + ' ' + p.text).join(' ')).toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('topic-visible-count').textContent = `แสดง ${filtered.length} / ${EXAM_TOPICS.length} หมวด`;
+      const container = document.getElementById('topics-container');
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center glass-card rounded-2xl text-sm text-slate-500">ไม่พบหัวข้อที่ตรงกับคำค้น "${q}"</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map((t, idx) => {
+        const lecColors = {
+          L4: 'bg-blue-600 text-white',
+          L5: 'bg-indigo-600 text-white',
+          L6: 'bg-cyan-700 text-white'
+        };
+        const tierBadge = t.tier === 'TIER_S'
+          ? 'bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800/60'
+          : 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/60';
+
+        const slidePills = t.slides.map(sid => `
+          <a href="slides.html?slide=${sid}" target="_blank" title="คลิกเพื่อเปิดดูสไลด์ ${sid} และคำอธิบายเต็ม"
+            class="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 text-[11px] font-mono font-bold transition">
+            ${sid} ↗
+          </a>
+        `).join('');
+
+        const pointsHTML = t.points.map(p => `
+          <div class="flex items-start gap-2.5 py-1.5 border-b border-slate-100 dark:border-slate-800/70 last:border-0">
+            <span class="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
+            <div class="text-xs md:text-[14px] text-slate-800 dark:text-slate-200 thai-body">
+              <span class="inline-block font-bold text-blue-900 dark:text-blue-200 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-md border border-blue-200/60 dark:border-blue-800/40 mr-1.5">${p.label}</span>
+              ${p.text}
+            </div>
+          </div>
+        `).join('');
+
+        return `
+          <article class="glass-card rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition print-break">
+            <!-- Card Header -->
+            <div class="px-5 py-4 bg-gradient-to-r from-slate-50 via-blue-50/40 to-transparent dark:from-slate-900 dark:via-slate-800/50 dark:to-transparent border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-black ${lecColors[t.lecture]}">${t.lecture}</span>
+                  <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold border ${tierBadge}">${t.tierLabel}</span>
+                  <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">${t.id}</span>
+                </div>
+                <h3 class="text-base md:text-lg font-black text-slate-900 dark:text-white leading-snug">
+                  ${t.titleTh}
+                </h3>
+                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">${t.titleEn}</div>
+              </div>
+              <div class="flex flex-wrap gap-1.5 md:max-w-xs md:justify-end">
+                ${slidePills}
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-5 space-y-4">
+              <div class="space-y-1">
+                ${pointsHTML}
+              </div>
+
+              <!-- Trap Alert -->
+              <div class="p-3.5 md:p-4 rounded-2xl bg-rose-50/80 dark:bg-rose-950/25 border-l-4 border-rose-500 border-t border-r border-b border-rose-200/80 dark:border-rose-800/40">
+                <div class="text-xs font-extrabold uppercase tracking-wider text-rose-800 dark:text-rose-300 mb-1 flex items-center gap-1.5">
+                  <span>⚠️ จุดหลอกที่ข้อสอบชอบถาม & กฎเหล็กหน้างาน Fab:</span>
+                </div>
+                <div class="text-xs md:text-sm text-rose-950 dark:text-rose-100 thai-body">${t.trap}</div>
+              </div>
+
+              <!-- Predicted Exam Q&A -->
+              <div class="p-3.5 md:p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-800/40 space-y-2">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div class="text-xs md:text-sm font-bold text-amber-900 dark:text-amber-200">
+                    📝 แนวข้อสอบเก็ง: ${t.qa.q}
+                  </div>
+                  <button onclick="toggleQA('${t.id}')" id="qa-btn-${t.id}" class="no-print px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold flex-shrink-0 transition self-start sm:self-auto">
+                    ดูแนวตอบ ▾
+                  </button>
+                </div>
+                <div id="qa-ans-${t.id}" class="hidden pt-2 border-t border-amber-200/70 dark:border-amber-800/50 text-xs md:text-sm text-slate-800 dark:text-slate-200 thai-body">
+                  <strong class="text-emerald-700 dark:text-emerald-400">✅ แนวตอบ:</strong> ${t.qa.a}
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      runKaTeX(container);
+    }
+
+    function toggleQA(id) {
+      const box = document.getElementById('qa-ans-' + id);
+      const btn = document.getElementById('qa-btn-' + id);
+      const isHidden = box.classList.toggle('hidden');
+      btn.textContent = isHidden ? 'ดูแนวตอบ ▾' : 'ซ่อนคำตอบ ▴';
+    }
+
+    function renderComparisonTables() {
+      const container = document.getElementById('tables-container');
+      container.innerHTML = COMPARISON_TABLES.map(tbl => `
+        <div class="glass-card rounded-2xl overflow-hidden shadow-sm print-break">
+          <div class="px-5 py-3 bg-gradient-to-r from-indigo-50/90 to-transparent dark:from-slate-800/90 dark:to-transparent border-b border-slate-200 dark:border-slate-800">
+            <h3 class="text-sm md:text-base font-black text-indigo-950 dark:text-indigo-200">${tbl.title}</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 text-[11px] md:text-xs font-bold uppercase text-slate-600 dark:text-slate-300">
+                  ${tbl.headers.map(h => `<th class="px-4 py-3">${h}</th>`).join('')}
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800/80 text-xs md:text-sm">
+                ${tbl.rows.map(row => `
+                  <tr class="hover:bg-blue-50/40 dark:hover:bg-slate-800/40 transition">
+                    ${row.map((cell, ci) => `<td class="px-4 py-3 align-top thai-body ${ci === 0 ? 'font-bold text-slate-900 dark:text-white whitespace-nowrap' : 'text-slate-700 dark:text-slate-200'}">${cell}</td>`).join('')}
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `).join('');
+      runKaTeX(container);
+    }
+
+    function renderCriticalNumbers() {
+      const container = document.getElementById('numbers-container');
+      container.innerHTML = CRITICAL_NUMBERS.map(n => `
+        <a href="slides.html?slide=${n.slide}" target="_blank" class="glass-card rounded-2xl p-4 hover:border-blue-400 dark:hover:border-blue-500 transition shadow-2xs flex flex-col justify-between gap-2 group print-break">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] font-mono font-bold text-blue-600 dark:text-blue-400">${n.slide} ↗</span>
+              <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">${n.sub}</span>
+            </div>
+            <div class="text-base md:text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+              ${n.val}
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${n.desc}</p>
+        </a>
+      `).join('');
+    }
+
+    function escapeHTML(str) {
+      return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function renderFormulaSafe(formula) {
+      if (!formula || !formula.trim()) return '';
+      const f = formula.trim();
+      // Only use KaTeX display if it has LaTeX commands and NO Thai text / unescaped %
+      const hasThai = /[\u0E00-\u0E7F]/.test(f);
+      const hasLatexCmd = /\\(text|frac|rightleftharpoons|rightarrow|implies|approx|cdot|times|mu|sigma|lambda|omega|zeta)/.test(f);
+      if (hasLatexCmd && !hasThai) {
+        return `<div class="katex-formula text-xs md:text-sm py-1.5 px-2.5 bg-emerald-50/70 dark:bg-emerald-950/30 rounded-lg border border-emerald-200/70 dark:border-emerald-800/50 overflow-x-auto">$$${f}$$</div>`;
+      }
+      return `<div class="text-xs font-mono py-1.5 px-2.5 bg-emerald-50/70 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 rounded-lg border border-emerald-200/70 dark:border-emerald-800/50 overflow-x-auto">${escapeHTML(f)}</div>`;
+    }
+
+    function renderExplorer() {
+      const container = document.getElementById('explorer-container');
+      const countEl = document.getElementById('exp-count');
+      const moreBtn = document.getElementById('exp-load-more');
+
+      if (!window.ALL_SLIDES || !Array.isArray(window.ALL_SLIDES)) {
+        container.innerHTML = `<div class="col-span-2 p-6 text-center text-sm text-rose-500">ไม่พบไฟล์ slides_data.js</div>`;
+        return;
+      }
+
+      const lec = document.getElementById('exp-lec-filter').value;
+      const formulaOnly = document.getElementById('exp-formula-only').checked;
+      const q = (document.getElementById('exp-search').value || '').trim().toLowerCase();
+
+      const matches = window.ALL_SLIDES.filter(s => {
+        if (lec !== 'ALL' && s.lecture !== lec) return false;
+        if (formulaOnly && (!s.formula || !s.formula.trim())) return false;
+        if (q) {
+          const hay = (s.id + ' ' + s.titleEn + ' ' + s.titleTh + ' ' + (s.examTip || '') + ' ' + (s.formula || '')).toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      countEl.textContent = `${matches.length} สไลด์`;
+      const slice = matches.slice(0, explorerLimit);
+
+      container.innerHTML = slice.map(s => `
+        <div class="glass-card rounded-2xl p-4 shadow-2xs flex flex-col justify-between gap-3 hover:border-blue-400 dark:hover:border-blue-500 transition">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-[10px] font-black">${s.id}</span>
+                <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400 truncate max-w-[200px]">${escapeHTML(s.categoryTh)}</span>
+              </div>
+              <a href="slides.html?slide=${s.id}" target="_blank" class="text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:underline flex-shrink-0">
+                เปิดสไลด์ ↗
+              </a>
+            </div>
+            <h4 class="text-xs md:text-sm font-bold text-slate-900 dark:text-white leading-snug">
+              ${escapeHTML(s.titleTh)}
+            </h4>
+            ${renderFormulaSafe(s.formula)}
+            <div class="p-2.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border-l-2 border-amber-500 text-xs text-slate-700 dark:text-slate-200 thai-body">
+              <strong class="text-amber-800 dark:text-amber-300">💡 จุดเน้น:</strong> ${escapeHTML(s.examTip)}
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      if (matches.length > explorerLimit) {
+        moreBtn.classList.remove('hidden');
+        moreBtn.textContent = `แสดงเพิ่มเติม (เหลืออีก ${matches.length - explorerLimit} สไลด์)`;
+      } else {
+        moreBtn.classList.add('hidden');
+      }
+
+      runKaTeX(container);
+    }
+
+    function loadMoreExplorer() {
+      explorerLimit += 30;
+      renderExplorer();
+    }
+  </script>
+</body>
+</html>
