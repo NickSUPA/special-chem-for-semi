@@ -29,7 +29,7 @@
   <!-- KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="if (typeof runAllKaTeX === 'function') runAllKaTeX()"></script>
 
   <!-- Full 302-Slide Database -->
   <script src="slides_data.js"></script>
@@ -673,7 +673,7 @@
       renderComparisonTables();
       renderCriticalNumbers();
       renderExplorer();
-      runKaTeX(document.body);
+      runAllKaTeX();
     });
 
     function toggleDarkMode() {
@@ -682,16 +682,33 @@
       document.getElementById('theme-icon').textContent = isDark ? '☀️' : '🌙';
     }
 
+    const KATEX_CONFIG = {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\[', right: '\\]', display: true },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '$', right: '$', display: false }
+      ],
+      throwOnError: false,
+      strict: 'ignore'
+    };
+
     function runKaTeX(el) {
-      if (window.renderMathInElement) {
-        renderMathInElement(el, {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false }
-          ],
-          throwOnError: false
-        });
+      if (window.renderMathInElement && el) {
+        try {
+          renderMathInElement(el, KATEX_CONFIG);
+        } catch (err) {
+          console.warn('KaTeX render warning:', err);
+        }
       }
+    }
+
+    function runAllKaTeX() {
+      // Re-render Explorer too in case katex.min.js finished loading after DOMContentLoaded
+      if (window.katex && document.getElementById('explorer-container')) {
+        renderExplorer();
+      }
+      runKaTeX(document.body);
     }
 
     function setTopicFilter(flt) {
@@ -863,20 +880,41 @@
           <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${n.desc}</p>
         </a>
       `).join('');
+      runKaTeX(container);
     }
 
     function escapeHTML(str) {
       return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
+    function sanitizeLatexFormula(raw) {
+      let s = (raw || '').trim();
+      s = s.replace(/(^|[^\\])%/g, '$1\\%');
+      s = s.replace(/(^|[^\\])&/g, '$1\\&');
+      s = s.replace(/\\text\{([^}]*)\}/g, (_, inner) => `\\text{${inner.replace(/\\sim\s*/g, '~')}}`);
+      return s;
+    }
+
     function renderFormulaSafe(formula) {
       if (!formula || !formula.trim()) return '';
       const f = formula.trim();
-      // Only use KaTeX display if it has LaTeX commands and NO Thai text / unescaped %
-      const hasThai = /[\u0E00-\u0E7F]/.test(f);
-      const hasLatexCmd = /\\(text|frac|rightleftharpoons|rightarrow|implies|approx|cdot|times|mu|sigma|lambda|omega|zeta)/.test(f);
-      if (hasLatexCmd && !hasThai) {
-        return `<div class="katex-formula text-xs md:text-sm py-1.5 px-2.5 bg-emerald-50/70 dark:bg-emerald-950/30 rounded-lg border border-emerald-200/70 dark:border-emerald-800/50 overflow-x-auto">$$${f}$$</div>`;
+      const hasLatexSyntax = /\\[a-zA-Z]{2,}|_\{|\^\{/.test(f);
+      if (hasLatexSyntax) {
+        const sanitized = sanitizeLatexFormula(f);
+        if (window.katex && typeof window.katex.renderToString === 'function') {
+          try {
+            const katexHTML = window.katex.renderToString(sanitized, {
+              displayMode: true,
+              throwOnError: true,
+              strict: 'ignore'
+            });
+            return `<div class="katex-formula text-xs md:text-sm py-1.5 px-2.5 bg-emerald-50/70 dark:bg-emerald-950/30 rounded-lg border border-emerald-200/70 dark:border-emerald-800/50 overflow-x-auto">${katexHTML}</div>`;
+          } catch (err) {
+            // Fall through to clean monospace text if KaTeX rejects expression
+          }
+        } else {
+          return `<div class="katex-formula text-xs md:text-sm py-1.5 px-2.5 bg-emerald-50/70 dark:bg-emerald-950/30 rounded-lg border border-emerald-200/70 dark:border-emerald-800/50 overflow-x-auto">$$${sanitized}$$</div>`;
+        }
       }
       return `<div class="text-xs font-mono py-1.5 px-2.5 bg-emerald-50/70 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 rounded-lg border border-emerald-200/70 dark:border-emerald-800/50 overflow-x-auto">${escapeHTML(f)}</div>`;
     }
