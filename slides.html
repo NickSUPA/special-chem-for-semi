@@ -382,7 +382,7 @@
   </div>
 
   <!-- ================= LIGHTBOX MODAL FOR FULLSCREEN IMAGE ZOOM ================= -->
-  <div id="lightbox-modal" class="fixed inset-0 z-60 bg-black/95 hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+  <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden flex-col items-center justify-center p-4" onclick="closeLightbox()">
     <div class="absolute top-4 right-4 flex items-center gap-3">
       <span class="text-white/70 text-xs">คลิกที่ใดก็ได้เพื่อปิด (หรือกด Esc)</span>
       <button class="text-white text-2xl font-bold p-2 hover:text-red-400 transition" onclick="closeLightbox()">✕</button>
@@ -441,8 +441,12 @@
       // Keyboard event listeners
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          closeLightbox();
-          closeModal();
+          const lb = document.getElementById('lightbox-modal');
+          if (lb && !lb.classList.contains('hidden')) {
+            closeLightbox();
+          } else {
+            closeModal();
+          }
         } else if (document.getElementById('slide-modal').classList.contains('flex')) {
           if (e.key === 'ArrowLeft') navigateModal(-1);
           if (e.key === 'ArrowRight') navigateModal(1);
@@ -1333,12 +1337,16 @@
 
     // Lightbox for HD images
     function openLightbox(src) {
+      const lb = document.getElementById('lightbox-modal');
       document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-modal').classList.remove('hidden');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
     }
 
     function closeLightbox() {
-      document.getElementById('lightbox-modal').classList.add('hidden');
+      const lb = document.getElementById('lightbox-modal');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
     }
   </script>
 </body>
